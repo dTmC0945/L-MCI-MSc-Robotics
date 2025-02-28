@@ -1,0 +1,114 @@
+#+title: MSc Robotics
+
+** Table of Contents :TOC_2:
+  - [[#lecture-information][Lecture Information]]
+  - [[#requirements-and-the-learning-outcomes][Requirements and the Learning Outcomes]]
+  - [[#grading-of-the-lecture][Grading of the Lecture]]
+  - [[#lecture-sources][Lecture Sources]]
+  - [[#content-and-unit-distribution][Content and Unit Distribution]]
+  - [[#structure-per-session][Structure per Session]]
+  - [[#documentation][Documentation]]
+  - [[#related-links][Related Links]]
+
+** Lecture Information
+
+*WARNING:* This is the content only covered by me as this lecture is shared by
+         Prof. Can Dede and Benjamin Massow, M.Sc
+
+The goal of this lecture is ...
+
+The Lecture structure for this lecture is as follows.
+
+| DESCRIPTION        | VALUE                                                                |
+| Official Name      | Robotik                                                              |
+| Lecture Code       | ROB                                                                  |
+| Module Code        | MECH-M-2-ROB-ROB-ILV                                                 |
+| Degree             | M.Sc                                                                 |
+| Program Name       | Mechatronik Smart Technologies                                       |
+| Lecture Name       | Robotics                                                             |
+| Semester           | 2                                                                    |
+| Season             | SS                                                                   |
+| Room Type          | Lecture Room                                                         |
+| Assignments        | Personal Assignment                                                  |
+| Lecturer(s)        | Daniel T. McGuiness, Ph.D, Prof. Can Dede, and Benjamin Massow, M.Sc |
+| Module Responsible | BnM                                                                  |
+| Software           | Linux, Python, C++, ROS 2                                            |
+| Hardware           | -                                                                    |
+| SWS Total          | 3                                                                    |
+| SWS Teaching       | 3                                                                    |
+| SWS Tutorial       | 1                                                                    |
+| UE Total           | 45                                                                   |
+| ECTS               | 4                                                                    |
+| Lecture Type       | ILV                                                                  |
+
+** Requirements and the Learning Outcomes
+
+The requirements and the outcome for the lecture are given as follows.
+
+The student should be comfortable with working with either python and/or C++ and
+should have an beginner level knowledge of the Linux environment and
+the command line interface
+
+For a revision on some of these topics please look at the following repos:
+
+- [[https://github.com/dTmC0945/L-MCI-BSc-Python-for-Engineering-and-Economics][B.Sc Python for Engineering and Economics]]
+- [[https://github.com/dTmC0945/L-MCI-BSc-Mobile-Robotics][B.Sc Mobile Robotics]]
+
+| REQUIREMENTS          | TAUGHT LECTURE       | CODE | DEGREE | OUTCOME               |
+| Laplace Transform     | Higher Mathematics I | HMA  | M.Sc   | Fourier Analysis      |
+| Integral Calculus     | Higher Mathematics I | HMA  | M.Sc   | Solving PDEs          |
+| Vector Calculus       | Higher Mathematics I | HMA  | M.Sc   | Statistical Analysis  |
+| Differential Calculus | Higher Mathematics I | HMA  | M.Sc   | Probabilistic Methods |
+| -                     |                      |      |        | Complex Analysis      |
+
+** Grading of the Lecture
+
+The lecture will have one (1) personal assignment which will be based on ROS and
+programming related to it.
+      
+| ASSIGNMENT TYPE     | VALUE |
+| Personal Assignment |   100 |
+| SUM                 |   100 |
+
+** Lecture Sources
+
+The following are a table of documentation which are useful resources which
+goes well with the lectures.
+
+| TITLE                                                 | AUTHOR        | PUBLISHER             |
+| A very informal journey through ROS 2                 | M. M. Bassa   | Self-Published        |
+| A Concise Introduction to Robot Programming with ROS2 | F. M. Rico    | Taylor Francis (2022) |
+| Programming Principles and Practice using C++         | B. Stroustrup | Addison Wesley (2014) |
+
+** Content and Unit Distribution
+
+The content and unit distribution of the lecture is as follows where a unit
+is defined as 45 min lecture.
+
+| TOPIC                             | UNITS | SELF STUDY |
+| The GNU/Linux Operating System    |     3 |          6 |
+| ROS 2 Introduction and Concepts   |     3 |          6 |
+| Programming with Client Libraries |     6 |         12 |
+| Simulations and TF Trees          |     3 |          6 |
+| SUM                               |    15 |         30 |
+
+** Structure per Session
+
+The structure of Robotics can be
+grouped into four (4) parts:
+
+1. The GNU/Linux Operating System    
+2. ROS 2 Introduction and Concepts   
+3. Programming with Client Libraries 
+4. Simulations and TF Trees  
+
+Below is the detailed structure of the lecture.
+  
+
+** Documentation
+
+For any student in need of a LaTeX class designed from the ground-up for
+assignment/lab/thesis/slide for MCI needs please have a look at ~mcidoc~ class
+hosted at [[https://github.com/dTmC0945/C-MCI-LaTeX-Class-mcidoc][GitHub]].
+
+(-DTMc 2025)
