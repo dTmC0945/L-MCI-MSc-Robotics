@@ -15,7 +15,10 @@
 *WARNING:* This is the content only covered by me as this lecture is shared by
          Prof. Can Dede and Benjamin Massow, M.Sc
 
-The goal of this lecture is ...
+The goal of this lecture is to give you a better view of how to control robots
+using different programming methods. This lecture you will encounter ROS, a
+versatile software capable of doing pathfinding and localisation, a perfect fit
+for use in mobile robotics.
 
 The Lecture structure for this lecture is as follows.
 
@@ -54,12 +57,12 @@ For a revision on some of these topics please look at the following repos:
 - [[https://github.com/dTmC0945/L-MCI-BSc-Python-for-Engineering-and-Economics][B.Sc Python for Engineering and Economics]]
 - [[https://github.com/dTmC0945/L-MCI-BSc-Mobile-Robotics][B.Sc Mobile Robotics]]
 
-| REQUIREMENTS          | TAUGHT LECTURE       | CODE | DEGREE | OUTCOME               |
-| Laplace Transform     | Higher Mathematics I | HMA  | M.Sc   | Fourier Analysis      |
-| Integral Calculus     | Higher Mathematics I | HMA  | M.Sc   | Solving PDEs          |
-| Vector Calculus       | Higher Mathematics I | HMA  | M.Sc   | Statistical Analysis  |
-| Differential Calculus | Higher Mathematics I | HMA  | M.Sc   | Probabilistic Methods |
-| -                     |                      |      |        | Complex Analysis      |
+| REQUIREMENTS       | TAUGHT LECTURE       | CODE | DEGREE | OUTCOME                       |
+| C/C++ Programming  | Programming II       | PRO2 | B.Sc   | ROS 2 Programming             |
+| Python Programming | Software Design      | SWD  | B.Sc   | Linux Experience              |
+| Working with IoT   | Higher Mathematics I | IOT  | B.Sc   | Advanced Programming Concepts |
+| -                  | -                    | -    | -      | -                             |
+| -                  | -                    | -    | -      | -                             |
 
 ** Grading of the Lecture
 
