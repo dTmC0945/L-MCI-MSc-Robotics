@@ -42,7 +42,7 @@ The Lecture structure for this lecture is as follows.
 | UE Total           | 45                                                                   |
 | ECTS               | 4                                                                    |
 | Lecture Type       | ILV                                                                  |
- 
+  
 ** Requirements and the Learning Outcomes
 
 The requirements and the outcome for the lecture are given as follows.
