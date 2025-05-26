@@ -45,7 +45,7 @@ The Lecture structure for this lecture is as follows.
 ** Requirements and the Learning Outcomes
 
 - The student should be comfortable with working with either python
-  and/or C++ andshould have an beginner level knowledge of the Linux
+  and/or C++ and should have an beginner level knowledge of the Linux
   environment and the command line interface
 
 - For a refreshment on its content the students are encouraged to read the
@@ -54,12 +54,12 @@ The Lecture structure for this lecture is as follows.
 - [[https://github.com/dTmC0945/L-MCI-BSc-Python-for-Engineering-and-Economics][B.Sc Python for Engineering and Economics]]
 - [[https://github.com/dTmC0945/L-MCI-BSc-Mobile-Robotics][B.Sc Mobile Robotics]]
 
-| REQUIREMENTS       | TAUGHT LECTURE       | CODE | DEGREE | OUTCOME           |
-| C/C++ Programming  | Programming II       | PRO2 | B.Sc   | ROS 2 Programming |
-| Python Programming | Software Design      | SWD  | B.Sc   | Linux Experience  |
-| Working with IoT   | Higher Mathematics I | IOT  | B.Sc   | Programming       |
-| -                  | -                    | -    | -      | -                 |
-| -                  | -                    | -    | -      | -                 |
+| REQUIREMENTS       | TAUGHT LECTURE     | CODE | DEGREE | OUTCOME           |
+| C/C++ Programming  | Programming II     | PRO2 | B.Sc   | ROS 2 Programming |
+| Python Programming | Software Design    | SWD  | B.Sc   | Linux Experience  |
+| Working with IoT   | Internet of Things | IOT  | B.Sc   | Programming       |
+| -                  | -                  | -    | -      | -                 |
+| -                  | -                  | -    | -      | -                 |
 
 ** Grading of the Lecture
 
@@ -75,10 +75,10 @@ The Lecture structure for this lecture is as follows.
 The following are a table of documentation which are useful resources which
 goes well with the lectures.
 
-| TITLE                                                 | AUTHOR        | PUBLISHER             |
-| A very informal journey through ROS 2                 | M. M. Bassa   | Self-Published        |
-| A Concise Introduction to Robot Programming with ROS2 | F. M. Rico    | Taylor Francis (2022) |
-| Programming Principles and Practice using C++         | B. Stroustrup | Addison Wesley (2014) |
+| AUTHOR        | TITLE                                                 | PUBLISHER             |
+| M. M. Bassa   | A very informal journey through ROS 2                 | Self-Published        |
+| F. M. Rico    | A Concise Introduction to Robot Programming with ROS2 | Taylor Francis (2022) |
+| B. Stroustrup | Programming Principles and Practice using C++         | Addison Wesley (2014) |
 
 ** Content and Unit Distribution
 
@@ -100,8 +100,6 @@ The structure of Robotics can be grouped into four (4) parts:
 2. ROS 2 Introduction and Concepts   
 3. Programming with Client Libraries 
 4. Simulations and TF Trees   
-
-Below is the detailed structure of the lecture.
   
 
 ** Documentation
