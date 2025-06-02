@@ -86,20 +86,22 @@ goes well with the lectures.
   is defined as 45 min lecture.
 
 | TOPIC                             | UNITS | SELF STUDY |
+| Mobile Robot Navigation Methods   |     3 |          6 |
 | The GNU/Linux Operating System    |     3 |          6 |
 | ROS 2 Introduction and Concepts   |     3 |          6 |
-| Programming with Client Libraries |     6 |         12 |
+| Programming with Client Libraries |     3 |          6 |
 | Simulations and TF Trees          |     3 |          6 |
 | SUM                               |    15 |         30 |
 
 ** Structure per Session
 
-The structure of Robotics can be grouped into four (4) parts:
+The structure of Robotics can be grouped into five (5) parts:
 
-1. The GNU/Linux Operating System    
-2. ROS 2 Introduction and Concepts   
-3. Programming with Client Libraries 
-4. Simulations and TF Trees   
+1. Mobile Robot Navigation
+2. The GNU/Linux Operating System    
+3. ROS 2 Introduction and Concepts   
+4. Programming with Client Libraries 
+5. Simulations and TF Trees
   
 
 ** Documentation
