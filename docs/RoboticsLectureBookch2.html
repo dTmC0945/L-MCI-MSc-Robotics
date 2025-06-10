@@ -1,0 +1,4246 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+ <head>
+  <title>
+   2 Welcome to Linux
+  </title>
+  <meta charset="utf-8"/>
+  <meta content="TeX4ht (https://tug.org/tex4ht/)" name="generator"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <link href="RoboticsLectureBook.css" rel="stylesheet" type="text/css"/>
+  <meta content="RoboticsLectureBook.tex" name="src"/>
+  <script async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js" type="text/javascript">
+  </script>
+  <link href="flatweb.css" rel="stylesheet" type="text/css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+  </script>
+  <script src="flatjs.js">
+  </script>
+  <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"/>
+  <link href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css" rel="stylesheet" type="text/css"/>
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dockerfile.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/cmake.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/cpp.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/makefile.min.js">
+  </script>
+  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js">
+  </script>
+  <link href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" rel="stylesheet"/>
+  <script src="flatjs.js">
+  </script>
+  <header>
+  </header>
+ </head>
+ <body id="top">
+  <nav class="wide">
+   <div class="contents">
+    <h3 style="font-weight:lighter; padding: 20px 0 20px 0;">
+     2
+   
+     
+   
+
+   Welcome to Linux
+    </h3>
+    <h4 style="font-weight:lighter">
+     Chapter Table of Contents
+    </h4>
+    <ul>
+     <div class="chapterTOCS">
+      <li>
+       <span class="sectionToc">
+        <small>
+         2.1
+        </small>
+        <a href="#x4-380002.1">
+         Learning the Linux Command Line
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         2.1.1
+        </small>
+        <a href="#x4-390002.1.1">
+         A Short History on Computer Interfaces
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         2.1.2
+        </small>
+        <a href="#x4-410002.1.2">
+         Linux is a Nutshell
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         2.1.3
+        </small>
+        <a href="#x4-440002.1.3">
+         Linux Distributions
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         2.2
+        </small>
+        <a href="#x4-450002.2">
+         Installation
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         2.3
+        </small>
+        <a href="#x4-460002.3">
+         Docker
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         2.3.1
+        </small>
+        <a href="#x4-470002.3.1">
+         Dockerfile
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         2.3.2
+        </small>
+        <a href="#x4-480002.3.2">
+         Running the Container
+        </a>
+       </span>
+      </li>
+     </div>
+    </ul>
+    <div class="prev-next" style="text-align: center">
+     <p class="noindent">
+      <a href="RoboticsLectureBookch3.html" style="float:right; font-size:10px">
+       NEXT →
+      </a>
+      <a href="RoboticsLectureBookch1.html" style="float:left; font-size:10px">
+       ← PREV
+      </a>
+      <a href="index.html">
+       TOP
+      </a>
+     </p>
+    </div>
+    <div id="author-info" style="bottom: 0; padding-bottom: 10px;">
+     <div id="author-logo">
+      <img src="figures/logo.svg" style="margin: 10px 0;"/>
+      <div>
+       <div>
+        <h4 style="color:#7aa0b8; font-weight:lighter;">
+         WebBook | D. T. McGuiness, P.hD
+        </h4>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </nav>
+  <div class="page">
+   <article class="chapter">
+    <h1 class="chapterHead">
+     <div class="number">
+      2
+     </div>
+     <a id="x4-370002">
+     </a>
+     Welcome to Linux
+    </h1>
+    <div class="section-control" style="text-align: center">
+     <a id="prev-section" onclick="goPrev()" style="float:left;">
+      ← Previous Section
+     </a>
+     <a id="next-section" onclick="goNext()" style="float:right;">
+      Next Section →
+     </a>
+    </div>
+    <div class="section-head" id="section-1" sec="section-1">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="RoboticsLectureBook.pdf#section.2.1" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       2.1
+      </small>
+      <a id="x4-380002.1">
+      </a>
+      Learning the Linux Command Line
+     </h2>
+     <p class="noindent">
+      Working with a text-based
+      <a href="https://en.wikipedia.org/wiki/Command-line_interface">
+       Command Line Environment
+      </a>
+      (
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:cli">
+       CLI
+      </a>
+      ), without a
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:gui">
+       Graphical User Interface
+(GUI)
+      </a>
+      can be intimidating at first glance, as most of us are accustomed to using a
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:gui">
+       GUI
+      </a>.
+But understanding the command line environment will show how powerful and efficient it
+is.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb1" style="padding:20px;border-radius: 3px;"><a id="x4-38002r27"></a><span id="textcolor69">echo</span><span id="textcolor70"> </span><span id="textcolor71">"Hello, Linux!"</span></div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-4">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb2" style="padding:20px;border-radius: 3px;"><a id="x4-38004r1"></a>Hello, Linux!</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      Most senior programmers in the industry and veteran Linux
+      <a href="https://en.wikipedia.org/wiki/System_administrator bash">
+       system administrators
+      </a>
+      will exclusively use
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:cli">
+       Command-Line Interface (CLI)
+      </a>
+      as their day to day interaction with the computer. The reason is, the
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:gui">
+       GUI
+      </a>
+      was designed for simplifying human interaction with computers rather than improving the
+computer’s efficiency at doing tasks.
+     </p>
+     <p class="noindent">
+      The goal of this chapter aims to introduce the fundamentals of working with the
+      <alert style="color: #821131;">
+       Linux command
+line
+      </alert>
+      using a very common shell called Bash as it will be important in the future when working with
+      <a href="https://en.wikipedia.org/wiki/Robot_Operating_System">
+       ROS
+      </a>
+      (Robot Operating System) or in any future endeavour the reader may pursue in the fields related
+to computer science.
+     </p>
+     <ul class="itemize1">
+      <li class="itemize">
+       <p class="noindent">
+        Work on what the command line is and how it works,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Look at working with files and folders,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        How Linux protects files from unauthorised access with permissions,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Common commands to be familiar with and how to connect commands together with pipes,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Introduction to some complex command line tasks.
+       </p>
+      </li>
+     </ul>
+     <p class="noindent">
+      This part of the lecture-book aims to give practical knowledge on working with the widely
+used <span id="textcolor77"><code class="verb">Bash</code></span>
+      shell, in case you choose to extend your learning into user management, network
+configuration, programming and development, system administration, or if you catch the
+tinkerer-bug.
+     </p>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="RoboticsLectureBook.pdf#subsection.2.1.1" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       2.1.1
+      </small>
+      <a id="x4-390002.1.1">
+      </a>
+      A Short History on Computer Interfaces
+     </h3>
+     <aside class="wrapfig-r">
+      <img alt="PIC" height="" src="figures/Welcome-to-Linux/raster/Telegraph.jpg" width="100%"/>
+      <a id="x4-39001r1">
+      </a>
+      <figcaption class="caption">
+       <span class="id">
+        Figure 2.1:
+       </span>
+       <span class="content">
+        Hughes telegraph, an
+early  (1855)  teleprinter  built  by
+Siemens and Halske. The centrifugal
+governor  to  achieve  synchronicity
+with the other end can be seen <span class="cite"><a href="RoboticsLectureBookad1.html#Manske2009">[38]</a></span>.
+       </span>
+      </figcaption>
+     </aside>
+     <p class="noindent">
+      The
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:cli">
+       CLI
+      </a>
+      came from a form of dialogue by humans over
+      <a href="https://en.wikipedia.org/wiki/Teleprinter">
+       teleprinter
+      </a>
+      (TTY) machines, in which human
+operators remotely exchanged information instead of a human communicating with another human over
+a teleprinter. Early computer systems often used teleprinter machines as the means of interaction with
+a human operator.
+     </p>
+     <div class="knowledge">
+      <p class="noindent">
+       The computer became one end of the human-to-human teleprinter model.
+      </p>
+     </div>
+     <p class="noindent">
+      The mechanical teleprinter was then replaced by a
+      <a href="https://en.wikipedia.org/wiki/Dumb_terminal#Early_VDUs">
+       terminal
+      </a>, a keyboard and screen emulating the
+teleprinter.
+      <a href="https://en.wikipedia.org/wiki/Computer_terminal#.22Intelligent.22_terminals">
+       Smart terminals
+      </a>
+      permitted additional functions, such as cursor movement over the entire
+screen, or local editing of data on the terminal for transmission to the computer.
+     </p>
+     <aside class="wrapfig-l">
+      <img alt="PIC" height="" src="figures/Welcome-to-Linux/raster/Nokia.jpg" width="100%"/>
+      <a id="x4-39003r2">
+      </a>
+      <figcaption class="caption">
+       <span class="id">
+        Figure 2.2:
+       </span>
+       <span class="content">
+        Nokia     Bell     Labs
+Murray Hill, NJ (
+        <a href="https://www.telecomreview.com/images/stories/2020/03/Nokia_Bell_Labs_achieves_world_record_in_fiber_optics-article.jpg">
+         Original
+        </a>
+        )
+       </span>
+      </figcaption>
+     </aside>
+     <p class="noindent">
+      As the microcomputer revolution replaced the traditional systems, hardware terminals were replaced by
+terminal emulators -
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:pc">
+       Personal Computer (PC)
+      </a>
+      software that interpreted terminal signals sent through
+the
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:pc">
+       PC
+      </a>
+      ’s serial ports. These were typically used to interface an organisation’s new
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:pc">
+       PC
+      </a>
+      ’s with their
+existing mini- or mainframe computers, or to connect
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:pc">
+       PC
+      </a>
+      to
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:pc">
+       PC
+      </a>. Some of these
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:pc">
+       PC
+      </a>
+      s were running
+Bulletin Board System software.
+     </p>
+     <p class="noindent">
+      Early operating system
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:cli">
+       CLI
+      </a>
+      s were implemented as part of resident monitor programs, and could not
+easily be replaced. The first implementation of the
+      <alert style="color: #821131;">
+       shell
+      </alert>
+      as a replaceable component was part of the
+Multics time-sharing operating system. In 1964, MIT Computation Center staff member Louis
+Pouzin developed the RUNCOM tool for executing command scripts while allowing argument
+substitution.
+     </p>
+     <p class="noindent">
+      Pouzin coined the term “shell” to describe the technique of using commands like a programming
+language, and wrote a paper about how to implement the idea in the Multics operating system.
+Pouzin returned to his native France in 1965, and the first Multics shell was developed by
+Glenda Schroeder. At Nokia Bell Labs headquarters the first Unix shell, the V6 shell, was
+developed by Ken Thompson in 1971 and was modelled after Schroeder’s Multics shell.
+The Bourne shell was introduced in 1977 as a replacement for the V6 shell. Although it is
+used as an interactive command interpreter, it was also intended as a scripting language
+and contains most of the features that are commonly considered to produce structured
+programs.
+     </p>
+     <aside class="wrapfig-r">
+      <img alt="PIC" height="" src="figures/Welcome-to-Linux/raster/Bourne.png" width="100%"/>
+      <a id="x4-39004r3">
+      </a>
+      <figcaption class="caption">
+       <span class="id">
+        Figure 2.3:
+       </span>
+       <span class="content">
+        Bourne shell interaction on Version 7 Unix (
+        <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Version_7_UNIX_SIMH_PDP11_Kernels_Shell.png/330px-Version_7_UNIX_SIMH_PDP11_Kernels_Shell.png">
+         Original
+        </a>
+        ).
+       </span>
+      </figcaption>
+     </aside>
+     <p class="noindent">
+      The Bourne shell led to the development of the KornShell <span id="textcolor78">(<code class="verb">ksh</code>)</span>, Almquist shell <span id="textcolor79">(<code class="verb">ash</code>)</span>, and the popular
+Bourne-again shell (or <span id="textcolor80"><code class="verb">bash</code></span>
+      ). Early microcomputers themselves were based on a
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:cli">
+       CLI
+      </a>
+      such as
+CP/M, DOS or AppleSoft BASIC. During the 1980s and 1990s, the introduction of the
+Apple Macintosh and of Microsoft Windows on PCs saw the command line interface as
+the primary user interface replaced by the Graphical User Interface. The command line
+remained available as an alternative user interface, often used by system administrators
+and other advanced users for system administration, computer programming and batch
+processing.
+     </p>
+     <h5 class="likesubsubsectionHead">
+      <a id="x4-40000">
+      </a>
+      Shells in other Operating Systems
+     </h5>
+     <dl class="description">
+      <dt class="description">
+       <span id="bold" style="font-weight:bold;">
+        Windows
+       </span>
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        In November 2006, Microsoft released version 1.0 of Windows PowerShell, which combined
+features of traditional Unix shells with their proprietary object-oriented .NET Framework.
+MinGW and Cygwin are open-source packages for Windows that offer a Unix-like CLI.
+Microsoft provides MKS Inc.’s ksh implementation MKS Korn shell for Windows through
+their Services for UNIX add-on.
+       </p>
+      </dd>
+      <dt class="description">
+       <span id="bold" style="font-weight:bold;">
+        Macintosh
+       </span>
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        Since 2001, the Macintosh operating system macOS has been based on a Unix-like operating
+system called Darwin. On these computers, users can access a Unix-like
+        <a class="glossary" href="RoboticsLectureBookli2.html#glo:cli">
+         CLI
+        </a>
+        by running the
+terminal emulator program called Terminal, or by remotely logging into the machine using
+        <alert style="color: #821131;">
+         ssh
+        </alert>
+        . Z
+shell is the default shell for macOS,
+        <alert style="color: #821131;">
+         <span id="bold" style="font-weight:bold;">
+          <sup class="textsuperscript">
+           1
+          </sup>
+         </span>
+        </alert>
+        <span class="marginnote">
+         <alert style="color: #821131;">
+          <span id="bold" style="font-weight:bold;">
+           <sup class="textsuperscript">
+            1
+           </sup>
+          </span>
+         </alert>
+         <span id="textcolor81">
+          This was implemented as of macOS Catalina.
+         </span>
+        </span>
+        with <span id="textcolor82"><code class="verb">bash</code></span>, <span id="textcolor83"><code class="verb">tcsh</code></span>, and the
+KornShell also provided.
+       </p>
+       <div class="warning">
+        <p class="noindent">
+         Before macOS Catalina, bash was the default shell.
+        </p>
+       </div>
+      </dd>
+     </dl>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="RoboticsLectureBook.pdf#subsection.2.1.2" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       2.1.2
+      </small>
+      <a id="x4-410002.1.2">
+      </a>
+      Linux is a Nutshell
+     </h3>
+     <div class="figure">
+      <p class="noindent">
+       <img alt="PIC" height="" src="codes/images/Welcome-to-Linux/the-linux-kernel-.svg" width="150%"/>
+       <a id="x4-41001r4">
+       </a>
+      </p>
+      <figcaption class="caption">
+       <span class="id">
+        Figure 2.4:
+       </span>
+       <span class="content">
+        The kernel mapping of the Linux operating system.
+       </span>
+      </figcaption>
+     </div>
+     <a id="subsubsection*.10">
+     </a>
+     <h5 class="subsubsectionHead">
+      <a id="x4-42000">
+      </a>
+      A Brief Description of What Linux Does
+     </h5>
+     <p class="noindent">
+      Linux
+is
+a
+general
+purpose
+computer
+operating
+system,
+originally
+released
+in
+1991
+by
+Linus
+Torvalds
+and
+began
+as
+a
+personal
+project
+of
+him <a id="x4-42001"></a><span class="cite"><a href="RoboticsLectureBookad1.html#koren2006study">[39]</a></span>.
+It
+was
+to
+create
+a
+new
+      <alert style="color: #821131;">
+       free
+      </alert>
+      operating
+system
+kernel
+which
+the
+resulting
+kernel
+has
+been
+marked
+by
+constant
+growth
+throughout
+its
+history.
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         2
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <img alt="PIC" height="" src="figures/Welcome-to-Linux/raster/minix.png" width="100%"/>
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          2
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor84">
+        The
+MINIX
+logo.
+There
+were
+alternative
+OSs
+on
+the
+market
+such
+                                                                                
+                                                                                
+as
+MINIX
+but
+it
+was
+under
+a
+proprietary
+license
+which
+was
+later
+became
+open-source
+in
+2000.
+This
+was
+one
+of
+the
+reasons
+why
+Linux
+was
+attempted
+in
+the
+first
+place.
+To
+create
+a
+truly
+open-source
+implementation
+of
+UNIX.
+       </span>
+      </span>
+     </p>
+     <p class="noindent">
+      Linux
+is
+defined
+by
+its
+kernel,
+called
+the
+      <span id="bold" style="font-weight:bold;">
+       Linux
+kernel
+      </span>
+      ,
+which
+is
+the
+core
+component
+of
+the
+system.
+This
+kernel
+interacts
+with
+the
+computer
+hardware
+to
+allow
+software
+and
+                                                                                
+                                                                                
+other
+hardware
+to
+exchange
+information,
+which
+you
+can
+see
+in
+      <span id="bold" style="font-weight:bold;">
+       Fig.
+      </span>
+      <a href="#x4-41001r4">
+       2.4
+      </a>.
+     </p>
+     <div class="knowledge">
+      <p class="noindent">
+       Imagine the kernel as the middle-man between your software and the hardware. This allows you to write a program without
+worrying to much about what the hardware is.
+      </p>
+     </div>
+     <p class="noindent">
+      As Linux is an open-source project and is probably one of the greatest collaborative software work in history, it has a rich history.
+It was inspired by MINIX which, in turn, was inspired by UNIX with UNIX being the first
+      <alert style="color: #821131;">
+       portable
+      </alert>
+      operating system ever
+designed <a id="x4-42002"></a><span class="cite"><a href="RoboticsLectureBookad1.html#bach1986design">[40]</a> as it was mostly written with the C programming language <a id="x4-42003"></a><a href="RoboticsLectureBookad1.html#johnson1978unix">[41]</a></span>.
+     </p>
+     <h5 class="likesubsubsectionHead">
+      <a id="x4-43000">
+      </a>
+      Open Source v. Closed Source
+     </h5>
+     <p class="noindent">
+      In programming there are two <alert style="color: #821131;">(2)</alert> main approaches when it comes to sharing code:
+     </p>
+     <ul class="itemize1">
+      <li class="itemize">
+       <p class="noindent">
+        It
+can
+be
+closed
+source,
+which
+means,
+you
+are
+not
+allowed
+to
+edit
+the
+code
+the
+program
+is
+running
+on,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Open
+source
+which
+you
+are
+free
+to
+edit
+and
+share
+the
+code
+as
+you
+                                                                                
+                                                                                
+     
+see
+fit.
+       </p>
+      </li>
+     </ul>
+     <p class="noindent">
+      Linux is based on a philosophy of software and operating systems being
+      <span id="bold" style="font-weight:bold;">
+       free
+      </span>
+      .
+     </p>
+     <div class="quoteblock">
+      <p class="noindent">
+       Software
+should
+be
+free
+of
+cost
+and
+freely
+modifiable.
+      </p>
+     </div>
+     <p class="noindent">
+      The
+software
+license
+which
+allows
+this,
+in
+the
+case
+of
+the
+Linux
+kernel,
+is
+called
+the
+GNU
+General
+Public
+License.
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         3
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          3
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor87">
+        are
+a
+series
+of
+widely
+used
+free
+software
+licenses,
+or
+copyleft
+licenses,
+that
+guarantee
+end
+users
+the
+freedoms
+to
+run,
+study,
+share,
+or
+modify
+the
+software.
+       </span>
+      </span>
+      This
+                                                                                
+                                                                                
+                                                                          
+emphasis
+of
+freedom,
+both,
+of
+cost
+and
+modification
+has
+helped
+Linux
+to
+become
+popular
+for
+many
+different
+applications
+and
+purposes
+from
+tinkering
+programming
+to
+being
+used
+in
+massive
+databases
+of
+major
+companies.
+     </p>
+     <p class="noindent">
+      Linux
+has
+popped
+up
+everywhere
+from
+the
+majority
+of
+the
+servers
+that
+run
+web
+services
+we
+all
+use,
+to
+super
+computers,
+to
+Wi-Fi
+routers,
+in
+cars,
+mobile
+phones,
+and
+everywhere
+in
+between.
+Odds
+are
+that
+                                                                                
+                                                                                
+                                                                             
+you
+are
+closed
+to
+a
+device
+that
+uses
+some
+part
+of
+the
+Linux
+kernel.
+In
+the
+midst
+of
+all
+these
+different
+kinds
+of
+Linux
+installations,
+the
+most
+important
+distinction
+you’ll
+need
+to
+be
+aware
+of
+is
+one
+of
+the
+genealogy
+of
+Linux.
+     </p>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="RoboticsLectureBook.pdf#subsection.2.1.3" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       2.1.3
+      </small>
+      <a id="x4-440002.1.3">
+      </a>
+      Linux
+Distributions
+     </h3>
+     <p class="noindent">
+      While
+the
+Linux
+kernel
+is
+more
+or
+less
+the
+same
+across
+nearly
+all
+installations
+of
+Linux,
+the
+                                                                                
+                                                                                
+                                                                          
+software
+that
+surrounds
+the
+kernel
+that
+provides
+capabilities
+like
+      <italic>
+       software
+package
+management
+      </italic>
+      ,
+      <italic>
+       control
+of
+services
+      </italic>
+      ,
+and
+the
+      <italic>
+       location
+of
+configuration
+files
+      </italic>
+      differs
+between
+them.
+Many
+of
+the
+tools
+that
+come
+packaged
+with
+Linux
+come
+from
+the
+GNU
+Project
+and
+aren’t
+actually
+a
+part
+of
+Linux
+and,
+taken
+together,
+the
+combination
+of
+the
+kernel
+and
+these
+common
+tools
+is
+often
+referred
+to
+as
+      <span id="bold" style="font-weight:bold;">
+       GNU
+Linux
+      </span>
+      .
+Different
+groups
+of
+                                                                                
+                                                                                
+                                                                          
+software
+and
+configuration
+choices
+that
+are
+maintained
+by
+individuals
+or
+groups
+of
+people
+are
+called
+distributions,
+or
+distro’s.
+Most
+major
+distributions
+of
+Linux
+fall
+into
+categories
+based
+on
+the
+original
+distribution
+from
+which
+they
+were
+derived.
+These
+are:
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         4
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          4
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor88">
+        The
+entire
+family
+history
+of
+linux
+can
+be
+viewed
+in
+the
+        <a href="https://upload.wikimedia.org/wikipedia/commons/1/1b/Linux_Distribution_Timeline.svg">
+         Distribution
+Timeline
+        </a>
+       </span>
+      </span>
+     </p>
+     <p class="noindent">
+     </p>
+     <figure class="float">
+      <table class="tabularray tblr" id="tbl-4">
+       <div display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+        <tr id="row-4-1-">
+         <td id="cell4-1-1" style="text-align:right;vertical-align:top;background-color:#F5F5F5;">
+          Distribution
+         </td>
+         <td id="cell4-1-2" style="text-align:justify;vertical-align:top;background-color:#F5F5F5;">
+          Advantages
+         </td>
+         <td id="cell4-1-3" style="text-align:justify;vertical-align:top;background-color:#F5F5F5;">
+          Disadvantages
+         </td>
+        </tr>
+        <tr id="row-4-2-">
+         <td id="cell4-2-1" style="text-align:right;vertical-align:top;background-color:#FAFAFA;">
+          Linux
+Mint
+         </td>
+         <td id="cell4-2-2" style="text-align:justify;vertical-align:top;">
+          Superb
+collection
+of
+custom
+tools
+developed
+in-house,
+hundreds
+of
+user-friendly
+enhancements,
+inclusion
+of
+multimedia
+codecs,
+open
+to
+users’
+suggestions
+         </td>
+         <td id="cell4-2-3" style="text-align:justify;vertical-align:top;">
+          The
+project
+does
+not
+issue
+security
+advisories
+         </td>
+        </tr>
+        <tr id="row-4-3-">
+         <td id="cell4-3-1" style="text-align:right;vertical-align:top;background-color:#FAFAFA;">
+          Ubuntu
+         </td>
+         <td id="cell4-3-2" style="text-align:justify;vertical-align:top;">
+          Fixed
+release
+cycle
+and
+support
+period;
+long-term
+support
+(LTS)
+variants
+with
+five
+years
+of
+security
+updates;
+novice-friendly;
+wealth
+of
+documentation,
+both
+official
+and
+user-contributed
+         </td>
+         <td id="cell4-3-3" style="text-align:justify;vertical-align:top;">
+          Lacks
+compatibility
+with
+Debian;
+frequent
+major
+changes
+tend
+to
+drive
+some
+users
+away;
+non-LTS
+releases
+come
+with
+only
+nine
+months
+of
+security
+support
+         </td>
+        </tr>
+        <tr id="row-4-4-">
+         <td id="cell4-4-1" style="text-align:right;vertical-align:top;background-color:#FAFAFA;">
+          Arch
+Linux
+         </td>
+         <td id="cell4-4-2" style="text-align:justify;vertical-align:top;">
+          Excellent
+software
+management
+infrastructure;
+unparalleled
+customisation
+and
+tweaking
+options;
+superb
+on-line
+documentation
+         </td>
+         <td id="cell4-4-3" style="text-align:justify;vertical-align:top;">
+          Occasional
+instability
+and
+risk
+of
+breakdown
+         </td>
+        </tr>
+        <tr id="row-4-5-">
+         <td id="cell4-5-1" style="text-align:right;vertical-align:top;background-color:#FAFAFA;">
+          Gentoo
+         </td>
+         <td id="cell4-5-2" style="text-align:justify;vertical-align:top;">
+          Highly
+flexible,
+endlessly
+customizable,
+able
+to
+use
+a
+range
+of
+compile-time
+configurations,
+init
+systems
+and
+run
+on
+many
+architectures
+         </td>
+         <td id="cell4-5-3" style="text-align:justify;vertical-align:top;">
+          Requires
+a
+higher
+degree
+of
+knowledge
+to
+use,
+upgrading
+packages
+via
+source
+can
+be
+time
+consuming
+         </td>
+        </tr>
+        <tr id="row-4-6-">
+         <td id="cell4-6-1" style="text-align:right;vertical-align:top;background-color:#FAFAFA;">
+          Slackware
+Linux
+         </td>
+         <td id="cell4-6-2" style="text-align:justify;vertical-align:top;">
+          Considered
+highly
+stable,
+clean
+and
+largely
+bug-free,
+strong
+adherence
+to
+UNIX
+principles
+         </td>
+         <td id="cell4-6-3" style="text-align:justify;vertical-align:top;">
+          Limited
+number
+of
+officially
+supported
+applications;
+conservative
+in
+terms
+of
+base
+package
+selection;
+complex
+upgrade
+procedure
+         </td>
+        </tr>
+        <tr id="row-4-7-">
+         <td id="cell4-7-1" style="text-align:right;vertical-align:top;background-color:#FAFAFA;">
+          Debian
+         </td>
+         <td id="cell4-7-2" style="text-align:justify;vertical-align:top;">
+          Very
+stable;
+remarkable
+quality
+control;
+includes
+over
+30,000
+software
+packages;
+supports
+more
+processor
+architectures
+than
+any
+other
+Linux
+distribution
+         </td>
+         <td id="cell4-7-3" style="text-align:justify;vertical-align:top;">
+          Conservative
+-
+due
+to
+its
+support
+for
+many
+processor
+architectures,
+newer
+technologies
+are
+not
+always
+included;
+slow
+release
+cycle
+(one
+stable
+release
+every
+2
+-
+3
+years);
+discussions
+on
+developer
+mailing
+lists
+and
+blogs
+can
+be
+uncultured
+at
+times
+         </td>
+        </tr>
+        <tr id="row-4-8-">
+         <td id="cell4-8-1" style="text-align:right;vertical-align:top;background-color:#FAFAFA;">
+          Fedora
+         </td>
+         <td id="cell4-8-2" style="text-align:justify;vertical-align:top;">
+          Highly
+innovative;
+outstanding
+security
+features;
+large
+number
+of
+supported
+packages;
+strict
+adherence
+to
+the
+free
+software
+philosophy;
+availability
+of
+live
+spins
+featuring
+many
+popular
+desktop
+environments
+         </td>
+         <td id="cell4-8-3" style="text-align:justify;vertical-align:top;">
+          Fedora’s
+priorities
+tend
+to
+lean
+towards
+enterprise
+features,
+rather
+than
+desktop
+usability;
+some
+bleeding
+edge
+features,
+such
+as
+switching
+early
+to
+KDE
+4
+and
+GNOME
+3,
+occasionally
+alienate
+some
+desktop
+users
+         </td>
+        </tr>
+        <tr id="row-4-9-">
+         <td id="cell4-9-1" style="text-align:right;vertical-align:top;background-color:#FAFAFA;">
+          openSUSE
+         </td>
+         <td id="cell4-9-2" style="text-align:justify;vertical-align:top;">
+          Comprehensive
+and
+intuitive
+configuration
+tool;
+large
+repository
+of
+software
+packages,
+excellent
+web
+site
+infrastructure
+and
+printed
+documentation,
+Btrfs
+with
+boot
+environments
+by
+default
+         </td>
+         <td id="cell4-9-3" style="text-align:justify;vertical-align:top;">
+          Its
+resource-heavy
+desktop
+setup
+and
+graphical
+utilities
+are
+sometimes
+seen
+as
+“bloated
+and
+slow”
+         </td>
+        </tr>
+        <tr id="row-4-10-">
+         <td id="cell4-10-1" style="text-align:right;vertical-align:top;background-color:#FAFAFA;">
+          Red
+Hat
+         </td>
+         <td id="cell4-10-2" style="text-align:justify;vertical-align:top;">
+          Long-term,
+commercial
+support
+of
+ten
+years
+or
+more.
+Stability.
+         </td>
+         <td id="cell4-10-3" style="text-align:justify;vertical-align:top;">
+          Lacks
+latest
+Linux
+technologies;
+small
+software
+repositories;
+licensing
+restrictions
+         </td>
+        </tr>
+        <tr id="row-4-11-">
+         <td id="cell4-11-1" style="text-align:right;vertical-align:top;background-color:#FAFAFA;">
+          FreeBSD
+         </td>
+         <td id="cell4-11-2" style="text-align:justify;vertical-align:top;">
+          Fast
+and
+stable;
+availability
+of
+over
+24,000
+software
+applications
+(or
+"ports")
+for
+installation;
+very
+good
+documentation;
+native
+ZFS
+support
+and
+boot
+environments
+         </td>
+         <td id="cell4-11-3" style="text-align:justify;vertical-align:top;">
+          Tends
+to
+lag
+behind
+Linux
+in
+terms
+of
+support
+for
+new
+and
+exotic
+hardware,
+limited
+availability
+of
+commercial
+applications;
+lacks
+graphical
+configuration
+tools
+         </td>
+        </tr>
+       </div>
+      </table>
+      <a id="x4-44001r1">
+      </a>
+      <figcaption class="caption">
+       <span class="id">
+        Table 2.1:
+       </span>
+       <span class="content">
+        Most popular distributions used according to
+        <a href="https://distrowatch.com/">
+         distrowatch
+        </a>.
+       </span>
+      </figcaption>
+     </figure>
+     <p class="noindent">
+      Depending
+the
+readers
+future
+work
+or
+study
+area,
+it
+is
+likely
+to
+end
+up
+learning
+to
+use
+the
+command
+line
+on
+a
+system
+that
+inherits
+from
+one
+of
+these
+distributions.
+Most
+likely,
+it
+will
+be
+a
+distribution
+derived
+from
+Debian
+or
+Red
+Hat.
+Linux
+Mint,
+Ubuntu,
+Elementary
+OS,
+and
+Kali
+Linux
+are
+all
+derived
+from
+Debian.
+CentOS,
+Fedora,
+and
+Red
+Hat
+Enterprise
+Linux
+are
+derived
+from
+                                                                                
+                                                                                
+                                                                             
+Red
+Hat.
+     </p>
+     <p class="noindent">
+      The
+history
+of
+all
+of
+these
+different
+distributions
+of
+Linux
+is
+beyond
+the
+scope
+of
+this
+document.
+But,
+what
+this
+means
+at
+its
+core
+is
+the
+need
+to
+be
+aware
+of
+what
+system
+is
+in
+use
+and
+the
+need
+to
+adapt
+to
+account
+for
+differences
+in
+distributions.
+As
+we
+begin
+working
+with
+Linux,
+through
+the
+command
+line,
+it
+will
+be
+apparent,
+most
+of
+what
+can
+                                                                                
+                                                                                
+                                                                              
+be
+done
+is
+the
+same
+across
+the
+major
+distributions.
+     </p>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-2" sec="section-2">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="RoboticsLectureBook.pdf#section.2.2" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       2.2
+      </small>
+      <a id="x4-450002.2">
+      </a>
+      Installation
+     </h2>
+     <p class="noindent">
+      There
+are
+a
+wide
+variety
+of
+ways
+of
+installing
+Linux
+on
+a
+computer.
+These
+include:
+     </p>
+     <dl class="description">
+      <dt class="description">
+       Creating a virtual environment
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        Allows
+you
+to
+install
+Linux
+within
+your
+primary
+        <a class="glossary" href="RoboticsLectureBookli2.html#glo:os">
+         Operating
+System
+(OS)
+        </a>.
+There
+are
+great
+many
+benefits
+to
+this
+approach
+as
+it
+allows
+you
+to
+test
+an
+experimental
+        <a class="glossary" href="RoboticsLectureBookli2.html#glo:os">
+         OS
+        </a>
+        without
+affecting
+your
+primary
+setup.
+It
+also
+allows
+you
+to
+run
+                                                                                
+                                                                                
+     
+simple
+applications
+without
+leaving
+your
+primary
+        <a class="glossary" href="RoboticsLectureBookli2.html#glo:os">
+         OS
+        </a>
+        and
+can
+have
+various
+inter-operability
+options
+such
+as
+shared
+folder,
+and
+shared
+network
+settings.
+       </p>
+       <p class="noindent">
+        The
+disadvantages
+include
+some
+hit
+to
+performance
+as
+both
+the
+host
+and
+virtual
+        <a class="glossary" href="RoboticsLectureBookli2.html#glo:os">
+         OS
+        </a>
+        have
+to
+share
+the
+same
+pool
+of
+resources.
+In
+addition,
+graphically
+virtual
+ram
+limits
+are
+set
+to
+256
+MB
+.
+       </p>
+      </dd>
+      <dt class="description">
+       Creating a partition on your computer
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        and
+install
+it
+alongside
+your
+primary
+        <a class="glossary" href="RoboticsLectureBookli2.html#glo:os">
+         OS
+        </a>.
+This
+                                                                                
+                                                                                
+     
+option
+is
+generally
+done
+by
+most
+people
+who
+know
+what
+they
+are
+doing
+as
+they
+generally
+have
+one
+or
+two
+software
+where
+there
+is
+no
+alternative
+on
+Linux
+and
+therefore
+would
+like
+to
+keep
+their
+primary
+        <a class="glossary" href="RoboticsLectureBookli2.html#glo:os">
+         OS
+        </a>
+        for
+those
+specific
+software.
+       </p>
+      </dd>
+      <dt class="description">
+       Using a container
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        One
+of
+the
+more
+popular
+option
+in
+recent
+times.
+The
+way
+it
+works
+is
+similar
+to
+that
+of
+using
+a
+virtual
+                                                                                
+                                                                                
+     
+machine
+but
+heavily
+stripped
+one.
+Basically
+a
+container
+houses
+enough
+components
+to
+house
+an
+application.
+Think
+of
+running
+Linux
+per
+application
+instead
+of
+a
+full
+blown
+os.
+       </p>
+      </dd>
+     </dl>
+     <p class="noindent">
+      There
+are
+many
+merits
+and
+demerits
+to
+using
+an
+option
+and
+in
+this
+lecture
+we
+will
+focus
+on
+building
+a
+container
+image
+for
+both
+Linux
+programming
+and
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:ros">
+       Robot
+Operating
+System
+2
+(ROS)
+      </a>
+      application
+     </p>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-3" sec="section-3">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="RoboticsLectureBook.pdf#section.2.3" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       2.3
+      </small>
+      <a id="x4-460002.3">
+      </a>
+      Docker
+     </h2>
+     <div class="figure">
+      <p class="noindent">
+       <img alt="PIC" height="" src="figures/Welcome-to-Linux/vector/docker-logo-.svg" width="150%"/>
+       <a id="x4-46001r5">
+       </a>
+      </p>
+      <figcaption class="caption">
+       <span class="id">
+        Figure 2.5:
+       </span>
+       <span class="content">
+        The docker logo
+       </span>
+      </figcaption>
+     </div>
+     <p class="noindent">
+      Docker
+is
+an
+open-source
+platform
+that
+has
+completely
+changed
+the
+way
+we
+develop,
+deploy,
+and
+use
+apps.
+The
+application
+development
+lifecycle
+is
+a
+dynamic
+process,
+and
+developers
+are
+always
+looking
+for
+ways
+to
+make
+it
+more
+efficient.
+Docker
+enables
+developers
+to
+package
+their
+work
+and
+all
+of
+its
+dependencies
+into
+standardised
+units
+called
+containers
+by
+utilizing
+containerisation
+technology.
+     </p>
+     <p class="noindent">
+      By
+separating
+apps
+from
+the
+underlying
+infrastructure,
+these
+                                                                                
+                                                                                
+                                                                        
+lightweight
+containers
+provide
+reliable
+performance
+and
+functionality
+in
+a
+variety
+of
+environments.
+Because
+of
+this,
+Docker
+is
+a
+game-changer
+for
+developers
+because
+it
+frees
+them
+up
+to
+concentrate
+on
+creating
+amazing
+software
+rather
+than
+handling
+difficult
+infrastructure.
+     </p>
+     <p class="noindent">
+      Regardless
+of
+your
+level
+of
+experience,
+Docker
+provides
+an
+extensive
+feature
+set
+and
+a
+strong
+toolset
+that
+can
+greatly
+enhance
+your
+development
+process.
+In
+this
+tutorial,
+we
+will
+provide
+you
+                                                                                
+                                                                                
+                                                                             
+with
+a
+thorough
+understanding
+of
+Docker,
+going
+over
+its
+main
+features,
+advantages,
+and
+ways
+to
+use
+it
+to
+develop,
+launch,
+and
+distribute
+apps
+more
+quickly
+and
+easily.
+     </p>
+     <div class="knowledge">
+      <p class="noindent">
+       Docker
+is
+not
+the
+only
+containerisation
+software
+available
+as
+there
+is
+also
+podman
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          5
+         </sup>
+        </span>
+       </alert>
+       <span class="marginnote">
+        <img alt="PIC" height="" src="figures/Welcome-to-Linux/raster/podman-logo.png" width="100%"/>
+        <alert style="color: #821131;">
+         <span id="bold" style="font-weight:bold;">
+          <sup class="textsuperscript">
+           5
+          </sup>
+         </span>
+        </alert>
+        <span id="textcolor89">
+         The
+logo
+of
+the
+podman
+software.
+        </span>
+       </span>
+       which
+is
+almost
+compatible
+and
+is
+developed
+by
+RHEL.
+      </p>
+     </div>
+     <div class="informationblock" id="tcolobox-5">
+      <div class="title">
+       <p class="noindent">
+        <span id="bold" style="font-weight:bold;">
+         Information
+        </span>
+        :
+Docker
+                                                                                
+                                                                                
+                                                                              
+v.
+                                                                                
+                                                                                
+Podman
+       </p>
+      </div>
+      <div class="box-content">
+       <p class="noindent">
+        The 
+biggest 
+difference 
+is 
+the 
+underlying 
+architecture 
+each 
+is 
+built 
+on. 
+Docker 
+heavily 
+relies 
+on 
+a 
+daemon, 
+while 
+Podman 
+is 
+daemonless. 
+Think 
+of 
+a 
+daemon 
+as 
+a 
+process 
+that 
+runs 
+in 
+the 
+background 
+on 
+the 
+host
+        <a class="glossary" href="RoboticsLectureBookli2.html#glo:os">
+         OS
+        </a>. 
+In 
+Docker’s 
+case, 
+its 
+daemon 
+is 
+responsible 
+for 
+managing 
+Docker 
+objects
+        <alert style="color: #821131;">
+         <span id="bold" style="font-weight:bold;">
+          <sup class="textsuperscript">
+           6
+          </sup>
+         </span>
+        </alert>
+        <span class="marginnote">
+         <alert style="color: #821131;">
+          <span id="bold" style="font-weight:bold;">
+           <sup class="textsuperscript">
+            6
+           </sup>
+          </span>
+         </alert>
+         <span id="textcolor90">
+          such 
+as 
+images 
+and 
+containers
+         </span>
+        </span>
+        and 
+communicating 
+with 
+other 
+systems. 
+To 
+run 
+its 
+daemon, 
+Docker 
+uses 
+a 
+package 
+called <span id="textcolor91"><code class="verb">dockerd</code></span>. 
+Daemons 
+typically 
+require 
+root-level 
+access 
+to 
+the 
+machine 
+they 
+run 
+on. 
+This 
+lends 
+itself 
+to
+        <span id="bold" style="font-weight:bold;">
+         security 
+vulnerabilities
+        </span>
+        . 
+If 
+a 
+bad 
+actor 
+can 
+get 
+access 
+to 
+a 
+daemon, 
+they 
+now 
+have 
+access 
+to 
+the 
+entire 
+machine.
+       Podman’s 
+daemonless 
+architecture 
+comes 
+with 
+a 
+few 
+benefits. 
+Since 
+running 
+daemons 
+almost 
+always 
+requires 
+root 
+privileges, 
+a 
+daemonless 
+architecture 
+can 
+be 
+thought 
+of 
+as 
+“rootless.” 
+This 
+means 
+that 
+users 
+who 
+don’t 
+have 
+system-level 
+access 
+to 
+the 
+machine 
+their 
+containers 
+are 
+running 
+on 
+can 
+still 
+use 
+Podman 
+which 
+isn’t 
+always 
+the 
+case 
+with 
+Docker. 
+Instead 
+of 
+a 
+daemon, 
+Podman 
+uses 
+a 
+Linux 
+package 
+known 
+as 
+systemd. 
+Since 
+systemd 
+is 
+native 
+to 
+the 
+Linux 
+operating 
+system, 
+Podman 
+is 
+often 
+considered 
+more 
+“light-weight” 
+than 
+Docker 
+and 
+will 
+usually 
+see 
+faster 
+container 
+spin-up 
+times 
+than 
+when 
+using 
+Docker.
+       </p>
+      </div>
+     </div>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="RoboticsLectureBook.pdf#subsection.2.3.1" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       2.3.1
+      </small>
+      <a id="x4-470002.3.1">
+      </a>
+      Dockerfile
+     </h3>
+     <p class="noindent">
+      A
+Dockerfile
+is
+a
+text
+document
+in
+which
+you
+can
+lay
+down
+all
+the
+instructions
+you
+want
+for
+an
+image
+to
+be
+created.
+     </p>
+     <ul class="itemize1">
+      <li class="itemize">
+       <p class="noindent">
+        The
+first
+entry
+in
+the
+file
+specifies
+the
+base
+image,
+which
+is
+a
+pre-made
+image
+containing
+all
+the
+dependencies
+you
+need
+for
+your
+application.
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Then,
+there
+are
+commands
+you
+                                                                                
+                                                                                
+     
+can
+send
+to
+the
+Dockerfile
+to
+install
+additional
+software,
+copy
+files,
+or
+run
+scripts.
+       </p>
+      </li>
+     </ul>
+     <p class="noindent">
+      The
+result
+is
+a
+Docker
+image:
+     </p>
+     <div class="quoteblock">
+      <p class="noindent">
+       a
+self-sufficient,
+executable
+file
+with
+all
+the
+information
+needed
+to
+run
+an
+application.
+      </p>
+     </div>
+     <p class="noindent">
+      Dockerfiles
+are
+an
+easy
+way
+to
+create
+and
+deploy
+applications.
+They
+help
+in
+creating
+an
+environment
+      <alert style="color: #821131;">
+       consistently
+reproducibly
+      </alert>
+      ,
+and
+in
+an
+easier
+way.
+     </p>
+     <p class="noindent">
+      A
+Dockerfile
+is
+used
+                                                                                
+                                                                                
+                                                                              
+to
+create
+new
+custom
+images
+prepared
+individually
+according
+to
+specific
+needs.
+For
+instance,
+a
+Docker
+image
+can
+have
+a
+particular
+version
+of
+a
+web
+server
+or,
+for
+example,
+a
+database
+server,
+or
+in
+this
+case
+run
+an
+entire
+Linux
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:os">
+       OS
+      </a>
+      with
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:ros">
+       ROS
+      </a>
+      installed.
+     </p>
+     <p class="noindent">
+      For
+the
+preparation
+of
+the
+lecture
+the
+following
+Dockerfile
+is
+written
+which
+you
+can
+see
+in
+snippets
+below,
+which
+is
+a
+great
+way
+to
+                                                                                
+                                                                                
+                                                                             
+start
+explaining
+how
+the
+document
+works:
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       dockerfile
+      </div>
+      <pre><div class="language-dockerfile" id="fancyvrb3" style="padding:20px;border-radius: 3px;"><a id="x4-47002r77"></a><span id="textcolor94"># Declare the ubuntu version</span> 
+<a id="x4-47004r78"></a><span id="textcolor95">FROM</span><span id="textcolor96"> </span><span id="textcolor97">ubuntu:jammy-20250404</span></div></pre>
+     </div>
+     <p class="noindent">
+      Here
+we
+are
+declaring
+a
+base
+image.
+A
+base
+image
+is
+a
+bare-bones
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:os">
+       OS
+      </a>
+      and/or
+application
+in
+which
+we
+build
+our
+software
+on.
+In
+this
+case
+it
+is
+an
+Ubuntu
+jammy
+jellyfish
+(22.04).
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       dockerfile
+      </div>
+      <pre><div class="language-dockerfile" id="fancyvrb4" style="padding:20px;border-radius: 3px;"><a id="x4-47006r83"></a><span id="textcolor98"># Define the target-platform and the current maintainer</span> 
+<a id="x4-47008r84"></a><span id="textcolor99">ARG</span><span id="textcolor100"> </span>TARGETPLATFORM 
+<a id="x4-47010r85"></a><span id="textcolor101">LABEL</span><span id="textcolor102"> </span><span id="textcolor103">maintainer</span><span id="textcolor104">=</span><span id="textcolor105">"dtm@mci4me.at"</span></div></pre>
+     </div>
+     <p class="noindent">
+      We
+define
+an <span id="textcolor106"><code class="verb">ARG</code></span>
+      which
+is
+a
+variable.
+We
+set
+a <span id="textcolor107"><code class="verb">TARGETPLATFORM</code></span>
+      which
+we
+can
+use
+to
+change
+the
+                                                                                
+                                                                                
+                                                                        
+architecture
+of
+the
+install. <span id="textcolor108"><code class="verb">LABEL</code></span>
+      is
+used
+to
+give
+a
+meta-data
+information
+which
+in
+this
+case
+is
+a
+simple
+email
+information
+of
+the
+current
+maintainer.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       dockerfile
+      </div>
+      <pre><div class="language-dockerfile" id="fancyvrb5" style="padding:20px;border-radius: 3px;"><a id="x4-47012r90"></a><span id="textcolor109"># Execute the following command as string</span> 
+<a id="x4-47014r91"></a><span id="textcolor110">SHELL</span><span id="textcolor111"> </span><span id="textcolor112">[</span><span id="textcolor113">"/bin/bash"</span><span id="textcolor114">,</span><span id="textcolor115"> </span><span id="textcolor116">"-c"</span><span id="textcolor117">]</span></div></pre>
+     </div>
+     <p class="noindent">
+      Next
+we
+configure
+the
+shell
+of
+the
+container
+to
+use <span id="textcolor118"><code class="verb">bash</code></span>
+      and
+process
+the
+given
+input
+as
+a
+string
+and
+      <span id="bold" style="font-weight:bold;">
+       NOT
+      </span>
+      as
+a
+command.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       dockerfile
+      </div>
+      <pre><div class="language-dockerfile" id="fancyvrb6" style="padding:20px;border-radius: 3px;"><a id="x4-47016r96"></a><span id="textcolor119"># Upgrade Ubuntu Jammy and remove downloaded list of packages</span> 
+<a id="x4-47018r97"></a><span id="textcolor120">RUN</span><span id="textcolor121"> </span>apt-get<span id="textcolor122"> </span>update<span id="textcolor123"> </span>-q<span id="textcolor124"> </span><span id="textcolor125">&amp;&amp;</span><span id="textcolor126"> </span><span id="textcolor127">\</span> 
+<a id="x4-47020r98"></a><span id="textcolor128">   </span><span id="textcolor129">DEBIAN_FRONTEND</span><span id="textcolor130">=</span>noninteractive<span id="textcolor131"> </span>apt-get<span id="textcolor132"> </span>upgrade<span id="textcolor133"> </span>-y<span id="textcolor134"> </span><span id="textcolor135">&amp;&amp;</span><span id="textcolor136"> </span><span id="textcolor137">\</span> 
+<a id="x4-47022r99"></a><span id="textcolor138">   </span>apt-get<span id="textcolor139"> </span>autoclean<span id="textcolor140"> </span><span id="textcolor141">&amp;&amp;</span><span id="textcolor142"> </span><span id="textcolor143">\</span> 
+<a id="x4-47024r100"></a><span id="textcolor144">   </span>apt-get<span id="textcolor145"> </span>autoremove<span id="textcolor146"> </span><span id="textcolor147">&amp;&amp;</span><span id="textcolor148"> </span><span id="textcolor149">\</span> 
+<a id="x4-47026r101"></a><span id="textcolor150">   </span>rm<span id="textcolor151"> </span>-rf<span id="textcolor152"> </span>/var/lib/apt/lists/*</div></pre>
+     </div>
+     <p class="noindent">
+      We
+now
+start
+with
+building
+the
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:os">
+       OS
+      </a>.
+We
+start
+                                                                                
+                                                                                
+                                                                             
+with
+declaring
+an
+update
+of
+the
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:os">
+       OS
+      </a>
+      and
+ask
+it
+to
+do
+it
+non-interactively.
+Once
+it
+updates
+the
+system,
+we
+ask
+it
+to
+remove
+the
+repo-list
+to
+save
+up
+on
+space.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       dockerfile
+      </div>
+      <pre><div class="language-dockerfile" id="fancyvrb7" style="padding:20px;border-radius: 3px;"><a id="x4-47028r106"></a><span id="textcolor153"># Install Ubuntu Mate desktop and remove downloaded list of packages</span> 
+<a id="x4-47030r107"></a><span id="textcolor154">RUN</span><span id="textcolor155"> </span>apt-get<span id="textcolor156"> </span>update<span id="textcolor157"> </span>-q<span id="textcolor158"> </span><span id="textcolor159">&amp;&amp;</span><span id="textcolor160"> </span><span id="textcolor161">\</span> 
+<a id="x4-47032r108"></a><span id="textcolor162">   </span><span id="textcolor163">DEBIAN_FRONTEND</span><span id="textcolor164">=</span>noninteractive<span id="textcolor165"> </span>apt-get<span id="textcolor166"> </span>install<span id="textcolor167"> </span>-y<span id="textcolor168"> </span><span id="textcolor169">\</span> 
+<a id="x4-47034r109"></a><span id="textcolor170">      </span>ubuntu-mate-desktop<span id="textcolor171"> </span><span id="textcolor172">&amp;&amp;</span><span id="textcolor173"> </span><span id="textcolor174">\</span> 
+<a id="x4-47036r110"></a><span id="textcolor175">   </span>apt-get<span id="textcolor176"> </span>autoclean<span id="textcolor177"> </span><span id="textcolor178">&amp;&amp;</span><span id="textcolor179"> </span><span id="textcolor180">\</span> 
+<a id="x4-47038r111"></a><span id="textcolor181">   </span>apt-get<span id="textcolor182"> </span>autoremove<span id="textcolor183"> </span><span id="textcolor184">&amp;&amp;</span><span id="textcolor185"> </span><span id="textcolor186">\</span> 
+<a id="x4-47040r112"></a><span id="textcolor187">   </span>rm<span id="textcolor188"> </span>-rf<span id="textcolor189"> </span>/var/lib/apt/lists/*</div></pre>
+     </div>
+     <p class="noindent">
+      To
+make
+our
+programming
+easier
+and
+creating
+a
+more
+friendly
+environment,
+we
+shall
+install
+a
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:gui">
+       GUI
+      </a>.
+There
+are
+a
+wide
+variety
+of
+desktop
+environments
+for
+use
+in
+Linux,
+such
+as
+GNOME,
+KDE,
+                                                                                
+                                                                                
+                                                                             
+Xcfe
+but
+for
+our
+application
+we
+shall
+use
+mate
+which
+is
+the
+default
+environment
+for
+Linux
+Mint.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       dockerfile
+      </div>
+      <pre><div class="language-dockerfile" id="fancyvrb8" style="padding:20px;border-radius: 3px;"><a id="x4-47042r117"></a><span id="textcolor190"># Add important packages</span> 
+<a id="x4-47044r118"></a><span id="textcolor191">RUN</span><span id="textcolor192"> </span>apt-get<span id="textcolor193"> </span>update<span id="textcolor194"> </span><span id="textcolor195">&amp;&amp;</span><span id="textcolor196"> </span><span id="textcolor197">\</span> 
+<a id="x4-47046r119"></a><span id="textcolor198">   </span><span id="textcolor199">DEBIAN_FRONTEND</span><span id="textcolor200">=</span>noninteractive<span id="textcolor201"> </span>apt-get<span id="textcolor202"> </span>install<span id="textcolor203"> </span>-y<span id="textcolor204"> </span><span id="textcolor205">\</span> 
+<a id="x4-47048r120"></a><span id="textcolor206">      </span>tigervnc-standalone-server<span id="textcolor207"> </span>tigervnc-common<span id="textcolor208"> </span><span id="textcolor209">\</span> 
+<a id="x4-47050r121"></a><span id="textcolor210">      </span>supervisor<span id="textcolor211"> </span>wget<span id="textcolor212"> </span>curl<span id="textcolor213"> </span>gosu<span id="textcolor214"> </span>git<span id="textcolor215"> </span>sudo<span id="textcolor216"> </span>python3-pip<span id="textcolor217"> </span>tini<span id="textcolor218"> </span>nano<span id="textcolor219">\</span> 
+<a id="x4-47052r122"></a><span id="textcolor220">      </span>build-essential<span id="textcolor221"> </span>vim<span id="textcolor222"> </span>sudo<span id="textcolor223"> </span>lsb-release<span id="textcolor224"> </span>locales<span id="textcolor225"> </span>info<span id="textcolor226">\</span> 
+<a id="x4-47054r123"></a><span id="textcolor227">      </span>bash-completion<span id="textcolor228"> </span>tzdata<span id="textcolor229"> </span>emacs<span id="textcolor230"> </span><span id="textcolor231">\</span> 
+<a id="x4-47056r124"></a><span id="textcolor232">      </span>dos2unix<span id="textcolor233"> </span><span id="textcolor234">&amp;&amp;</span><span id="textcolor235"> </span><span id="textcolor236">\ </span> 
+<a id="x4-47058r125"></a><span id="textcolor237">   </span>apt-get<span id="textcolor238"> </span>autoclean<span id="textcolor239"> </span><span id="textcolor240">&amp;&amp;</span><span id="textcolor241"> </span><span id="textcolor242">\</span> 
+<a id="x4-47060r126"></a><span id="textcolor243">   </span>apt-get<span id="textcolor244"> </span>autoremove<span id="textcolor245"> </span><span id="textcolor246">&amp;&amp;</span><span id="textcolor247"> </span><span id="textcolor248">\</span> 
+<a id="x4-47062r127"></a><span id="textcolor249">   </span>rm<span id="textcolor250"> </span>-rf<span id="textcolor251"> </span>/var/lib/apt/lists/*</div></pre>
+     </div>
+     <p class="noindent">
+      We
+start
+now
+with
+installing
+software
+on
+top
+of
+the
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:os">
+       OS
+      </a>.
+Remember,
+we
+are
+installing
+a
+bare
+bones
+system
+which
+means
+it
+is
+stripped
+from
+all
+the
+software
+suites
+we
+take
+for
+granted.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       dockerfile
+      </div>
+      <pre><div class="language-dockerfile" id="fancyvrb9" style="padding:20px;border-radius: 3px;"><a id="x4-47064r132"></a><span id="textcolor252"># Install noVNC and Websockify</span> 
+<a id="x4-47066r133"></a><span id="textcolor253">RUN</span><span id="textcolor254"> </span>git<span id="textcolor255"> </span>clone<span id="textcolor256"> </span><span id="textcolor257">\</span> 
+<a id="x4-47068r134"></a><span id="textcolor258">   </span>https://github.com/AtsushiSaito/noVNC.git<span id="textcolor259"> </span><span id="textcolor260">\</span> 
+<a id="x4-47070r135"></a><span id="textcolor261">   </span>-b<span id="textcolor262"> </span>add_clipboard_support<span id="textcolor263"> </span>/usr/lib/novnc 
+<a id="x4-47072r136"></a> 
+<a id="x4-47074r137"></a><span id="textcolor264">RUN</span><span id="textcolor265"> </span>pip<span id="textcolor266"> </span>install<span id="textcolor267"> </span>git+https://github.com/novnc/websockify.git@v0.10.0 
+<a id="x4-47076r138"></a><span id="textcolor268">RUN</span><span id="textcolor269"> </span>ln<span id="textcolor270"> </span>-s<span id="textcolor271"> </span>/usr/lib/novnc/vnc.html<span id="textcolor272"> </span>/usr/lib/novnc/index.html 
+<a id="x4-47078r139"></a> 
+<a id="x4-47080r140"></a><span id="textcolor273"># Set remote resize function enabled by default</span> 
+<a id="x4-47082r141"></a><span id="textcolor274">RUN</span><span id="textcolor275"> </span>sed<span id="textcolor276"> </span>-i<span id="textcolor277"> </span><span id="textcolor278">\</span> 
+<a id="x4-47084r142"></a><span id="textcolor279">   </span><span id="textcolor280">"s/UI.initSetting('resize', 'off');/UI.initSetting('resize', 'remote');/g"</span><span id="textcolor281"> </span><span id="textcolor282">\</span> 
+<a id="x4-47086r143"></a><span id="textcolor283">   </span>/usr/lib/novnc/app/ui.js 
+<a id="x4-47088r144"></a> 
+<a id="x4-47090r145"></a><span id="textcolor284"># Disable auto update and crash report</span> 
+<a id="x4-47092r146"></a><span id="textcolor285">RUN</span><span id="textcolor286"> </span>sed<span id="textcolor287"> </span>-i<span id="textcolor288"> </span><span id="textcolor289">'s/Prompt=.*/Prompt=never/'</span><span id="textcolor290"> </span>/etc/update-manager/release-upgrades 
+<a id="x4-47094r147"></a><span id="textcolor291">RUN</span><span id="textcolor292"> </span>sed<span id="textcolor293"> </span>-i<span id="textcolor294"> </span><span id="textcolor295">'s/enabled=1/enabled=0/g'</span><span id="textcolor296"> </span>/etc/default/apport</div></pre>
+     </div>
+     <p class="noindent">
+      This
+section
+is
+all
+about
+installing
+a
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:vnc">
+       Virtual
+                                                                                
+                                                                                
+                                                                          
+Network
+Computing
+(VNC)
+      </a>
+      which
+is
+a
+graphical
+desktop-sharing
+system
+which
+allows
+remote
+controlling
+of
+another
+computer.
+It
+transmits
+the
+keyboard
+and
+mouse
+input
+from
+one
+computer
+to
+another,
+relaying
+the
+graphical-screen
+updates,
+over
+a
+network.
+We
+also
+do
+some
+text
+manipulation
+to
+fix
+some
+glitches.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       dockerfile
+      </div>
+      <pre><div class="language-dockerfile" id="fancyvrb10" style="padding:20px;border-radius: 3px;"><a id="x4-47096r152"></a><span id="textcolor297"># Install Firefox and its configuration</span> 
+<a id="x4-47098r153"></a><span id="textcolor298">RUN</span><span id="textcolor299"> </span><span id="textcolor300">DEBIAN_FRONTEND</span><span id="textcolor301">=</span>noninteractive<span id="textcolor302"> </span>add-apt-repository<span id="textcolor303"> </span>ppa:mozillateam/ppa<span id="textcolor304"> </span>-y<span id="textcolor305"> </span><span id="textcolor306">&amp;&amp;</span><span id="textcolor307"> </span><span id="textcolor308">\</span> 
+<a id="x4-47100r154"></a><span id="textcolor309">   </span><span id="textcolor310">echo</span><span id="textcolor311"> </span><span id="textcolor312">'Package: *'</span><span id="textcolor313"> </span>&gt;<span id="textcolor314"> </span>/etc/apt/preferences.d/mozilla-firefox<span id="textcolor315"> </span><span id="textcolor316">&amp;&amp;</span><span id="textcolor317"> </span><span id="textcolor318">\</span> 
+<a id="x4-47102r155"></a><span id="textcolor319">   </span><span id="textcolor320">echo</span><span id="textcolor321"> </span><span id="textcolor322">'Pin: release o=LP-PPA-mozillateam'</span><span id="textcolor323"> </span><span id="textcolor324">\</span> 
+<a id="x4-47104r156"></a><span id="textcolor325">   </span>»<span id="textcolor326"> </span>/etc/apt/preferences.d/mozilla-firefox<span id="textcolor327"> </span><span id="textcolor328">&amp;&amp;</span><span id="textcolor329"> </span><span id="textcolor330">\</span> 
+<a id="x4-47106r157"></a><span id="textcolor331">   </span><span id="textcolor332">echo</span><span id="textcolor333"> </span><span id="textcolor334">'Pin-Priority: 1001'</span><span id="textcolor335"> </span>»<span id="textcolor336"> </span>/etc/apt/preferences.d/mozilla-firefox<span id="textcolor337"> </span><span id="textcolor338">&amp;&amp;</span><span id="textcolor339"> </span><span id="textcolor340">\</span> 
+<a id="x4-47108r158"></a><span id="textcolor341">   </span>apt-get<span id="textcolor342"> </span>update<span id="textcolor343"> </span>-q<span id="textcolor344"> </span><span id="textcolor345">&amp;&amp;</span><span id="textcolor346"> </span><span id="textcolor347">\</span> 
+<a id="x4-47110r159"></a><span id="textcolor348">   </span>apt-get<span id="textcolor349"> </span>install<span id="textcolor350"> </span>-y<span id="textcolor351"> </span><span id="textcolor352">\</span> 
+<a id="x4-47112r160"></a><span id="textcolor353">   </span>firefox<span id="textcolor354"> </span><span id="textcolor355">&amp;&amp;</span><span id="textcolor356"> </span><span id="textcolor357">\</span> 
+<a id="x4-47114r161"></a><span id="textcolor358">   </span>apt-get<span id="textcolor359"> </span>autoclean<span id="textcolor360"> </span><span id="textcolor361">&amp;&amp;</span><span id="textcolor362"> </span><span id="textcolor363">\</span> 
+<a id="x4-47116r162"></a><span id="textcolor364">   </span>apt-get<span id="textcolor365"> </span>autoremove<span id="textcolor366"> </span><span id="textcolor367">&amp;&amp;</span><span id="textcolor368"> </span><span id="textcolor369">\</span> 
+<a id="x4-47118r163"></a><span id="textcolor370">   </span>rm<span id="textcolor371"> </span>-rf<span id="textcolor372"> </span>/var/lib/apt/lists/* 
+<a id="x4-47120r164"></a></div></pre>
+     </div>
+     <p class="noindent">
+      To
+aid
+in
+easy
+navigation
+and
+searching
+information,
+we
+shall
+also
+install
+Firefox
+into
+this
+docker
+container
+as
+                                                                                
+                                                                                
+                                                                             
+well.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       dockerfile
+      </div>
+      <pre><div class="language-dockerfile" id="fancyvrb11" style="padding:20px;border-radius: 3px;"><a id="x4-47122r169"></a><span id="textcolor373"># Install VSCodium for people who are accosstomed to VSCode but</span> 
+<a id="x4-47124r170"></a><span id="textcolor374"># prefer to keep it open-source</span> 
+<a id="x4-47126r171"></a><span id="textcolor375">RUN</span><span id="textcolor376"> </span>wget<span id="textcolor377"> </span>https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg<span id="textcolor378"> </span><span id="textcolor379">\</span> 
+<a id="x4-47128r172"></a><span id="textcolor380">   </span>-O<span id="textcolor381"> </span>/usr/share/keyrings/vscodium-archive-keyring.asc<span id="textcolor382"> </span><span id="textcolor383">&amp;&amp;</span><span id="textcolor384"> </span><span id="textcolor385">\</span> 
+<a id="x4-47130r173"></a><span id="textcolor386">   </span><span id="textcolor387">echo</span><span id="textcolor388"> </span><span id="textcolor389">'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.asc ] https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs vscodium main'</span><span id="textcolor390"> </span><span id="textcolor391">\</span> 
+<a id="x4-47132r174"></a><span id="textcolor392">   </span><span id="textcolor393">|</span><span id="textcolor394"> </span>tee<span id="textcolor395"> </span>/etc/apt/sources.list.d/vscodium.list<span id="textcolor396"> </span><span id="textcolor397">&amp;&amp;</span><span id="textcolor398"> </span><span id="textcolor399">\</span> 
+<a id="x4-47134r175"></a><span id="textcolor400">   </span>apt-get<span id="textcolor401"> </span>update<span id="textcolor402"> </span>-q<span id="textcolor403"> </span><span id="textcolor404">&amp;&amp;</span><span id="textcolor405"> </span><span id="textcolor406">\</span> 
+<a id="x4-47136r176"></a><span id="textcolor407">   </span>apt-get<span id="textcolor408"> </span>install<span id="textcolor409"> </span>-y<span id="textcolor410"> </span>codium<span id="textcolor411"> </span><span id="textcolor412">&amp;&amp;</span><span id="textcolor413"> </span><span id="textcolor414">\</span> 
+<a id="x4-47138r177"></a><span id="textcolor415">   </span>apt-get<span id="textcolor416"> </span>autoclean<span id="textcolor417"> </span><span id="textcolor418">&amp;&amp;</span><span id="textcolor419"> </span><span id="textcolor420">\</span> 
+<a id="x4-47140r178"></a><span id="textcolor421">   </span>apt-get<span id="textcolor422"> </span>autoremove<span id="textcolor423"> </span><span id="textcolor424">&amp;&amp;</span><span id="textcolor425"> </span><span id="textcolor426">\</span> 
+<a id="x4-47142r179"></a><span id="textcolor427">   </span>rm<span id="textcolor428"> </span>-rf<span id="textcolor429"> </span>/var/lib/apt/lists/* 
+<a id="x4-47144r180"></a></div></pre>
+     </div>
+     <p class="noindent">
+      To
+allow
+us
+to
+do
+easy
+programming,
+we
+shall
+install
+VSCodium,
+an
+open-source
+implementation
+of
+VSCode.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       dockerfile
+      </div>
+      <pre><div class="language-dockerfile" id="fancyvrb12" style="padding:20px;border-radius: 3px;"><a id="x4-47146r185"></a><span id="textcolor430"># Install ROS Humble version</span> 
+<a id="x4-47148r186"></a><span id="textcolor431">ENV</span><span id="textcolor432"> </span><span id="textcolor433">ROS_DISTRO</span><span id="textcolor434">=</span>humble 
+<a id="x4-47150r187"></a> 
+<a id="x4-47152r188"></a><span id="textcolor435"># Install Desktop version</span> 
+<a id="x4-47154r189"></a><span id="textcolor436">ARG</span><span id="textcolor437"> </span><span id="textcolor438">INSTALL_PACKAGE</span><span id="textcolor439">=</span>desktop 
+<a id="x4-47156r190"></a> 
+<a id="x4-47158r191"></a><span id="textcolor440">RUN</span><span id="textcolor441"> </span>apt-get<span id="textcolor442"> </span>update<span id="textcolor443"> </span>-q<span id="textcolor444"> </span><span id="textcolor445">&amp;&amp;</span><span id="textcolor446"> </span><span id="textcolor447">\</span> 
+<a id="x4-47160r192"></a><span id="textcolor448">   </span>apt-get<span id="textcolor449"> </span>install<span id="textcolor450"> </span>-y<span id="textcolor451"> </span>curl<span id="textcolor452"> </span>gnupg2<span id="textcolor453"> </span>lsb-release<span id="textcolor454"> </span><span id="textcolor455">&amp;&amp;</span><span id="textcolor456"> </span><span id="textcolor457">\</span> 
+<a id="x4-47162r193"></a><span id="textcolor458">   </span>curl<span id="textcolor459"> </span>-sSL<span id="textcolor460"> </span>https://raw.githubusercontent.com/ros/rosdistro/master/ros.key<span id="textcolor461"> </span><span id="textcolor462">\</span> 
+<a id="x4-47164r194"></a><span id="textcolor463">   </span>-o<span id="textcolor464"> </span>/usr/share/keyrings/ros-archive-keyring.gpg<span id="textcolor465"> </span><span id="textcolor466">&amp;&amp;</span><span id="textcolor467"> </span><span id="textcolor468">\</span> 
+<a id="x4-47166r195"></a><span id="textcolor469">   </span><span id="textcolor470">echo</span><span id="textcolor471"> </span><span id="textcolor472">"</span><span id="textcolor473">deb [arch=</span><span id="textcolor474">$(</span>dpkg<span id="textcolor475"> </span>--print-architecture<span id="textcolor476">)</span><span id="textcolor477"> signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu </span><span id="textcolor478">$(</span>lsb_release<span id="textcolor479"> </span>-cs<span id="textcolor480">)</span><span id="textcolor481"> main</span><span id="textcolor482">"</span><span id="textcolor483"> </span><span id="textcolor484">|</span><span id="textcolor485"> </span>tee<span id="textcolor486"> </span>/etc/apt/sources.list.d/ros2.list<span id="textcolor487"> </span>&gt;<span id="textcolor488"> </span>/dev/null<span id="textcolor489"> </span><span id="textcolor490">&amp;&amp;</span><span id="textcolor491"> </span><span id="textcolor492">\</span> 
+<a id="x4-47168r196"></a><span id="textcolor493">   </span>apt-get<span id="textcolor494"> </span>update<span id="textcolor495"> </span>-q<span id="textcolor496"> </span><span id="textcolor497">&amp;&amp;</span><span id="textcolor498"> </span><span id="textcolor499">\</span> 
+<a id="x4-47170r197"></a><span id="textcolor500">   </span>apt-get<span id="textcolor501"> </span>install<span id="textcolor502"> </span>-y<span id="textcolor503"> </span>ros-<span id="textcolor504">${</span><span id="textcolor505">ROS_DISTRO</span><span id="textcolor506">}</span>-<span id="textcolor507">${</span><span id="textcolor508">INSTALL_PACKAGE</span><span id="textcolor509">}</span><span id="textcolor510"> </span><span id="textcolor511">\</span> 
+<a id="x4-47172r198"></a><span id="textcolor512">   </span>python3-argcomplete<span id="textcolor513"> </span><span id="textcolor514">\</span> 
+<a id="x4-47174r199"></a><span id="textcolor515">   </span>python3-colcon-common-extensions<span id="textcolor516"> </span><span id="textcolor517">\</span> 
+<a id="x4-47176r200"></a><span id="textcolor518">   </span>python3-rosdep<span id="textcolor519"> </span>python3-vcstool<span id="textcolor520"> </span><span id="textcolor521">&amp;&amp;</span><span id="textcolor522"> </span><span id="textcolor523">\</span> 
+<a id="x4-47178r201"></a><span id="textcolor524">   </span>rosdep<span id="textcolor525"> </span>init<span id="textcolor526"> </span><span id="textcolor527">&amp;&amp;</span><span id="textcolor528"> </span><span id="textcolor529">\</span> 
+<a id="x4-47180r202"></a><span id="textcolor530">   </span>rm<span id="textcolor531"> </span>-rf<span id="textcolor532"> </span>/var/lib/apt/lists/* 
+<a id="x4-47182r203"></a> 
+<a id="x4-47184r204"></a><span id="textcolor533">RUN</span><span id="textcolor534"> </span>rosdep<span id="textcolor535"> </span>update 
+<a id="x4-47186r205"></a> 
+<a id="x4-47188r206"></a><span id="textcolor536"># Install simulation package only on amd64</span> 
+<a id="x4-47190r207"></a><span id="textcolor537">RUN</span><span id="textcolor538"> </span><span id="textcolor539">if</span><span id="textcolor540"> </span><span id="textcolor541">[</span><span id="textcolor542"> </span><span id="textcolor543">"</span><span id="textcolor544">$TARGETPLATFORM</span><span id="textcolor545">"</span><span id="textcolor546"> </span><span id="textcolor547">=</span><span id="textcolor548"> </span><span id="textcolor549">"linux/amd64"</span><span id="textcolor550"> </span><span id="textcolor551">]</span><span id="textcolor552">;</span><span id="textcolor553"> </span><span id="textcolor554">then</span><span id="textcolor555"> </span><span id="textcolor556">\</span> 
+<a id="x4-47192r208"></a><span id="textcolor557">   </span>apt-get<span id="textcolor558"> </span>update<span id="textcolor559"> </span>-q<span id="textcolor560"> </span><span id="textcolor561">&amp;&amp;</span><span id="textcolor562"> </span><span id="textcolor563">\</span> 
+<a id="x4-47194r209"></a><span id="textcolor564">   </span>apt-get<span id="textcolor565"> </span>install<span id="textcolor566"> </span>-y<span id="textcolor567"> </span><span id="textcolor568">\</span> 
+<a id="x4-47196r210"></a><span id="textcolor569">   </span>ros-<span id="textcolor570">${</span><span id="textcolor571">ROS_DISTRO</span><span id="textcolor572">}</span>-gazebo-ros-pkgs<span id="textcolor573"> </span><span id="textcolor574">\</span> 
+<a id="x4-47198r211"></a><span id="textcolor575">   </span>ros-<span id="textcolor576">${</span><span id="textcolor577">ROS_DISTRO</span><span id="textcolor578">}</span>-ros-ign<span id="textcolor579"> </span><span id="textcolor580">&amp;&amp;</span><span id="textcolor581"> </span><span id="textcolor582">\</span> 
+<a id="x4-47200r212"></a><span id="textcolor583">   </span>rm<span id="textcolor584"> </span>-rf<span id="textcolor585"> </span>/var/lib/apt/lists/*<span id="textcolor586">;</span><span id="textcolor587"> </span><span id="textcolor588">\</span> 
+<a id="x4-47202r213"></a><span id="textcolor589">   </span><span id="textcolor590">fi</span></div></pre>
+     </div>
+     <p class="noindent">
+      Now
+that
+everything
+is
+installed,
+we
+start
+the
+installation
+of
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:ros">
+       ROS
+      </a>
+      and
+its
+dependencies.
+Here
+we
+define <span id="textcolor591"><code class="verb">ENV</code></span>
+      variable
+which
+allows
+us
+set
+which
+version
+of
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:ros">
+       ROS
+      </a>
+      to
+install.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       dockerfile
+      </div>
+      <pre><div class="language-dockerfile" id="fancyvrb13" style="padding:20px;border-radius: 3px;"><a id="x4-47204r218"></a><span id="textcolor592"># Download the Linux Tutorial file from repo</span> 
+<a id="x4-47206r219"></a><span id="textcolor593">ARG</span><span id="textcolor594"> </span><span id="textcolor595">ZIPFILE</span><span id="textcolor596">=</span><span id="textcolor597">"https://github.com/dTmC0945/L-MCI-BSc-Mobile-Robotics/raw/refs/heads/main/datasets/linux-tutorials.zip"</span> 
+<a id="x4-47208r220"></a> 
+<a id="x4-47210r221"></a><span id="textcolor598"># Create some user directories to simulate a desktop environment</span> 
+<a id="x4-47212r222"></a><span id="textcolor599">RUN</span><span id="textcolor600"> </span>mkdir<span id="textcolor601"> </span>-p<span id="textcolor602"> </span><span id="textcolor603">\</span> 
+<a id="x4-47214r223"></a><span id="textcolor604">   </span>/home/ubuntu/Downloads<span id="textcolor605"> </span><span id="textcolor606">\</span> 
+<a id="x4-47216r224"></a><span id="textcolor607">   </span>/home/ubuntu/Downloads<span id="textcolor608"> </span><span id="textcolor609">\</span> 
+<a id="x4-47218r225"></a><span id="textcolor610">   </span>/home/ubuntu/Desktop 
+<a id="x4-47220r226"></a> 
+<a id="x4-47222r227"></a><span id="textcolor611"># Download the tutorial files to their correct place</span> 
+<a id="x4-47224r228"></a><span id="textcolor612">RUN</span><span id="textcolor613"> </span><span id="textcolor614">cd</span><span id="textcolor615"> </span><span id="textcolor616">"/home/ubuntu/Desktop"</span><span id="textcolor617"> </span><span id="textcolor618">&amp;&amp;</span><span id="textcolor619"> </span><span id="textcolor620">\</span> 
+<a id="x4-47226r229"></a><span id="textcolor621">   </span>wget<span id="textcolor622"> </span>-O<span id="textcolor623"> </span><span id="textcolor624">"linux.zip"</span><span id="textcolor625"> </span><span id="textcolor626">"</span><span id="textcolor627">$ZIPFILE</span><span id="textcolor628">"</span><span id="textcolor629"> </span><span id="textcolor630">&amp;&amp;</span><span id="textcolor631"> </span><span id="textcolor632">\</span> 
+<a id="x4-47228r230"></a><span id="textcolor633">   </span>unzip<span id="textcolor634"> </span><span id="textcolor635">"linux.zip"</span><span id="textcolor636"> </span><span id="textcolor637">&amp;&amp;</span><span id="textcolor638"> </span><span id="textcolor639">\</span> 
+<a id="x4-47230r231"></a><span id="textcolor640">   </span>rm<span id="textcolor641"> </span><span id="textcolor642">"linux.zip"</span> 
+<a id="x4-47232r232"></a> 
+<a id="x4-47234r233"></a><span id="textcolor643"># Enable apt-get completion after running `apt-get update` in the container</span> 
+<a id="x4-47236r234"></a><span id="textcolor644">RUN</span><span id="textcolor645"> </span>rm<span id="textcolor646"> </span>/etc/apt/apt.conf.d/docker-clean 
+<a id="x4-47238r235"></a> 
+<a id="x4-47240r236"></a><span id="textcolor647"># Copy the entrypoint.sh into the image</span> 
+<a id="x4-47242r237"></a><span id="textcolor648">COPY</span><span id="textcolor649"> </span>./entrypoint.sh<span id="textcolor650"> </span>/ 
+<a id="x4-47244r238"></a> 
+<a id="x4-47246r239"></a><span id="textcolor651"># Convert file for linux compatability</span> 
+<a id="x4-47248r240"></a><span id="textcolor652">RUN</span><span id="textcolor653"> </span>dos2unix<span id="textcolor654"> </span>/entrypoint.sh 
+<a id="x4-47250r241"></a><span id="textcolor655">ENTRYPOINT</span><span id="textcolor656"> </span><span id="textcolor657">[</span><span id="textcolor658"> </span><span id="textcolor659">"/bin/bash"</span><span id="textcolor660">,</span><span id="textcolor661"> </span><span id="textcolor662">"-c"</span><span id="textcolor663">,</span><span id="textcolor664"> </span><span id="textcolor665">"/entrypoint.sh"</span><span id="textcolor666"> </span><span id="textcolor667">]</span> 
+<a id="x4-47252r242"></a> 
+<a id="x4-47254r243"></a><span id="textcolor668"># Define user and password</span> 
+<a id="x4-47256r244"></a><span id="textcolor669">ENV</span><span id="textcolor670"> </span><span id="textcolor671">USER</span><span id="textcolor672">=</span>ubuntu 
+<a id="x4-47258r245"></a><span id="textcolor673">ENV</span><span id="textcolor674"> </span><span id="textcolor675">PASSWD</span><span id="textcolor676">=</span>ubuntu</div></pre>
+     </div>
+     <p class="noindent">
+      Finally,
+we
+download
+some
+additional
+files
+from
+                                                                                
+                                                                                
+                                                                               
+a
+repo
+which
+will
+be
+a
+folder
+containing
+tutorial
+files
+for
+use
+in
+learning
+Linux.
+We
+then
+unzip
+it
+to
+Desktop
+and
+remove
+the
+image.
+To
+finish
+of
+we
+define
+a
+user
+called <span id="textcolor677"><code class="verb">ubuntu</code></span>
+      with
+a
+password
+of <span id="textcolor678"><code class="verb">ubuntu</code></span>.
+     </p>
+     <p class="noindent">
+      As
+mentioned,
+a
+Dockerfile
+is
+a
+text
+document
+which
+includes
+all
+the
+different
+steps
+and
+instructions
+on
+how
+to
+build
+a
+Docker
+image.
+In
+a
+general
+sense,
+the
+                                                                                
+                                                                                
+                                                                            
+main
+elements
+described
+in
+the
+Dockerfile
+are:
+     </p>
+     <ul class="itemize1">
+      <li class="itemize">
+       <p class="noindent">
+        the
+base
+image,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        required
+dependencies,
+and
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        commands
+to
+execute
+application
+deployment
+within
+a
+container.
+       </p>
+      </li>
+     </ul>
+     <p class="noindent">
+      Let’s
+have
+a
+look
+in
+detail
+as
+to
+what
+is
+going
+on
+under-the-hood.
+Here
+we
+will
+have
+a
+look
+at
+command
+used
+in
+the
+file.
+For
+a
+more
+detailed
+explanation
+of
+what
+                                                                                
+                                                                                
+                                                                               
+is
+going
+on,
+please
+have
+a
+look
+at
+the
+file.
+     </p>
+     <dl class="description">
+      <dt class="description"> <span id="textcolor682"><code class="verb">FROM</code></span>
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        This
+instruction
+sets
+the
+base
+image
+on
+which
+the
+new
+image
+is
+going
+to
+be
+built
+upon.
+It
+is
+usually
+the
+first
+instruction
+in
+a
+Dockerfile.
+       </p>
+       <p class="noindent">
+        In
+this
+case
+we
+are
+downloading
+the
+official <span id="textcolor683"><code class="verb">ubuntu:jammy-20250404</code></span>
+        version
+from
+the
+docker
+repository.
+       </p>
+      </dd>
+      <dt class="description"> <span id="textcolor684"><code class="verb">ARG</code></span>
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        These
+define
+variables
+used
+during
+                                                                                
+                                                                                
+     
+the
+building
+of
+the
+image.
+       </p>
+       <p class="noindent">
+        Here,
+we
+define
+a
+variable
+called <span id="textcolor685"><code class="verb">TARGETPLATFORM</code></span>
+        to
+control
+the
+architecture
+installed
+on
+the
+        <a class="glossary" href="RoboticsLectureBookli2.html#glo:os">
+         OS
+        </a>
+       </p>
+      </dd>
+      <dt class="description"> <span id="textcolor686"><code class="verb">LABEL</code></span>
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        Allows
+writing
+meta-data
+information
+to
+the
+docker
+image.
+This
+could
+be
+the
+maintainer
+of
+the
+code
+or
+the
+version
+as
+an
+example.
+       </p>
+      </dd>
+      <dt class="description"> <span id="textcolor687"><code class="verb">RUN</code></span>
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        This
+will
+be
+an
+instruction
+that
+will
+be
+executed
+for
+running
+the
+commands
+inside
+                                                                                
+                                                                                
+     
+the
+container
+while
+building.
+It
+is
+typically
+used
+to
+install
+an
+application,
+update
+libraries,
+or
+do
+general
+setup.
+       </p>
+      </dd>
+      <dt class="description"> <span id="textcolor688"><code class="verb">COPY</code></span>
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        Allows
+us
+to
+copy
+a
+file
+from
+the
+host
+to
+the
+image.
+In
+this
+case
+we
+are
+copying
+a
+special
+file
+called <span id="textcolor689"><code class="verb">entrypoint.sh</code></span>
+        which
+sets
+up
+the
+container
+with
+various
+configurations.
+       </p>
+      </dd>
+      <dt class="description"> <span id="textcolor690"><code class="verb">ENV</code></span>
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        Sets
+up
+environmental
+parameters
+inside
+the
+image.
+       </p>
+      </dd>
+     </dl>
+     <p class="noindent">
+      To
+build
+this
+image
+we
+need
+to
+use
+the
+      <a class="glossary" href="RoboticsLectureBookli2.html#glo:cli">
+       CLI
+      </a>,
+move
+to
+the
+directory
+where
+both <span id="textcolor691"><code class="verb">Dockerfile</code></span>
+      and <span id="textcolor692"><code class="verb">entrypoint.sh</code></span>
+      is
+present
+and
+run
+the
+following
+code
+to
+build
+image.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb14" style="padding:20px;border-radius: 3px;"><a id="x4-47260r253"></a>docker<span id="textcolor693"> </span>build<span id="textcolor694"> </span>.<span id="textcolor695"> </span>-t<span id="textcolor696"> </span>mci:ros2<span id="textcolor697"> </span>-f<span id="textcolor698"> </span>Dockerfile</div></pre>
+     </div>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="RoboticsLectureBook.pdf#subsection.2.3.2" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       2.3.2
+      </small>
+      <a id="x4-480002.3.2">
+      </a>
+      Running
+the
+Container
+     </h3>
+     <p class="noindent">
+      Now
+we
+built
+the
+image,
+we
+now
+need
+to
+create
+a
+container.
+The
+following
+command
+will
+create
+a
+new
+container
+from
+an
+image.
+     </p>
+     <div class="warning">
+      <p class="noindent">
+       This
+command
+will
+create
+a
+container
+every
+time
+it
+is
+invoked.
+      </p>
+     </div>
+     <p class="noindent">
+     </p>
+     <div class="quoteblock">
+      <p class="noindent">
+       An
+image
+is
+a
+read-only,
+self-contained
+template
+containing
+instructions
+for
+building
+a
+Docker
+container,
+like
+a
+blueprint
+for
+a
+building.
+Container
+is
+a
+running
+instance
+of
+that
+image,
+like
+the
+building
+itself,
+and
+is
+a
+fully
+isolated
+environment
+for
+running
+applications.
+Images
+are
+used
+to
+create
+containers,
+and
+                                                                                
+                                                                                
+     
+multiple
+containers
+can
+be
+created
+from
+the
+same
+image.
+      </p>
+     </div>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb15" style="padding:20px;border-radius: 3px;"><a id="x4-48002r369"></a>docker<span id="textcolor699"> </span>run<span id="textcolor700"> </span><span id="textcolor701">\</span> 
+<a id="x4-48004r370"></a><span id="textcolor702">     </span>--volume<span id="textcolor703"> </span>~/Documents/docker-documents:/home/ubuntu/Desktop/Host<span id="textcolor704"> </span><span id="textcolor705">\</span> 
+<a id="x4-48006r371"></a><span id="textcolor706">     </span>--publish<span id="textcolor707"> </span><span id="textcolor708">6080</span>:80<span id="textcolor709"> </span><span id="textcolor710">\</span> 
+<a id="x4-48008r372"></a><span id="textcolor711">     </span>--name<span id="textcolor712">=</span><span id="textcolor713">"ros2linux"</span><span id="textcolor714"> </span><span id="textcolor715">\</span> 
+<a id="x4-48010r373"></a><span id="textcolor716">     </span>--security-opt<span id="textcolor717"> </span><span id="textcolor718">seccomp</span><span id="textcolor719">=</span>unconfined<span id="textcolor720"> </span><span id="textcolor721">\</span> 
+<a id="x4-48012r374"></a><span id="textcolor722">     </span>--shm-size<span id="textcolor723">=</span>512m<span id="textcolor724"> </span><span id="textcolor725">\</span> 
+<a id="x4-48014r375"></a><span id="textcolor726">     </span>mci:ros2</div></pre>
+     </div>
+     <p class="noindent">
+      Let’s
+have
+a
+look
+at
+all
+the
+options
+given
+here
+and
+understand
+whats
+going
+on:
+     </p>
+     <dl class="description">
+      <dt class="description"> <span id="textcolor727"><code class="verb">docker run</code></span>
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        Our
+main
+command.
+It
+        <alert style="color: #821131;">
+         runs
+        </alert>
+        a
+command
+in
+a
+new
+container,
+pulling
+the
+image
+if
+needed
+and
+starting
+the
+container.
+Of
+course,
+in
+our
+file
+it
+is
+already
+written
+so
+when
+this
+                                                                                
+                                                                                
+     
+is
+executed,
+there
+won’t
+be
+any
+additional
+downloads
+needed.
+       </p>
+      </dd>
+      <dt class="description"> <span id="textcolor728"><code class="verb">--volume</code></span>
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        Binds volume between the host and the computer. Here we introduce a path from our host computer <span id="textcolor729"><code class="verb">\textasciitilde/Documents/docker-documents</code></span>
+        and link it to the docker container <span id="textcolor730"><code class="verb">root/home/ubuntu/Desktop/Host</code></span>
+        to allow
+us to share files between host and docker container.
+       </p>
+       <div class="warning">
+        <p class="noindent">
+         The left side of the path may need to be adjusted for your computer.
+        </p>
+       </div>
+      </dd>
+      <dt class="description"> <span id="textcolor731"><code class="verb">--publish</code></span>
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        Publish a container’s port(s) to the host. Here we are allowing access of the port 6080 (TCP) to the host computer which
+is used by noVNC.
+       </p>
+      </dd>
+      <dt class="description"> <span id="textcolor732"><code class="verb">--name</code></span>
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        Adds a specific name to a container. If this option is not set a random will be given.
+       </p>
+      </dd>
+      <dt class="description"> <span id="textcolor733"><code class="verb">--security-opt</code></span>
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        Additional security options. Here we are passing no additional security options. This is done due to the requirements by
+noVNC.
+       </p>
+      </dd>
+      <dt class="description"> <span id="textcolor734"><code class="verb">--shm-size</code></span>
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        the amount of shared memory allotted to a docker container. A temporary file storage filesystem using
+        <a class="glossary" href="RoboticsLectureBookli2.html#glo:ram">
+         Random Access
+Memory (RAM)
+        </a>
+        for storing files.
+       </p>
+      </dd>
+     </dl>
+     <p class="noindent">
+      Once
+the
+container
+is
+created,
+please
+use
+the
+following
+to
+close
+it
+properly.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb16" style="padding:20px;border-radius: 3px;"><a id="x4-48016r380"></a>docker<span id="textcolor735"> </span>container<span id="textcolor736"> </span>stop<span id="textcolor737"> </span><span id="textcolor738">"ros2linux"</span><span id="textcolor739"> </span></div></pre>
+     </div>
+     <p class="noindent">
+      To
+re-run
+the
+container
+and
+continue
+where
+left
+off,
+use
+the
+following.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb17" style="padding:20px;border-radius: 3px;"><a id="x4-48018r385"></a>docker<span id="textcolor740"> </span>container<span id="textcolor741"> </span>start<span id="textcolor742"> </span><span id="textcolor743">"ros2linux"</span><span id="textcolor744"> </span></div></pre>
+     </div>
+    </div>
+   </article>
+   <footer>
+    <div class="next">
+     <p class="noindent">
+      <a href="RoboticsLectureBookch3.html" style="float: right;">
+       Next Chapter →
+      </a>
+      <a href="RoboticsLectureBookch1.html" style="float: left;">
+       ← Previous Chapter
+      </a>
+      <a href="index.html">
+       TOP
+      </a>
+     </p>
+    </div>
+   </footer>
+  </div>
+  <div class="page">
+   <article class="chapter">
+    <p class="noindent">
+     <a id="tailRoboticsLectureBookch2.html">
+     </a>
+    </p>
+   </article>
+  </div>
+ </body>
+</html>
