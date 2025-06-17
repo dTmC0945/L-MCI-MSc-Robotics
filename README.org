@@ -13,13 +13,11 @@
 ** Lecture Information
 
 - *WARNING:* This is the content only covered by me as this lecture is shared by
-  Prof. Can Dede and Benjamin Massow, M.Sc
+  Prof. Can Dede and Benjamin Massow, M.Sc.
 - The goal of this lecture is to give you a better view of how to control robots
   using different programming methods.
 - This lecture you will use ROS, a versatile software capable of doing
   pathfinding and localisation, a perfect fit for use in mobile robotics.
-
-The Lecture structure for this lecture is as follows.
 
 | DESCRIPTION        | VALUE                                                           |
 | Official Name      | Robotik                                                         |
@@ -41,18 +39,13 @@ The Lecture structure for this lecture is as follows.
 | UE Total           | 15                                                              |
 | ECTS               | 4                                                               |
 | Lecture Type       | ILV                                                             |
+| Working Language   | English                                                         |
 
 ** Requirements and the Learning Outcomes
 
-- The student should be comfortable with working with either python
+- The student should be comfortable with working with either Python
   and/or C++ and should have an beginner level knowledge of the Linux
   environment and the command line interface
-
-- For a refreshment on its content the students are encouraged to read the
-  materials presented in the following repos:
-
-- [[https://github.com/dTmC0945/L-MCI-BSc-Python-for-Engineering-and-Economics][B.Sc Python for Engineering and Economics]]
-- [[https://github.com/dTmC0945/L-MCI-BSc-Mobile-Robotics][B.Sc Mobile Robotics]]
 
 | REQUIREMENTS       | TAUGHT LECTURE     | CODE | DEGREE | OUTCOME           |
 | C/C++ Programming  | Programming II     | PRO2 | B.Sc   | ROS 2 Programming |
@@ -66,14 +59,14 @@ The Lecture structure for this lecture is as follows.
 - The lecture will have one  personal assignment which will be based on ROS and
   programming applications related to it.
       
-| ASSIGNMENT TYPE     | VALUE |
-| Personal Assignment |   100 |
-| SUM                 |   100 |
+| ASSIGNMENT TYPE     | VALUE | QUANTITY |
+| Personal Assignment |   100 | 1        |
+| SUM                 |   100 |          |
 
 ** Lecture Sources
 
 The following are a table of documentation which are useful resources which
-goes well with the lectures.
+goes well with the lecture.
 
 | AUTHOR        | TITLE                                                 | PUBLISHER             |
 | M. M. Bassa   | A very informal journey through ROS 2                 | Self-Published        |
@@ -82,27 +75,172 @@ goes well with the lectures.
 
 ** Content and Unit Distribution
 
+    
 - The content and unit distribution of the lecture is as follows where a unit
   is defined as 45 min lecture.
 
-| TOPIC                             | UNITS | SELF STUDY |
-| Mobile Robot Navigation Methods   |     3 |          6 |
-| The GNU/Linux Operating System    |     3 |          6 |
-| ROS 2 Introduction and Concepts   |     3 |          6 |
-| Programming with Client Libraries |     3 |          6 |
-| Simulations and TF Trees          |     3 |          6 |
-| SUM                               |    15 |         30 |
+| ORDER | TOPIC                             | UNITS | SELF STUDY |
+|     1 | Mobile Robot Localisation         |     4 |          6 |
+|     2 | The GNU/Linux Operating System    |     4 |          6 |
+|     3 | ROS 2 Introduction and Concepts   |     4 |          6 |
+|     4 | Programming with Client Libraries |     4 |          6 |
+|     5 | Simulations and TF Trees          |     4 |          6 |
+|     6 | SUM                               |    15 |         30 |
 
 ** Structure per Session
 
-The structure of Robotics can be grouped into five (5) parts:
-
-1. Mobile Robot Navigation
-2. The GNU/Linux Operating System    
-3. ROS 2 Introduction and Concepts   
-4. Programming with Client Libraries 
-5. Simulations and TF Trees
-  
+- Mobile Robot Localisation
+  - Introduction
+  - The problems of Noise and Aliasing
+    - Sensor Noise
+    - Sensor Aliasing
+    - Effector Noise
+    - An Error Model for Odometric Position Estimation
+  - Localisation v. Hard-Coded Navigation
+  - Representing Belief
+    - Single Hypothesis Belief
+    - Multiple Hypothesis Belief
+  - Representing Maps
+    - Continuous Representation
+    - Decomposition Methods
+    - Current Challenges
+  - Probabilistic Map-Based Localisation
+    - Introduction
+    - Markov Localisation
+      - Application of Probability for Localisation
+      - Application: Markov Localisation using a Topological Map
+    - Kalman Filter Localisation
+    - An Implementation of Kalman Filter
+      - A Gentle Introduction to Kalman Filter Theory
+      - Kalman Filter Localisation
+  - Other Examples of Localisation Methods
+    - Landmark-based Navigation
+    - Globally Unique Localisation
+    - Positioning Beacon systems
+    - Route-Based Localisation
+  - Building Maps
+    - Stochastic Map Technique
+    - Other Mapping Techniques
+      - Cyclic Environments
+      - Dynamic Environments
+- Welcome to Linux
+  - Learning the Linux Command Line
+    - A Short History on Computer Interfaces
+    - Linux is a Nutshell
+      - A Brief Description of What Linux Does
+    - Linux Distributions
+  - Installation
+  - Docker
+    - Dockerfile
+    - Running the Container
+  - The Structure of Commands
+    - Some Rules Regarding the Syntax
+  - Helpful Keyboard Shortcuts for the Terminal
+  - When you need help with Commands
+  - Additional Information
+    - Use Tab completion on the Shell
+    - The info command
+  - A Detailed Look in ls Command
+  - Creating and Removing Folders
+  - Move, Copy and Delete Files and Folders
+    - Find Files using the Command-Line Interface
+  - Role to Users and sudo
+  - File Permissions
+      - Octal Notation
+      - Symbolic Notation
+  - Hard and Symbolic Links
+    - Symbolic Links
+      - Hard Links
+  - The Linux File System
+  - Common Command-Line Tools and Tasks
+    - The UNIX Philosophy
+    - Connecting Commands with Pipes
+    - Viewing Text Files with cat, head, tail, and less
+    - Manipulate Text with awk Command
+    - Search for test within Files and Streams using grep
+      - Additional Information
+    - a Brief introduction to Vim (Optional Read)
+    - Edition Texts with Nano
+    - Working with TAR and Zip Archives
+    - Output redirection
+    - Exploring the Environment Variables with Path
+  - Advanced Topics
+    - Find Linux Distribution and Kernel Information
+    - Find System Hardware and Disk Information
+- ROS Concepts
+  - Introduction
+  - Publisher and Subscriber Architecture
+  - Nodes - The Building Blocks
+  - The Discovery Process
+  - Communication Between Nodes
+    - Description
+    - Messages
+      - Services
+      - Actions
+  - Topics
+    - Publisher - Subscriber Architecture
+    - Anonymity
+    - Strongly-Typed
+  - Services
+    - Service Server
+      - Service Client
+  - Actions
+    - Action Server
+    - Action Client
+  - Parameters
+    - A Detailed Look
+      - Declaring Parameters
+      - Types of Parameters
+      - Parameter Callbacks
+    - Parameter Interaction
+  - Working with Command Line
+  - Launch File
+    - ROS DOMAIN ID
+      - Choosing a domain ID (short version)
+      - Choosing a domain ID (long version)
+    - Client Libraries
+      - Supported Client Libraries
+  - Intermediate Concepts
+    - Defining the ROS Domain
+      - Participant Constraints
+    - ROS 2 Middleware Vendors
+  - Configuring Quality of Service
+    - Topic Statistics
+  - Advanced Concepts
+    - The Build System
+- Command Line Tools
+  - Setting the Environment
+  - Turtles and Graphs
+  - A Deeper Look into Nodes
+  - Working with Topics
+  - Working with Services
+  - Working with Parameters
+  - A Practical Look into Actions
+  - Launching Nodes
+  - Getting Started with Colcon
+  - Creating a Workspace
+  - Creating a Package
+  - Writing a Simple Publisher & Subscriber
+    - Writing the Publisher Node
+    - Writing the Subscriber Node
+    - Building and Running
+  - Writing a Simple Service and Client
+    - Writing the Service Node
+    - Writing the Client Node
+  - Creating Custom msg and srv Files
+    - Creating Custom Definitions
+    - Testing the Newly Built Interfaces
+      - Service Client System
+  - Using Parameters in a Class
+  - Managing Dependencies
+    - Explaining Rosdep
+    - Explaining Pacakge Manifesto
+  - Creating an Action
+  - Writing an Action Server and Client
+  - Writing a Launch File
+- Transform Library
+  - A Gentle Introduction
+  - Writing a Static Broadcaster
 
 ** Documentation
 
