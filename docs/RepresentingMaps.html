@@ -1,0 +1,764 @@
+<!DOCTYPE html> 
+<html lang="en">  
+<head><title>Representing Maps</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="RoboticsLectureBook.css" /> 
+<meta name="src" content="RoboticsLectureBook.tex" /> 
+ <link rel="stylesheet" type="text/css" href="flatweb.css"> 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+
+<link href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css" rel="stylesheet" type="text/css" /> 
+ <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script> 
+ <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"> </script>  
+<link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"/>  
+<script src="flatjs.js"> </script>  <script src="/Users/danielmcguiness/GitHub/MCI-Source-Files/Configuration/ScriptsHTML/webBook/sidenote.js"> </script>   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/matlab.min.js"> </script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dockerfile.min.js"> </script>
+<!--l. 776--><p class="noindent" ><header> </header> 
+</head><body 
+>
+<page> 
+<nav class="wide"><div class="header"> <div class="header-left"><span class="header-lecture">M.Sc Robotics</span> 
+<span class="header-webBook">WebBook</span> </div> <div class="header-right"><span class="header-version">2026.SS</span> 
+<span class="header-chapter">Mobile Robot Localisation</span></div></div> <div class="toc"><span class="chapterToc"><span class="number">0</span><span class="title"><a 
+href="index.html#x2-10000">index</a></span></span><span class="chapterToc"><span class="number">1</span><span class="title"><a 
+href="MobileRobotLocalisation.html#x3-20001">Mobile Robot Localisation</a></span></span><span class="sectionToc"><span class="number">1.1</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-30001.1">The Problems of Noise and Aliasing</a></span></span><span class="subsectionToc"><span class="number">1.1.1</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-40001.1.1">Sensor
+Noise</a></span></span><span class="subsectionToc"><span class="number">1.1.2</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-50001.1.2">Sensor Aliasing</a></span></span><span class="subsectionToc"><span class="number">1.1.3</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-60001.1.3">Effector Noise</a></span></span><span class="subsectionToc"><span class="number">1.1.4</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-70001.1.4">An Error Model for Odometric
+Position Estimation</a></span></span><span class="sectionToc"><span class="number">1.2</span><span class="title"><a 
+href="LocalisationvHardCodedNavigation.html#x5-80001.2">Localisation v. Hard-Coded Navigation</a></span></span><span class="sectionToc"><span class="number">1.3</span><span class="title"><a 
+href="RepresentingBelief.html#x6-90001.3">Representing
+Belief</a></span></span><span class="subsectionToc"><span class="number">1.3.1</span><span class="title"><a 
+href="RepresentingBelief.html#x6-100001.3.1">Single Hypothesis Belief</a></span></span><span class="subsectionToc"><span class="number">1.3.2</span><span class="title"><a 
+href="RepresentingBelief.html#x6-110001.3.2">Multiple Hypothesis Belief</a></span></span><span class="sectionToc"><span class="number">1.4</span><span class="title"><a 
+href="#x7-120001.4">Representing
+Maps</a></span></span><span class="subsectionToc"><span class="number">1.4.1</span><span class="title"><a 
+href="#x7-130001.4.1">Continuous Representation</a></span></span><span class="subsectionToc"><span class="number">1.4.2</span><span class="title"><a 
+href="#x7-140001.4.2">Decomposition Methods</a></span></span><span class="subsectionToc"><span class="number">1.4.3</span><span class="title"><a 
+href="#x7-150001.4.3">Current
+Challenges</a></span></span><span class="sectionToc"><span class="number">1.5</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-160001.5">Probabilistic Map-Based Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.1</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-170001.5.1">Markov Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.2</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-210001.5.2">Kalman
+Filter Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.3</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-220001.5.3">An Implementation of Kalman Filter</a></span></span><span class="sectionToc"><span class="number">1.6</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-270001.6">Other Examples
+of Localisation Methods</a></span></span><span class="subsectionToc"><span class="number">1.6.1</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-280001.6.1">Landmark-based Navigation</a></span></span><span class="subsectionToc"><span class="number">1.6.2</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-290001.6.2">Globally Unique
+Localisation</a></span></span><span class="subsectionToc"><span class="number">1.6.3</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-300001.6.3">Positioning Beacon systems</a></span></span><span class="subsectionToc"><span class="number">1.6.4</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-310001.6.4">Route-Based Localisation</a></span></span><span class="sectionToc"><span class="number">1.7</span><span class="title"><a 
+href="BuildingMaps.html#x10-320001.7">Building
+Maps</a></span></span><span class="subsectionToc"><span class="number">1.7.1</span><span class="title"><a 
+href="BuildingMaps.html#x10-330001.7.1">Stochastic Map Technique</a></span></span><span class="subsectionToc"><span class="number">1.7.2</span><span class="title"><a 
+href="BuildingMaps.html#x10-340001.7.2">Other Mapping Techniques</a></span></span><span class="chapterToc"><span class="number">2</span><span class="title"><a 
+href="WelcometoLinux.html#x11-370002">Welcome to
+Linux</a></span></span><span class="sectionToc"><span class="number">2.1</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-380002.1">Learning the Linux Command Line</a></span></span><span class="subsectionToc"><span class="number">2.1.1</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-390002.1.1">A History of UNIX/Linux</a></span></span><span class="subsectionToc"><span class="number">2.1.2</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-410002.1.2">A
+Short History on Computer Interfaces</a></span></span><span class="subsectionToc"><span class="number">2.1.3</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-430002.1.3">Linux is a Nutshell</a></span></span><span class="subsectionToc"><span class="number">2.1.4</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-460002.1.4">Linux
+Distributions</a></span></span><span class="sectionToc"><span class="number">2.2</span><span class="title"><a 
+href="Installation.html#x13-470002.2">Installation</a></span></span><span class="sectionToc"><span class="number">2.3</span><span class="title"><a 
+href="Docker.html#x14-480002.3">Docker</a></span></span><span class="subsectionToc"><span class="number">2.3.1</span><span class="title"><a 
+href="Docker.html#x14-490002.3.1">Dockerfile</a></span></span><span class="subsectionToc"><span class="number">2.3.2</span><span class="title"><a 
+href="Docker.html#x14-500002.3.2">Running the Container</a></span></span><span class="chapterToc"><span class="number">3</span><span class="title"><a 
+href="CommandLineFundamentals.html#x15-510003">Command
+Line Fundamentals</a></span></span><span class="sectionToc"><span class="number">3.1</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-520003.1">To Command a Computer</a></span></span><span class="subsectionToc"><span class="number">3.1.1</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-530003.1.1">The Command Line Interface</a></span></span><span class="subsectionToc"><span class="number">3.1.2</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-540003.1.2">The
+Structure of Commands</a></span></span><span class="subsectionToc"><span class="number">3.1.3</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-550003.1.3">Some Rules Regarding the Syntax</a></span></span><span class="sectionToc"><span class="number">3.2</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-560003.2">When We Need Help
+with Commands</a></span></span><span class="subsectionToc"><span class="number">3.2.1</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-570003.2.1">Use Tab completion on the Shell</a></span></span><span class="subsectionToc"><span class="number">3.2.2</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-580003.2.2">The info command</a></span></span><span class="subsectionToc"><span class="number">3.2.3</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-590003.2.3">The
+whatis command</a></span></span><span class="chapterToc"><span class="number">4</span><span class="title"><a 
+href="WorkingwithFilesandFolders.html#x18-610004">Working with Files and Folders</a></span></span><span class="sectionToc"><span class="number">4.1</span><span class="title"><a 
+href="FilesandFolders.html#x19-620004.1">Files and Folders</a></span></span><span class="subsectionToc"><span class="number">4.1.1</span><span class="title"><a 
+href="FilesandFolders.html#x19-630004.1.1">A Detailed Look
+in ls Command</a></span></span><span class="subsectionToc"><span class="number">4.1.2</span><span class="title"><a 
+href="FilesandFolders.html#x19-640004.1.2">Creating and Removing Folders</a></span></span><span class="subsectionToc"><span class="number">4.1.3</span><span class="title"><a 
+href="FilesandFolders.html#x19-650004.1.3">Move, Copy and Delete Files and
+Folders</a></span></span><span class="sectionToc"><span class="number">4.2</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-720004.2">Permissions and Links</a></span></span><span class="subsectionToc"><span class="number">4.2.1</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-730004.2.1">Role to Users and sudo</a></span></span><span class="subsectionToc"><span class="number">4.2.2</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-740004.2.2">File Permissions</a></span></span><span class="subsectionToc"><span class="number">4.2.3</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-770004.2.3">Hard
+and Symbolic Links</a></span></span><span class="subsectionToc"><span class="number">4.2.4</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-780004.2.4">Soft (Symbolic) Links</a></span></span><span class="subsectionToc"><span class="number">4.2.5</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-800004.2.5">The Linux File System</a></span></span><span class="subsectionToc"><span class="number">4.2.6</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-810004.2.6">The
+UNIX Philosophy</a></span></span><span class="sectionToc"><span class="number">4.3</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-820004.3">Common Command-Line Tools and Tasks</a></span></span><span class="subsectionToc"><span class="number">4.3.1</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-830004.3.1">Connecting
+Commands with Pipes</a></span></span><span class="subsectionToc"><span class="number">4.3.2</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-840004.3.2">Viewing Text Files with cat, head, tail, and less</a></span></span><span class="subsectionToc"><span class="number">4.3.3</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-850004.3.3">Finding
+Linux Distribution and Kernel Information</a></span></span><span class="subsectionToc"><span class="number">4.3.4</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-870004.3.4">Find System Hardware and Disk
+Information</a></span></span><span class="chapterToc"><span class="number">5</span><span class="title"><a 
+href="ROSConcepts.html#x22-890005">ROS Concepts</a></span></span><span class="sectionToc"><span class="number">5.1</span><span class="title"><a 
+href="PublisherandSubscriberArchitecture.html#x23-900005.1">Publisher and Subscriber Architecture</a></span></span><span class="subsectionToc"><span class="number">5.1.1</span><span class="title"><a 
+href="PublisherandSubscriberArchitecture.html#x23-910005.1.1">ROS 2
+Architecture</a></span></span><span class="sectionToc"><span class="number">5.2</span><span class="title"><a 
+href="BuildingBlocks.html#x24-930005.2">Building Blocks</a></span></span><span class="subsectionToc"><span class="number">5.2.1</span><span class="title"><a 
+href="BuildingBlocks.html#x24-940005.2.1">Nodes</a></span></span><span class="subsectionToc"><span class="number">5.2.2</span><span class="title"><a 
+href="BuildingBlocks.html#x24-950005.2.2">The Discovery Process</a></span></span><span class="subsectionToc"><span class="number">5.2.3</span><span class="title"><a 
+href="BuildingBlocks.html#x24-960005.2.3">Communication
+Interface</a></span></span><span class="subsectionToc"><span class="number">5.2.4</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1050005.2.4">Topics</a></span></span><span class="subsectionToc"><span class="number">5.2.5</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1090005.2.5">Services</a></span></span><span class="subsectionToc"><span class="number">5.2.6</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1120005.2.6">Actions</a></span></span><span class="subsectionToc"><span class="number">5.2.7</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1150005.2.7">Parameters</a></span></span><span class="subsectionToc"><span class="number">5.2.8</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1240005.2.8">Working with
+Command Line</a></span></span><span class="subsectionToc"><span class="number">5.2.9</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1260005.2.9">Launch Files</a></span></span><span class="sectionToc"><span class="number">5.3</span><span class="title"><a 
+href="AdvancedConcepts.html#x25-1270005.3">Advanced Concepts</a></span></span><span class="subsectionToc"><span class="number">5.3.1</span><span class="title"><a 
+href="AdvancedConcepts.html#x25-1280005.3.1">ROS DOMAIN
+ID</a></span></span><span class="chapterToc"><span class="number">6</span><span class="title"><a 
+href="CommandLineTools.html#x26-1300006">Command Line Tools</a></span></span><span class="sectionToc"><span class="number">6.1</span><span class="title"><a 
+href="SettingtheEnvironment.html#x27-1310006.1">Setting the Environment</a></span></span><span class="sectionToc"><span class="number">6.2</span><span class="title"><a 
+href="TurtlesandGraphs.html#x28-1360006.2">Turtles and Graphs</a></span></span><span class="sectionToc"><span class="number">6.3</span><span class="title"><a 
+href="ADeeperLookintoNodes.html#x29-1440006.3">A
+Deeper Look into Nodes</a></span></span><span class="sectionToc"><span class="number">6.4</span><span class="title"><a 
+href="WorkingwithTopics.html#x30-1490006.4">Working with Topics</a></span></span><span class="sectionToc"><span class="number">6.5</span><span class="title"><a 
+href="WorkingwithServices.html#x31-1550006.5">Working with Services</a></span></span><span class="sectionToc"><span class="number">6.6</span><span class="title"><a 
+href="WorkingwithParameters.html#x32-1620006.6">Working
+with Parameters</a></span></span><span class="sectionToc"><span class="number">6.7</span><span class="title"><a 
+href="APracticalLookintoActions.html#x33-1690006.7">A Practical Look into Actions</a></span></span><span class="sectionToc"><span class="number">6.8</span><span class="title"><a 
+href="LaunchingNodes.html#x34-1760006.8">Launching Nodes</a></span></span><span class="chapterToc"><span class="number">7</span><span class="title"><a 
+href="ClientLibraries.html#x35-1780007">Client
+Libraries</a></span></span><span class="sectionToc"><span class="number">7.1</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1790007.1">Getting Started with Colcon</a></span></span><span class="subsectionToc"><span class="number">7.1.1</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1800007.1.1">The Structure of a Package</a></span></span><span class="subsectionToc"><span class="number">7.1.2</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1810007.1.2">Sourcing
+an Underlay</a></span></span><span class="subsectionToc"><span class="number">7.1.3</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1820007.1.3">Building the Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.4</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1830007.1.4">Sourcing the New Package</a></span></span><span class="subsectionToc"><span class="number">7.1.5</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1840007.1.5">Creating a
+Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.6</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1850007.1.6">Sourcing the Environment</a></span></span><span class="subsectionToc"><span class="number">7.1.7</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1860007.1.7">Creating a New Directory</a></span></span><span class="subsectionToc"><span class="number">7.1.8</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1870007.1.8">Cloning a
+Sample Repo</a></span></span><span class="subsectionToc"><span class="number">7.1.9</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1880007.1.9">Resolving Dependencies</a></span></span><span class="subsectionToc"><span class="number">7.1.10</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1890007.1.10">Building the Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.11</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1900007.1.11">Sourcing our
+Overlay</a></span></span><span class="subsectionToc"><span class="number">7.1.12</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1910007.1.12">Modifying the Overlay</a></span></span><span class="subsectionToc"><span class="number">7.1.13</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1920007.1.13">Creating a Package</a></span></span><span class="sectionToc"><span class="number">7.2</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-1950007.2">Writing a Simple Publisher
+and Subscriber</a></span></span><span class="subsectionToc"><span class="number">7.2.1</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-1960007.2.1">Creating a ROS Packages</a></span></span><span class="subsectionToc"><span class="number">7.2.2</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-1970007.2.2">Writing the Publisher Node</a></span></span><span class="subsectionToc"><span class="number">7.2.3</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-2020007.2.3">Writing
+the Subscriber Node</a></span></span><span class="subsectionToc"><span class="number">7.2.4</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-2050007.2.4">Building and Running</a></span></span><span class="sectionToc"><span class="number">7.3</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2060007.3">Writing a Simple Service and
+                                                                                
+                                                                                
+Client</a></span></span><span class="subsectionToc"><span class="number">7.3.1</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2070007.3.1">Creating a New Package</a></span></span><span class="subsectionToc"><span class="number">7.3.2</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2100007.3.2">Writing the Service Node</a></span></span><span class="subsectionToc"><span class="number">7.3.3</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2130007.3.3">Writing the Client
+Node</a></span></span><span class="sectionToc"><span class="number">7.4</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2160007.4">Creating Custom msg and srv Files</a></span></span><span class="subsectionToc"><span class="number">7.4.1</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2170007.4.1">Creating a New Package</a></span></span><span class="subsectionToc"><span class="number">7.4.2</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2180007.4.2">Creating
+Custom Definitions</a></span></span><span class="subsectionToc"><span class="number">7.4.3</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2250007.4.3">Testing the Newly Built Interfaces</a></span></span><span class="sectionToc"><span class="number">7.5</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2270007.5">Using Parameters in a
+Class</a></span></span><span class="subsectionToc"><span class="number">7.5.1</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2280007.5.1">Creating a Package</a></span></span><span class="subsectionToc"><span class="number">7.5.2</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2300007.5.2">Writing our Python Code</a></span></span><span class="subsectionToc"><span class="number">7.5.3</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2350007.5.3">Changing Output using
+the Console</a></span></span><span class="subsectionToc"><span class="number">7.5.4</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2360007.5.4">Changing using the Launch File</a></span></span><span class="sectionToc"><span class="number">7.6</span><span class="title"><a 
+href="ManagingDependencies.html#x41-2370007.6">Managing Dependencies</a></span></span><span class="sectionToc"><span class="number">7.7</span><span class="title"><a 
+href="CreatinganAction.html#x42-2390007.7">Creating
+an Action</a></span></span><span class="sectionToc"><span class="number">7.8</span><span class="title"><a 
+href="WritinganActionServerandClient.html#x43-2420007.8">Writing an Action Server and Client</a></span></span><span class="sectionToc"><span class="number">7.9</span><span class="title"><a 
+href="WritingaLaunchFile.html#x44-2440007.9">Writing a Launch File</a></span></span>
+ 
+
+</div></div></nav> 
+
+<article class="chapter"> 
+<nav class="crosslinks-top"> <a 
+href="ProbabilisticMapBasedLocalisation.html" ><span class="nav-next">NEXT</span></a><a 
+href="RepresentingBelief.html" ><span class="nav-prev">PREV</span></a><a 
+href="RepresentingBelief.html#tailRepresentingBelief.html" ><span class="nav-prev-tail">PREV-TAIL</span></a><a 
+href="#tailRepresentingMaps.html"><span class="nav-tail">TAIL</span></a><a 
+href="MobileRobotLocalisation.html#RepresentingMaps.html" ><span class="nav-up">UP</span></a></nav> 
+<div class="section-header"><h3><a class="pdf-icon" href="RoboticsLectureBook.pdf#section.1.4"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">1.4</span> <span class="title">  <a 
+ id="x7-120001.4"></a>Representing Maps</span></h3></div><p>
+<!--l. 778--><p class="noindent" >The problem of representing the environment in which an <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous
+Mobile Robotics</a></span></span></span> moves is a dual of the problem of representing the robot’s possible position or
+positions. Decisions made regarding the environmental representation can have impact on the choices
+available for robot position representation.
+</p>
+<div class="knowledge">
+<!--l. 785--><p class="noindent" >Often the fidelity of the position representation is bounded by the fidelity of the map.
+</p>
+</div><p class="noindent">
+<!--l. 787--><p class="noindent" >There are three (<span class="alert"><alert style="color: #821131;">3</alert></span>) fundamental relationships which must be understood when choosing a particular
+map representation:
+</p>     
+<dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+1. 
+</dt><dd 
+class="enumerate-enumitem">The precision of the map must appropriately match the precision with which the robot
+needs to achieve its goals.
+</dd>     
+<dt class="enumerate-enumitem">
+2. 
+</dt><dd 
+class="enumerate-enumitem">The precision of the map and the type of features represented must match the precision
+and data types returned by the robot’s sensors.
+</dd>     
+<dt class="enumerate-enumitem">
+3. 
+</dt><dd 
+class="enumerate-enumitem">The  complexity  of  the  map  representation  has  direct  impact  on  the  computational
+complexity of reasoning about mapping, localisation and navigation.</dd></dl>
+<!--l. 799--><p class="noindent" >Using the aforementioned criteria, we identify and discuss critical design choices in creating a map
+representation. Each such choice has great impact on the relationships, and on the resulting robot
+localisation architecture. As we will see, the choice of possible map representations is broad, if not
+expansive. Selecting an appropriate representation requires understanding all of the trade-offs
+inherent in that choice as well as understanding the specific context in which a particular
+<span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span> implementation must perform
+localisation.
+</p>
+<div class="figure" 
+>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+<a 
+ id="x7-12004r8"></a>
+<figcaption class="caption" ><span class="id"><span 
+class="ec-lmbx-7">Figure</span><span 
+class="ec-lmbx-7"> 1.8:</span><span 
+class="ec-lmbx-7"> </span>
+         </span><span  
+class="content"><span 
+class="ec-lmr-7">The presented robot-centric mapping framework enables mobile robots to create consistent elevation maps</span>
+         <span 
+class="ec-lmr-7">of the terrain. Mapping does not necessarily need to be done only in 2D as robots which will be used</span>
+         <span 
+class="ec-lmr-7">in  outdoor  environment  would  need  the  height  of  the  map  as  well  </span><span class="cite"><span class="cite-show"><span 
+class="ec-lmr-7">[</span><span 
+class="ts1-lmr7-">†</span><span 
+class="ec-lmr-7">]</span></span><span class="cite-detail"><span 
+class="ec-lmr-7">Fankhauser,  P.,  Bloesch,  M.  &#x0026;</span>
+         <span 
+class="ec-lmr-7">Hutter, M. Probabilistic terrain mapping for mobile robots with uncertain localization. </span><span 
+class="ec-lmri-7">IEEE Robotics</span>
+         <span 
+class="ec-lmri-7">and Automation Letters </span><span id="bold" style="font-weight:bold;">3</span><span id="bold" style="font-weight:bold;">,</span> <span 
+class="ec-lmr-7">3019–3026 (2018)</span></span></span><span 
+class="ec-lmr-7">.</span><span 
+class="ec-lmr-7"> </span>                                       </span></figcaption><!--tex4ht:label?: x7-12004r8 -->
+<img 
+ 
+src="figures/Mobile-Robot-Localisation/raster/robot-centric-mapping.png" alt="PIC"  
+style="" />
+                                                                                
+                                                                                
+</div>
+
+<!--l. 815--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="RoboticsLectureBook.pdf#subsection.1.4.1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">1.4.1</span> <span class="title">  <a 
+ id="x7-130001.4.1"></a>Continuous Representation</span></h4></div><p>
+</p><!--l. 817--><p class="noindent" >A continuous-valued map is one method for <code class="verb">exact</code> decomposition of the environment. The position of
+environmental features can be mapped precisely in continuous space.
+</p>
+<div class="knowledge">
+<span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span> implementations to date use
+continuous maps only in two (<span class="alert"><alert style="color: #821131;">2</alert></span>) dimensional representations, as increasing the number of dimensions
+can result in high computational load on the <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile
+Robotics</a></span></span></span> navigation computer.
+</div><p class="noindent">
+<!--l. 826--><p class="noindent" >A common approach is to combine the exactness of a continuous representation with the compactness
+of the closed world assumption. This means that one assumes the representation will specify all
+environmental objects in the map, and that any area in the map which is devoid of objects has no
+objects in the corresponding portion of the environment. Therefore, the total storage needed in the map
+is proportional to the density of objects in the environment, and a sparse environment can be
+represented by a low-memory map.
+</p><!--l. 833--><p class="noindent" >One example of such a representation, shown in <span id="bold" style="font-weight:bold;">Fig.</span> <a 
+href="#x7-13001r9">1.9<!--tex4ht:ref: fig:polygon-representation --></a>, is a 2D representation in which polygons
+represent all obstacles in a continuos-valued coordinate space. This is similar to the method used
+by Latombe [5, 113] and others to represent environments for <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile
+Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span> path planning techniques. In the case of [5, 113], most of the
+experiments are in fact simulations run exclusively within the computer’s memory. Therefore, no real
+effort would have been expended to attempt to use sets of polygons to describe a real-world
+environment, such as a park or office building.
+</p>
+<div class="figure" 
+>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+<!--l. 842--><p class="noindent" ><img 
+ 
+src="figures/Mobile-Robot-Localisation/raster/polygon-representation.png" alt="PIC"  
+style="" /> <a 
+ id="x7-13001r9"></a>
+</p>
+<figcaption class="caption" ><span class="id"><span 
+class="ec-lmbx-7">Figure</span><span 
+class="ec-lmbx-7"> 1.9:</span><span 
+class="ec-lmbx-7"> </span></span><span  
+class="content"><span 
+class="ec-lmr-7">A continous representation using polygons as environmental obstacles.</span>                       </span></figcaption><!--tex4ht:label?: x7-13001r9 -->
+                                                                                
+                                                                                
+</div>
+<!--l. 847--><p class="noindent" >In other work in which real environments must be captured by the maps, there seems to be a trend
+towards <span class="alert"><alert style="color: #821131;">selectivity</alert></span> and <span class="alert"><alert style="color: #821131;">abstraction</alert></span>. The human map-maker tends to capture on the map, for
+localisation purposes, only objects that can be detected by the robot’s sensors and, furthermore, only a
+subset of the features of real-world objects.
+</p>
+<div class="knowledge">
+<!--l. 856--><p class="noindent" >It should be immediately apparent that geometric maps can capably represent the physical locations of
+objects without referring to their texture, colour, elasticity, or any other such secondary features that
+do not related directly to position and space.
+</p>
+</div><p class="noindent">
+<!--l. 858--><p class="noindent" >In addition to this level of abstraction, an <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile
+Robotics</a></span></span></span> map can further reduce memory usage by capturing only <span class="alert"><alert style="color: #821131;">aspects of object geometry</alert></span>
+which are <span class="alert"><alert style="color: #821131;">immediately relevant</alert></span> to localisation. For example all objects may be approximated using
+very simple convex polygons, <span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">A convex polygon is any shape that has all interior angles
+that measure less than 180 degrees</span></span> sacrificing map felicity for the sake of computational
+speed.
+</p><!--l. 864--><p class="noindent" >One excellent example involves <span class="alert"><alert style="color: #821131;">line extraction</alert></span>. Many indoor <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile
+Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span> rely upon laser range-finding devices to recover distance readings
+to nearby objects. Such robots can automatically extract best-fit lines from the dense range data
+provided by thousands of points of laser strikes. Given such a line extraction sensor, an appropriate
+continuous mapping approach is to populate the map with a set of infinite lines. The continuous nature
+of the map guarantees that lines can be positioned at arbitrary positions in the plane and at
+arbitrary angles. The abstraction of real environmental objects such as walls and intersections
+captures only the information in the map representation that matches the type of information
+recovered by the <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span>’s rangefinding
+sensor.
+</p>
+<div class="figure" 
+>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+<!--l. 875--><p class="noindent" ><img 
+ 
+src="figures/Mobile-Robot-Localisation/raster/epfl.png" alt="PIC"  
+style="" /> <a 
+ id="x7-13002r10"></a>
+</p>
+<figcaption class="caption" ><span class="id"><span 
+class="ec-lmbx-7">Figure</span><span 
+class="ec-lmbx-7"> 1.10:</span><span 
+class="ec-lmbx-7"> </span>
+          </span><span  
+class="content"><span 
+class="ec-lmr-7">Example of a continuous-valued line representation of EPFL. left: real map right: representation with a</span>
+          <span 
+class="ec-lmr-7">set of infinite lines.</span>                                                         </span></figcaption><!--tex4ht:label?: x7-13002r10 -->
+                                                                                
+                                                                                
+</div>
+<!--l. 881--><p class="noindent" ><span id="bold" style="font-weight:bold;">Fig.</span> <a 
+href="#x7-13002r10">1.10<!--tex4ht:ref: fig:epfl --></a> shows a map of an indoor environment at EPFL using a continuous line representation. Note
+that the only environmental features captured by the map are straight lines, such as those found at
+corners and along walls. This represents not only a sampling of the real world of richer features, but
+also a simplification, for an actual wall may have texture and relief that is not captured by the mapped
+line. The impact of continuos map representations on position representation is primarily positive. In
+the case of single hypothesis position representation, that position may be specified as any
+continuous-valued point in the coordinate space, and therefore extremely high accuracy is possible. In
+the case of multiple hypothesis position representation, the continuous map enables two types of
+multiple position representation. In one case, the possible robot position may be depicted as a
+geometric shape in the hyperplane, such that the robot is known to be within the bounds of that shape.
+This is shown in Figure 5.30, in which the position of the robot is depicted by an oval bounding area.
+Yet, the continuous representation does not disallow representation of position in the form of
+a discrete set of possible positions. For instance, in [111] the robot position belief state
+is captured by sampling nine continuous-valued positions from within a region near the
+robot’s best known position. This algorithm captures, within a continuous space, a discrete
+sampling of possible robot positions. In summary, the key advantage of a continuous map
+representation is the potential for high accuracy and expressiveness with respect to the
+environmental configuration as well as the robot position within that environment. The danger of a
+continuous representation is that the map may be computationally costly. But this danger can be
+tempered by employing abstraction and capturing only the most relevant environmental
+features. Together with the use of the closed world assumption, these techniques can enable a
+continuous-valued map to be no more costly, and sometimes even less costly, than a standard discrete
+representation.
+
+</p>
+<!--l. 906--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="RoboticsLectureBook.pdf#subsection.1.4.2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">1.4.2</span> <span class="title">  <a 
+ id="x7-140001.4.2"></a>Decomposition Methods</span></h4></div><p>
+</p><!--l. 908--><p class="noindent" >In previous section, we discussed one method of simplification, in which the continuous map
+representation contains a set of infinite lines which approximate real-world environmental lines based on
+a two-dimensional slice of the world.
+</p>
+<div class="warning">
+<!--l. 916--><p class="noindent" >Basically this transformation from the real world to the map representation is a filter that removes all
+non-straight data and furthermore extends line segment data into infinite lines that require fewer
+parameters.
+</p>
+</div>
+<!--l. 918--><p class="noindent" >A more dramatic form of simplification is abstraction:
+</p><!--l. 920--><p class="noindent" ><div class="quote"> a general decomposition and selection of environmental features.  </p></div><p>
+<!--l. 924--><p class="noindent" >In this section, we explore decomposition as applied in its more extreme forms to the question of map
+representation. Why would one radically decompose the real environment during the design of a map
+representation? The immediate disadvantage of decomposition and abstraction is the loss of fidelity
+between the map and the real world. Both qualitatively, in terms of overall structure, and
+                                                                                
+                                                                                
+quantitatively, in terms of geometric precision, a highly abstract map does not compare favourably to a
+high-fidelity map.
+</p><!--l. 931--><p class="noindent" >Despite this disadvantage, decomposition and abstraction may be useful if the abstraction
+can be planned carefully so as to capture the relevant, useful features of the world while
+discarding all other features. The advantage of this approach is that the map representation can
+potentially be minimised. Furthermore, if the decomposition is hierarchical, such as in a
+pyramid of recursive abstraction, then reasoning and planning with respect to the map
+rep- resentation may be computationally far superior to planning in a fully detailed world
+model.
+</p><!--l. 938--><p class="noindent" >A standard, lossless form of opportunistic decomposition is termed exact cell decomposition. This
+method, introduced by [5], achieves decomposition by selecting boundaries between discrete cells based
+on geometric criticality.
+</p><!--l. 942--><p class="noindent" >Figure 5.14 depicts an exact decomposition of a planar workspace populated by polygonal obstacles.
+The map representation tessellates the space into areas of free space. The representation can be
+extremely compact because each such area is actually stored as a single node, shown in the graph at the
+bottom of Figure 5.14.
+</p><!--l. 947--><p class="noindent" >The underlying assumption behind this decomposition is that the particular position of a robot within
+each area of free space does not matter. What matters is the robot’s ability to traverse from each
+area of free space to the adjacent areas. Therefore, as with other representations we will
+see, the resulting graph captures the adjacency of map locales. If indeed the assumptions
+are valid and the robot does not care about its precise position within a single area, then
+this can be an effective representation that nonetheless captures the connectivity of the
+environment.
+</p><!--l. 955--><p class="noindent" >Such an exact decomposition is not always appropriate. Exact decomposition is a function of the
+particular environment obstacles and free space. If this information is expensive to collect or even
+unknown, then such an approach is not feasible.
+</p><!--l. 959--><p class="noindent" >An alternative is fixed decomposition, in which the world is tessellated, transforming the continuos real
+environment into a discrete approximation for the map. Such a transforma- tion is demonstrated in
+Figure 5.15, which depicts what happens to obstacle-filled and free areas during this transformation.
+The key disadvantage of this approach stems from its in- exact nature. It is possible for narrow
+passageways to be lost during such a transformation, as shown in Figure 5.15. Formally this means that
+fixed decomposition is sound but not complete. Yet another approach is adaptive cell decomposition as
+presented in Figure 5.16.
+</p><!--l. 967--><p class="noindent" >The concept of fixed decomposition is extremely popular in <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous
+Mobile Robotics</a></span></span></span>ics; it is perhaps the single most common map representation technique currently
+utilised. One very popular
+version of fixed decomposition is known as the occupancy grid representation [91]. In an occupancy
+grid, the environment is represented by a discrete grid, where each cell is either filled (part of an
+obstacle) or empty (part of free space). This method is of particular value when a robot is equipped
+with range-based sensors because the range values of each sensor, combined with the absolute
+position of the robot, can be used directly to update the filled/ empty value of each cell.
+In the occupancy grid, each cell may have a counter, whereby the value 0 indicates that
+the cell has not been &#x0022;hit&#x0022; by any ranging measurements and, therefore, it is likely free
+space. As the number of ranging strikes increases, the cell’s value is incremented and, above
+a cer- tain threshold, the cell is deemed to be an obstacle. By discounting the values of
+                                                                                
+                                                                                
+cells over time, both hysteresis and the possibility of transient obstacles can be represented
+using this occupancy grid approach. Figure 5.17 depicts an occupancy grid representation in
+which the darkness of each cell is proportional to the value of its counter. One commercial
+robot that uses a standard occupancy grid for mapping and navigation is the Cye robot
+[112].
+</p><!--l. 985--><p class="noindent" >There remain two main disadvantages of the occupancy grid approach. First, the size of the map in
+robot memory grows with the size of the environment and, if a small cell size is used, this size can
+quickly become untenable. This occupancy grid approach is not compatible with the closed world
+assumption, which enabled continuous representations to have poten- tially very small memory
+requirements in large, sparse environments. In contrast, the occu- pancy grid must have memory set
+aside for every cell in the matrix. Furthermore, any fixed decomposition method such as this imposes a
+geometric grid on the world a priori, regard- less of the environmental details. This can be
+inappropriate in cases where geometry is not the most salient feature of the environment. For these
+reasons, an alternative, called topological decomposition, has been the subject of some exploration in
+<span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span>ics. Topological approaches
+avoid direct measurement of geometric environmental qualities, instead concentrating on
+characteristics of the environ- ment that are most relevant to the robot for localisation. Formally, a
+topological representation is a graph that specifies two things: nodes and the connectivity
+between those nodes. Insofar as a topological representation is intended for the use of a
+<span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span>, nodes are used to denote
+areas in the world and arcs are used to denote adjacency of pairs of nodes. When an arc
+connects two nodes, then the robot can traverse from one node to the other without requiring
+traversal of any other intermediary node. Adjacency is clearly at the heart of the topological
+approach, just as adjacency in a cell de- composition representation maps to geometric
+adjacency in the real world. However, the topological approach diverges in that the nodes are
+not of fixed size nor even specifications of free space. Instead, nodes document an area
+based on any sensor discriminant such that the robot can recognise entry and exit of the
+node. Figure 5.18 depicts a topological representation of a set of hallways and offices in an
+indoor
+environment. In this case, the robot is assumed to have an intersection detector, perhaps us- ing sonar
+and vision to find intersections between halls and between halls and rooms. Note that nodes capture
+geometric space and arcs in this representation simply represent connec- tivity. Another example of
+topological representation is the work of Dudek [49], in which the goal is to create a <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous
+Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span> that can capture the most interesting aspects of an area
+for human consumption. The nodes in Dudek’s representation are visually striking locales rather than
+route intersections. In order to navigate using a topological map robustly, a robot must satisfy
+two constraints. First, it must have a means for detecting its current position in terms of
+the nodes of the to- pological graph. Second, it must have a means for traveling between
+nodes using robot mo- tion. The node sizes and particular dimensions must be optimised to
+match the sensory discrimination of the <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous
+Mobile Robotics</a></span></span></span> hardware. This ability to &#x0022;tune&#x0022; the representation to the robot’s particular
+sensors can be an important advantage of the topological approach. How- ever, as the map
+representation drifts further away from true geometry, the expressiveness of the representation for
+accurately and precisely describing a robot position is lost. Therein lies the compromise
+between the discrete cell-based map representations and the topological representations.
+                                                                                
+                                                                                
+Interestingly, the continuous map representation has the potential to be both compact like a
+topological representation and precise as with all direct geometric rep- resentations. Yet,
+a chief motivation of the topological approach is that the environment may contain im-
+portant non-geometric features - features that have no ranging relevance but are useful for
+localisation. In Chapter 4 we described such whole-image vision-based features. In contrast to
+these whole-image feature extractors, often spatially localised landmarks are artificially
+placed in an environment to impose a particular visual-topological connectivity upon the
+environment. In effect, the artificial landmark can impose artificial structure. Ex- amples of working
+systems operating with this landmark-based strategy have also demon- strated success.
+Latombe’s landmark-based navigation research 89 has been implemented on real-world
+indoor <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span>s that employ paper
+landmarks attached to the ceiling as the locally observable features. Chips the museum robot
+is another robot that uses man- made landmarks to obviate the localisation problem. In
+this case, a bright pink square serves as a landmark with dimensions and color signature
+that would be hard to accidentally repro- duce in a museum environment [88]. One such
+museum landmark is shown in Figure (5.19). In summary, range is clearly not the only
+measurable and useful environmental value for a <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous
+Mobile Robotics</a></span></span></span>. This is particularly true due to the advent of color vision as well as laser
+rangefinding, which provides reflectance information in addition to range information. Choosing a
+map representation for a particular <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile
+Robotics</a></span></span></span> requires first understanding the sensors available on the <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile
+Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span> and second understanding the <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile
+Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span>’s function- al requirements (e.g. required goal precision and
+accuracy).
+
+</p>
+<!--l. 1046--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="RoboticsLectureBook.pdf#subsection.1.4.3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">1.4.3</span> <span class="title">  <a 
+ id="x7-150001.4.3"></a>Current Challenges</span></h4></div><p>
+</p><!--l. 1048--><p class="noindent" >Previous section describe major design decisions with regards to map representation choices. There are,
+however, fundamental real-world features which <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile
+Robotics</a></span></span></span> map representations do not work as well. These continue to be the subject of open research,
+and several such challenges are described below.
+The real world is <span class="alert"><alert style="color: #821131;">dynamic</alert></span>. As <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span>s come
+to work and move in the same spaces as humans, they will encounter: </p>
+<ul class="itemize1">     
+<li class="itemize">
+<!--l. 1057--><p class="noindent" >moving people,
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 1058--><p class="noindent" >cars,
+</p>     
+</li>
+<li class="itemize">
+                                                                                
+                                                                                
+     
+<!--l. 1059--><p class="noindent" >strollers, and
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 1060--><p class="noindent" >transient obstacles.</p></li></ul>
+<!--l. 1063--><p class="noindent" >This is particularly true when one considers a home setting with which domestic robots will someday
+need to contend.
+</p><!--l. 1066--><p class="noindent" >The map representations described previously do not, in general, have <span class="alert"><alert style="color: #821131;">explicit methods</alert></span> for
+identifying and distinguishing between permanent obstacles (e.g. walls, doorways, etc.) and transient
+obstacles (e.g., humans, shipping packages, etc.). The current state of the art in terms of
+<span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span> sensors is partly to blame for this
+shortcoming. Although vision research is rapidly advancing, robust sensors that discriminate
+between moving animals and static structures from a moving reference frame are not yet
+available. Furthermore, estimating the motion vector of transient objects remains a research
+problem.
+Usually, the assumption behind the above map representations is that all objects on the map are
+effectively <span class="alert"><alert style="color: #821131;">static</alert></span>. Partial success can be achieved by discounting mapped objects over time. For
+example, occupancy grid techniques can be more robust to dynamic settings by introducing temporal
+discounting, effectively treating transient obstacles as noise. The more challenging process of map
+creation is particularly fragile to environment dynamics; most mapping techniques generally require
+that the environment be free of moving objects during the mapping process. One exception to this
+limitation involves topological representations. Because precise geometry is not important, transient
+objects have little effect on the map- ping or localisation process, subject to the critical constraint that
+the transient objects must not change the topological connectivity of the environment. Still,
+neither the occupancy grid representation nor a topological approach is actively recognizing
+and representing transient objects as distinct from both sensor error and permanent map
+features.
+As vision sensing provides more robust and more informative content regarding the transience and
+motion details of objects in the world, researchers will in time propose representations that make use of
+that information. A classic example involves occlusion by human crowds. Museum tour guide
+<span class="margin"><span>robots</span><span class="sidenote"><img 
+ 
+src="figures/Mobile-Robot-Localisation/raster/museum-tour-robot.jpg" alt="PIC"  
+style="" />An Example of a museum tour guide robot used in the National Museum of Korea
+<span class="cite"><span class="cite-show">[<span 
+class="ts1-lmr10-">†</span>]</span><span class="cite-detail"><a 
+ id="x7-15001"></a>Agency., Y. N. <span 
+class="ec-lmri-10">Museum guide robot </span>2018</span></span>.</span></span> generally suffer from an extreme amount of occlusion. If
+the robot’s sensing suite is located along the robot’s body, then the robot is effectively blind when a
+group of human visitors completely surrounds the robot. This is because its map contains only
+environment features that are, at that point, fully hidden from the robot’s sensors by the wall of people.
+In the best case, the robot should recognise its occlusion and make no effort to localise using these
+invalid sensor readings. In the worst case, the robot will localise with the fully occluded data,
+and will update its location incorrectly. A vision sensor that can discriminate the local
+conditions of the robot (e.g. we are surrounded by people) can help eliminate this error
+mode.
+</p><!--l. 1103--><p class="noindent" >A second open challenge in <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span>
+localisation involves the traversal of open spaces. Existing localisation techniques generally depend on
+local measures such as range, thereby demanding environments that are somewhat densely filled with
+objects that the sensors can detect and measure. Wide open spaces such as parking lots, fields of grass
+and indoor open-spaces such as those found in convention centres or expos pose a difficulty for such
+                                                                                
+                                                                                
+systems due to their relative sparseness. Indeed, when populated with humans, the challenge is
+exacerbated because any mapped objects are almost certain to be occluded from view by the
+people.
+Once again, more recent technologies provide some hope for overcoming these limitations. Both vision
+and state-of-the-art laser range-finding devices offer outdoor performance with ranges of up to a
+hundred meters and more. Of course, <span class="acronym"><span class="acronym-short"><a 
+href="#glo:gps" class="glossary" >GPS</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:gps" class="glossary" >Global Positioning System</a></span><span class="acronym-desc"><a 
+href="#glo:gps" class="glossary" >Global Positioning System</a></span></span></span>
+performs even better. Such long-range sensing may be required for robots to localise using distant
+features.
+This trend teases out a hidden assumption underlying most topological map representations. Usually,
+topological representations make assumptions regarding spatial locality: <div class="quote">  a node contains objects and
+features that are themselves within that node.  </p></div><p>  The process of map creation therefore involves making
+nodes which are, in their own self-contained way, recognizable by virtue of the objects contained within
+the node. Therefore, in an indoor environment, each room can be a separate node. This is a reasonable
+assumption as each room will have a layout and a set of belongings that are <span class="alert"><alert style="color: #821131;">unique</alert></span> to that
+room.
+However, consider the outdoor world of a wide-open park. <div class="quote">  Where should a single node end
+and the next node begin?  </div><p>  The answer is unclear as objects which are far away from the
+current node, or position, can give information for the localisation process. For example, the
+hump of a hill at the horizon, the position of a river in the valley and the trajectory of
+the Sun all are non-local features that have great bearing on one’s ability to infer current
+position.
+<div class="warning">
+<!--l. 1148--><p class="noindent" >The spatial locality assumption is violated and, instead, replaced by a visibility criterion: <div class="quote">  the node or
+cell may need a mechanism for representing objects that are measurable and visible from that cell.
+</p></div><p>
+</div>
+<!--l. 1150--><p class="noindent" >Once again, as sensors and outdoor locomotion mechanisms improve, there will be greater urgency to
+solve problems associated with localisation in wide-open settings, with and without GPS-type
+global localisation sensors. <span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">Of course with the use of a <span class="acronym"><span class="acronym-short"><a 
+href="#glo:gnss" class="glossary" >GNSS</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:gnss" class="glossary" >Global Navigation Satellite
+System</a></span><span class="acronym-desc"><a 
+href="#glo:gnss" class="glossary" >Global Navigation Satellite System</a></span></span></span>, the localisation problem may completely be solved,
+however in cost saving measures one would wish to avoid the use of them as they can be
+expensive.</span></span>
+</p><!--l. 1156--><p class="noindent" >We end this section with one final open challenge that represents one of the fundamental ac- ademic
+research questions of robotics: <span id="bold" style="font-weight:bold;">sensor fusion</span>.
+</p><!--l. 1159--><p class="noindent" ><div class="info-block"> <span class="info-upper"> <span class="info-header"><span id="bold" style="font-weight:bold;">Information: </span></span><span class="info-title">Sensor Fusion</span> </span> <div class="body"><p>  A variety of measurement types are possible using off-the-shelf robot
+sensors, including heat, range, acoustic and light-based reflectivity, color, texture, friction,
+etc. Sensor fusion is a research topic closely related to map representation. Just as a map
+must embody an environment in sufficient detail for a robot to perform localisation and
+reasoning, sensor fusion demands a representation of the world that is sufficiently general
+and expressive that a variety of sensor types can have their data correlated appropriately,
+strengthening the resulting percepts well beyond that of any individual sensor’s readings.
+</p></div></div><p class="noindent">
+</p><!--l. 1169--><p class="noindent" >An implementation example implementation of sensor fusion to date is that of neural network classifier.
+Using this technique, any number and any type of sensor values may be jointly combined in a
+network that will use whatever means necessary to optimise its classification accuracy. For the
+                                                                                
+                                                                                
+<span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span> that must use a human-readable
+internal map representation, no equally general sensor fusion scheme has yet been born. It is reasonable
+to expect that, when the sensor fusion problem is solved, integration of a large number of disparate
+sensor types may easily result in sufficient discriminatory power for robots to achieve real-world
+navigation, even in wide-open and dynamic circumstances such as a public square filled with
+people.
+                                                                                
+                                                                                
+</p>
+<div class="crosslinks-bottom"><a 
+href="ProbabilisticMapBasedLocalisation.html" ><span class="nav-next">NEXT</span></a><a 
+href="RepresentingBelief.html" ><span class="nav-prev">PREV</span></a><a 
+href="RepresentingBelief.html#tailRepresentingBelief.html" ><span class="nav-prev-tail">PREV-TAIL</span></a><a 
+href="RepresentingMaps.html" ><span class="nav-front">FRONT</span></a><a 
+href="MobileRobotLocalisation.html#RepresentingMaps.html" ><span class="nav-up">UP</span></a></nav><a 
+ id="tailRepresentingMaps.html"></a>  </div> <div class="footer"> <div class="footer-left"><span class="footer-lecture">D. T. McGuiness, PhD</span> 
+<span class="footer-webBook"><span id="bold" style="font-weight:bold;">Last Updated:</span> 18.5.2026, at 11:25.</span> </div> </div> </div> <div class="author-notes"><span class="note">Authors Note </span><span class="text">The website you are
+viewing is auto-generated using ParSnip and therefore subject to slight errors in typography and
+formatting. When in doubt, please consult the LectureBook. </span></div>  
+</body> 
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html> 
+<html lang="en">  
+<head><title>Other Examples of Localisation Methods</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="RoboticsLectureBook.css" /> 
+<meta name="src" content="RoboticsLectureBook.tex" /> 
+ <link rel="stylesheet" type="text/css" href="flatweb.css"> 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+
+<link href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css" rel="stylesheet" type="text/css" /> 
+ <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script> 
+ <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"> </script>  
+<link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"/>  
+<script src="flatjs.js"> </script>  <script src="/Users/danielmcguiness/GitHub/MCI-Source-Files/Configuration/ScriptsHTML/webBook/sidenote.js"> </script>   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/matlab.min.js"> </script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dockerfile.min.js"> </script>
+<!--l. 1958--><p class="noindent" ><header> </header> 
+</head><body 
+>
+<page> 
+<nav class="wide"><div class="header"> <div class="header-left"><span class="header-lecture">M.Sc Robotics</span> 
+<span class="header-webBook">WebBook</span> </div> <div class="header-right"><span class="header-version">2026.SS</span> 
+<span class="header-chapter">Mobile Robot Localisation</span></div></div> <div class="toc"><span class="chapterToc"><span class="number">0</span><span class="title"><a 
+href="index.html#x2-10000">index</a></span></span><span class="chapterToc"><span class="number">1</span><span class="title"><a 
+href="MobileRobotLocalisation.html#x3-20001">Mobile Robot Localisation</a></span></span><span class="sectionToc"><span class="number">1.1</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-30001.1">The Problems of Noise and Aliasing</a></span></span><span class="subsectionToc"><span class="number">1.1.1</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-40001.1.1">Sensor
+Noise</a></span></span><span class="subsectionToc"><span class="number">1.1.2</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-50001.1.2">Sensor Aliasing</a></span></span><span class="subsectionToc"><span class="number">1.1.3</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-60001.1.3">Effector Noise</a></span></span><span class="subsectionToc"><span class="number">1.1.4</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-70001.1.4">An Error Model for Odometric
+Position Estimation</a></span></span><span class="sectionToc"><span class="number">1.2</span><span class="title"><a 
+href="LocalisationvHardCodedNavigation.html#x5-80001.2">Localisation v. Hard-Coded Navigation</a></span></span><span class="sectionToc"><span class="number">1.3</span><span class="title"><a 
+href="RepresentingBelief.html#x6-90001.3">Representing
+Belief</a></span></span><span class="subsectionToc"><span class="number">1.3.1</span><span class="title"><a 
+href="RepresentingBelief.html#x6-100001.3.1">Single Hypothesis Belief</a></span></span><span class="subsectionToc"><span class="number">1.3.2</span><span class="title"><a 
+href="RepresentingBelief.html#x6-110001.3.2">Multiple Hypothesis Belief</a></span></span><span class="sectionToc"><span class="number">1.4</span><span class="title"><a 
+href="RepresentingMaps.html#x7-120001.4">Representing
+Maps</a></span></span><span class="subsectionToc"><span class="number">1.4.1</span><span class="title"><a 
+href="RepresentingMaps.html#x7-130001.4.1">Continuous Representation</a></span></span><span class="subsectionToc"><span class="number">1.4.2</span><span class="title"><a 
+href="RepresentingMaps.html#x7-140001.4.2">Decomposition Methods</a></span></span><span class="subsectionToc"><span class="number">1.4.3</span><span class="title"><a 
+href="RepresentingMaps.html#x7-150001.4.3">Current
+Challenges</a></span></span><span class="sectionToc"><span class="number">1.5</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-160001.5">Probabilistic Map-Based Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.1</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-170001.5.1">Markov Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.2</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-210001.5.2">Kalman
+Filter Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.3</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-220001.5.3">An Implementation of Kalman Filter</a></span></span><span class="sectionToc"><span class="number">1.6</span><span class="title"><a 
+href="#x9-270001.6">Other Examples
+of Localisation Methods</a></span></span><span class="subsectionToc"><span class="number">1.6.1</span><span class="title"><a 
+href="#x9-280001.6.1">Landmark-based Navigation</a></span></span><span class="subsectionToc"><span class="number">1.6.2</span><span class="title"><a 
+href="#x9-290001.6.2">Globally Unique
+Localisation</a></span></span><span class="subsectionToc"><span class="number">1.6.3</span><span class="title"><a 
+href="#x9-300001.6.3">Positioning Beacon systems</a></span></span><span class="subsectionToc"><span class="number">1.6.4</span><span class="title"><a 
+href="#x9-310001.6.4">Route-Based Localisation</a></span></span><span class="sectionToc"><span class="number">1.7</span><span class="title"><a 
+href="BuildingMaps.html#x10-320001.7">Building
+Maps</a></span></span><span class="subsectionToc"><span class="number">1.7.1</span><span class="title"><a 
+href="BuildingMaps.html#x10-330001.7.1">Stochastic Map Technique</a></span></span><span class="subsectionToc"><span class="number">1.7.2</span><span class="title"><a 
+href="BuildingMaps.html#x10-340001.7.2">Other Mapping Techniques</a></span></span><span class="chapterToc"><span class="number">2</span><span class="title"><a 
+href="WelcometoLinux.html#x11-370002">Welcome to
+Linux</a></span></span><span class="sectionToc"><span class="number">2.1</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-380002.1">Learning the Linux Command Line</a></span></span><span class="subsectionToc"><span class="number">2.1.1</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-390002.1.1">A History of UNIX/Linux</a></span></span><span class="subsectionToc"><span class="number">2.1.2</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-410002.1.2">A
+Short History on Computer Interfaces</a></span></span><span class="subsectionToc"><span class="number">2.1.3</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-430002.1.3">Linux is a Nutshell</a></span></span><span class="subsectionToc"><span class="number">2.1.4</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-460002.1.4">Linux
+Distributions</a></span></span><span class="sectionToc"><span class="number">2.2</span><span class="title"><a 
+href="Installation.html#x13-470002.2">Installation</a></span></span><span class="sectionToc"><span class="number">2.3</span><span class="title"><a 
+href="Docker.html#x14-480002.3">Docker</a></span></span><span class="subsectionToc"><span class="number">2.3.1</span><span class="title"><a 
+href="Docker.html#x14-490002.3.1">Dockerfile</a></span></span><span class="subsectionToc"><span class="number">2.3.2</span><span class="title"><a 
+href="Docker.html#x14-500002.3.2">Running the Container</a></span></span><span class="chapterToc"><span class="number">3</span><span class="title"><a 
+href="CommandLineFundamentals.html#x15-510003">Command
+Line Fundamentals</a></span></span><span class="sectionToc"><span class="number">3.1</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-520003.1">To Command a Computer</a></span></span><span class="subsectionToc"><span class="number">3.1.1</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-530003.1.1">The Command Line Interface</a></span></span><span class="subsectionToc"><span class="number">3.1.2</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-540003.1.2">The
+Structure of Commands</a></span></span><span class="subsectionToc"><span class="number">3.1.3</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-550003.1.3">Some Rules Regarding the Syntax</a></span></span><span class="sectionToc"><span class="number">3.2</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-560003.2">When We Need Help
+with Commands</a></span></span><span class="subsectionToc"><span class="number">3.2.1</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-570003.2.1">Use Tab completion on the Shell</a></span></span><span class="subsectionToc"><span class="number">3.2.2</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-580003.2.2">The info command</a></span></span><span class="subsectionToc"><span class="number">3.2.3</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-590003.2.3">The
+whatis command</a></span></span><span class="chapterToc"><span class="number">4</span><span class="title"><a 
+href="WorkingwithFilesandFolders.html#x18-610004">Working with Files and Folders</a></span></span><span class="sectionToc"><span class="number">4.1</span><span class="title"><a 
+href="FilesandFolders.html#x19-620004.1">Files and Folders</a></span></span><span class="subsectionToc"><span class="number">4.1.1</span><span class="title"><a 
+href="FilesandFolders.html#x19-630004.1.1">A Detailed Look
+in ls Command</a></span></span><span class="subsectionToc"><span class="number">4.1.2</span><span class="title"><a 
+href="FilesandFolders.html#x19-640004.1.2">Creating and Removing Folders</a></span></span><span class="subsectionToc"><span class="number">4.1.3</span><span class="title"><a 
+href="FilesandFolders.html#x19-650004.1.3">Move, Copy and Delete Files and
+Folders</a></span></span><span class="sectionToc"><span class="number">4.2</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-720004.2">Permissions and Links</a></span></span><span class="subsectionToc"><span class="number">4.2.1</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-730004.2.1">Role to Users and sudo</a></span></span><span class="subsectionToc"><span class="number">4.2.2</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-740004.2.2">File Permissions</a></span></span><span class="subsectionToc"><span class="number">4.2.3</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-770004.2.3">Hard
+and Symbolic Links</a></span></span><span class="subsectionToc"><span class="number">4.2.4</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-780004.2.4">Soft (Symbolic) Links</a></span></span><span class="subsectionToc"><span class="number">4.2.5</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-800004.2.5">The Linux File System</a></span></span><span class="subsectionToc"><span class="number">4.2.6</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-810004.2.6">The
+UNIX Philosophy</a></span></span><span class="sectionToc"><span class="number">4.3</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-820004.3">Common Command-Line Tools and Tasks</a></span></span><span class="subsectionToc"><span class="number">4.3.1</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-830004.3.1">Connecting
+Commands with Pipes</a></span></span><span class="subsectionToc"><span class="number">4.3.2</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-840004.3.2">Viewing Text Files with cat, head, tail, and less</a></span></span><span class="subsectionToc"><span class="number">4.3.3</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-850004.3.3">Finding
+Linux Distribution and Kernel Information</a></span></span><span class="subsectionToc"><span class="number">4.3.4</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-870004.3.4">Find System Hardware and Disk
+Information</a></span></span><span class="chapterToc"><span class="number">5</span><span class="title"><a 
+href="ROSConcepts.html#x22-890005">ROS Concepts</a></span></span><span class="sectionToc"><span class="number">5.1</span><span class="title"><a 
+href="PublisherandSubscriberArchitecture.html#x23-900005.1">Publisher and Subscriber Architecture</a></span></span><span class="subsectionToc"><span class="number">5.1.1</span><span class="title"><a 
+href="PublisherandSubscriberArchitecture.html#x23-910005.1.1">ROS 2
+Architecture</a></span></span><span class="sectionToc"><span class="number">5.2</span><span class="title"><a 
+href="BuildingBlocks.html#x24-930005.2">Building Blocks</a></span></span><span class="subsectionToc"><span class="number">5.2.1</span><span class="title"><a 
+href="BuildingBlocks.html#x24-940005.2.1">Nodes</a></span></span><span class="subsectionToc"><span class="number">5.2.2</span><span class="title"><a 
+href="BuildingBlocks.html#x24-950005.2.2">The Discovery Process</a></span></span><span class="subsectionToc"><span class="number">5.2.3</span><span class="title"><a 
+href="BuildingBlocks.html#x24-960005.2.3">Communication
+Interface</a></span></span><span class="subsectionToc"><span class="number">5.2.4</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1050005.2.4">Topics</a></span></span><span class="subsectionToc"><span class="number">5.2.5</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1090005.2.5">Services</a></span></span><span class="subsectionToc"><span class="number">5.2.6</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1120005.2.6">Actions</a></span></span><span class="subsectionToc"><span class="number">5.2.7</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1150005.2.7">Parameters</a></span></span><span class="subsectionToc"><span class="number">5.2.8</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1240005.2.8">Working with
+Command Line</a></span></span><span class="subsectionToc"><span class="number">5.2.9</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1260005.2.9">Launch Files</a></span></span><span class="sectionToc"><span class="number">5.3</span><span class="title"><a 
+href="AdvancedConcepts.html#x25-1270005.3">Advanced Concepts</a></span></span><span class="subsectionToc"><span class="number">5.3.1</span><span class="title"><a 
+href="AdvancedConcepts.html#x25-1280005.3.1">ROS DOMAIN
+ID</a></span></span><span class="chapterToc"><span class="number">6</span><span class="title"><a 
+href="CommandLineTools.html#x26-1300006">Command Line Tools</a></span></span><span class="sectionToc"><span class="number">6.1</span><span class="title"><a 
+href="SettingtheEnvironment.html#x27-1310006.1">Setting the Environment</a></span></span><span class="sectionToc"><span class="number">6.2</span><span class="title"><a 
+href="TurtlesandGraphs.html#x28-1360006.2">Turtles and Graphs</a></span></span><span class="sectionToc"><span class="number">6.3</span><span class="title"><a 
+href="ADeeperLookintoNodes.html#x29-1440006.3">A
+Deeper Look into Nodes</a></span></span><span class="sectionToc"><span class="number">6.4</span><span class="title"><a 
+href="WorkingwithTopics.html#x30-1490006.4">Working with Topics</a></span></span><span class="sectionToc"><span class="number">6.5</span><span class="title"><a 
+href="WorkingwithServices.html#x31-1550006.5">Working with Services</a></span></span><span class="sectionToc"><span class="number">6.6</span><span class="title"><a 
+href="WorkingwithParameters.html#x32-1620006.6">Working
+with Parameters</a></span></span><span class="sectionToc"><span class="number">6.7</span><span class="title"><a 
+href="APracticalLookintoActions.html#x33-1690006.7">A Practical Look into Actions</a></span></span><span class="sectionToc"><span class="number">6.8</span><span class="title"><a 
+href="LaunchingNodes.html#x34-1760006.8">Launching Nodes</a></span></span><span class="chapterToc"><span class="number">7</span><span class="title"><a 
+href="ClientLibraries.html#x35-1780007">Client
+Libraries</a></span></span><span class="sectionToc"><span class="number">7.1</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1790007.1">Getting Started with Colcon</a></span></span><span class="subsectionToc"><span class="number">7.1.1</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1800007.1.1">The Structure of a Package</a></span></span><span class="subsectionToc"><span class="number">7.1.2</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1810007.1.2">Sourcing
+an Underlay</a></span></span><span class="subsectionToc"><span class="number">7.1.3</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1820007.1.3">Building the Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.4</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1830007.1.4">Sourcing the New Package</a></span></span><span class="subsectionToc"><span class="number">7.1.5</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1840007.1.5">Creating a
+Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.6</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1850007.1.6">Sourcing the Environment</a></span></span><span class="subsectionToc"><span class="number">7.1.7</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1860007.1.7">Creating a New Directory</a></span></span><span class="subsectionToc"><span class="number">7.1.8</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1870007.1.8">Cloning a
+Sample Repo</a></span></span><span class="subsectionToc"><span class="number">7.1.9</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1880007.1.9">Resolving Dependencies</a></span></span><span class="subsectionToc"><span class="number">7.1.10</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1890007.1.10">Building the Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.11</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1900007.1.11">Sourcing our
+Overlay</a></span></span><span class="subsectionToc"><span class="number">7.1.12</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1910007.1.12">Modifying the Overlay</a></span></span><span class="subsectionToc"><span class="number">7.1.13</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1920007.1.13">Creating a Package</a></span></span><span class="sectionToc"><span class="number">7.2</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-1950007.2">Writing a Simple Publisher
+and Subscriber</a></span></span><span class="subsectionToc"><span class="number">7.2.1</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-1960007.2.1">Creating a ROS Packages</a></span></span><span class="subsectionToc"><span class="number">7.2.2</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-1970007.2.2">Writing the Publisher Node</a></span></span><span class="subsectionToc"><span class="number">7.2.3</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-2020007.2.3">Writing
+the Subscriber Node</a></span></span><span class="subsectionToc"><span class="number">7.2.4</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-2050007.2.4">Building and Running</a></span></span><span class="sectionToc"><span class="number">7.3</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2060007.3">Writing a Simple Service and
+                                                                                
+                                                                                
+Client</a></span></span><span class="subsectionToc"><span class="number">7.3.1</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2070007.3.1">Creating a New Package</a></span></span><span class="subsectionToc"><span class="number">7.3.2</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2100007.3.2">Writing the Service Node</a></span></span><span class="subsectionToc"><span class="number">7.3.3</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2130007.3.3">Writing the Client
+Node</a></span></span><span class="sectionToc"><span class="number">7.4</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2160007.4">Creating Custom msg and srv Files</a></span></span><span class="subsectionToc"><span class="number">7.4.1</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2170007.4.1">Creating a New Package</a></span></span><span class="subsectionToc"><span class="number">7.4.2</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2180007.4.2">Creating
+Custom Definitions</a></span></span><span class="subsectionToc"><span class="number">7.4.3</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2250007.4.3">Testing the Newly Built Interfaces</a></span></span><span class="sectionToc"><span class="number">7.5</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2270007.5">Using Parameters in a
+Class</a></span></span><span class="subsectionToc"><span class="number">7.5.1</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2280007.5.1">Creating a Package</a></span></span><span class="subsectionToc"><span class="number">7.5.2</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2300007.5.2">Writing our Python Code</a></span></span><span class="subsectionToc"><span class="number">7.5.3</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2350007.5.3">Changing Output using
+the Console</a></span></span><span class="subsectionToc"><span class="number">7.5.4</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2360007.5.4">Changing using the Launch File</a></span></span><span class="sectionToc"><span class="number">7.6</span><span class="title"><a 
+href="ManagingDependencies.html#x41-2370007.6">Managing Dependencies</a></span></span><span class="sectionToc"><span class="number">7.7</span><span class="title"><a 
+href="CreatinganAction.html#x42-2390007.7">Creating
+an Action</a></span></span><span class="sectionToc"><span class="number">7.8</span><span class="title"><a 
+href="WritinganActionServerandClient.html#x43-2420007.8">Writing an Action Server and Client</a></span></span><span class="sectionToc"><span class="number">7.9</span><span class="title"><a 
+href="WritingaLaunchFile.html#x44-2440007.9">Writing a Launch File</a></span></span>
+ 
+
+</div></div></nav> 
+
+<article class="chapter"> 
+<nav class="crosslinks-top"> <a 
+href="BuildingMaps.html" ><span class="nav-next">NEXT</span></a><a 
+href="ProbabilisticMapBasedLocalisation.html" ><span class="nav-prev">PREV</span></a><a 
+href="ProbabilisticMapBasedLocalisation.html#tailProbabilisticMapBasedLocalisation.html" ><span class="nav-prev-tail">PREV-TAIL</span></a><a 
+href="#tailOtherExamplesofLocalisationMethods.html"><span class="nav-tail">TAIL</span></a><a 
+href="MobileRobotLocalisation.html#OtherExamplesofLocalisationMethods.html" ><span class="nav-up">UP</span></a></nav> 
+<div class="section-header"><h3><a class="pdf-icon" href="RoboticsLectureBook.pdf#section.1.6"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">1.6</span> <span class="title">  <a 
+ id="x9-270001.6"></a>Other Examples of Localisation Methods</span></h3></div><p>
+<!--l. 1960--><p class="noindent" >Markov localisation and Kalman filter localisation have been two extremely popular strat- egies for
+research <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span> systems navigating indoor
+environments. They have strong formal bases and therefore well-defined behavior. But there are a large
+number of other lo- calisation techniques that have been used with varying degrees of success on
+commercial and research <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span> platforms.
+We will not explore the space of all localisation sys- tems in detail. Refer to surveys such as [4] for such
+information. There are, however, several categories of localisation techniques that deserve mention.
+Not surprisingly, many implementations of these techniques in commercial robotics employ
+modifications of the robot’s environment, something that the Markov localisation and Kal-
+man filter localisation communities eschew. In the following sections, we briefly identify the
+general strategy incorporated by each category and reference example systems, includ- ing as
+appropriate those that modify the environment and those that function without envi- ronmental
+modification.
+
+</p>
+<!--l. 1974--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="RoboticsLectureBook.pdf#subsection.1.6.1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">1.6.1</span> <span class="title">  <a 
+ id="x9-280001.6.1"></a>Landmark-based Navigation</span></h4></div><p>
+</p><!--l. 1976--><p class="noindent" >Landmarks are generally defined as <span class="alert"><alert style="color: #821131;">passive objects</alert></span> in the environment which provide a high degree
+of localisation accuracy when they are within the robot’s field of view. Mobile robots that make use of
+landmarks for localisation generally use artificial markers that have been placed by the robot’s
+designers to make localisation easy.
+The control system for a landmark-based navigator consists of two (<span class="alert"><alert style="color: #821131;">2</alert></span>) discrete phases.
+</p>     
+<ul class="itemize1">
+<li class="itemize">     
+<!--l. 1984--><p class="noindent" >When a landmark is in view, the robot localizes frequently and accurately, using action
+update and perception update to <span class="alert"><alert style="color: #821131;">track its position without cumulative error</alert></span>.
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 1986--><p class="noindent" >when the robot is in no landmark “zone”, then only action update occurs, and the robot
+accumulates position uncertainty until the next landmark enters the robot’s field of view.</p></li></ul>
+                                                                                
+                                                                                
+<!--l. 1990--><p class="noindent" >The robot is thus effectively dead-reckoning from landmark zone to landmark zone. This in turn means
+the robot must consult its map carefully, ensuring that each motion between landmarks is sufficiently
+short, given its motion model, that it will be able to localize successful upon reaching the next
+landmark.
+</p>
+<div class="figure" 
+>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+<!--l. 1997--><p class="noindent" ><img 
+ 
+src="figures/Mobile-Robot-Localisation/raster/landmark-based-navigation.png" alt="PIC"  
+style="" /> <a 
+ id="x9-28001r15"></a>
+</p>
+<figcaption class="caption" ><span class="id"><span 
+class="ec-lmbx-7">Figure</span><span 
+class="ec-lmbx-7"> 1.15:</span><span 
+class="ec-lmbx-7"> </span>
+          </span><span  
+class="content"><span 
+class="ec-lmr-7">An  illustration  showing  the  object-level  landmarks  in  blue-boxes.  (a,b)  shows  two  different  indoor</span>
+          <span 
+class="ec-lmr-7">scenarios. The blue boxes represent the 3D object detection of object-level landmarks. The red dots</span>
+          <span 
+class="ec-lmr-7">indicate the nodes of the topological map. The yellow lines indicate the edges of the topological map. The</span>
+          <span 
+class="ec-lmr-7">green curve is the feasible navigation trajectory generated based on the proposed method </span><span class="cite"><span class="cite-show"><span 
+class="ec-lmr-7">[</span><span 
+class="ts1-lmr7-">†</span><span 
+class="ec-lmr-7">]</span></span><span class="cite-detail"><span 
+class="ec-lmr-7">Wang, F.</span>
+          <span 
+class="ec-lmri-7">et al. </span><span 
+class="ec-lmr-7">Object-based reliable visual navigation for mobile robot. </span><span 
+class="ec-lmri-7">Sensors </span><span id="bold" style="font-weight:bold;">22</span><span id="bold" style="font-weight:bold;">,</span> <span 
+class="ec-lmr-7">2387 (2022)</span></span></span><span 
+class="ec-lmr-7">.</span>          </span></figcaption><!--tex4ht:label?: x9-28001r15 -->
+                                                                                
+                                                                                
+</div>
+<!--l. 2007--><p class="noindent" ><span id="bold" style="font-weight:bold;">Fig.</span> <a 
+href="#x9-28001r15">1.15<!--tex4ht:ref: fig:landmark-based-navigation --></a> shows one instantiating of landmark-based localisation. The particular shape of the
+landmarks enables reliable and accurate pose estimation by the robot, which must travel using dead
+reckoning between the landmarks.
+</p><!--l. 2011--><p class="noindent" >One key advantage of the landmark-based navigation approach is that a strong formal theory has been
+developed for this general system architecture [113]. In this work, the authors have shown precise
+assumptions and conditions which, when satisfied, guarantee that the robot will always be able to
+localize successfully. This work also led to a real-world demonstration of landmark-based localisation.
+Standard sheets of paper were placed on the ceiling of the Robotics Laboratory at Stanford
+University, each with a unique checkerboard pattern. A Nomadics 200 <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile
+Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span> was fitted with a monochrome <span class="acronym"><span class="acronym-short"><a 
+href="#glo:ccd" class="glossary" >CCD</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:ccd" class="glossary" >Charge Coupled
+Device</a></span><span class="acronym-desc"><a 
+href="#glo:ccd" class="glossary" >Charge Coupled Device</a></span></span></span> camera aimed vertically up at the ceiling. By recognizing the
+paper landmarks, which were placed approximately 2 meters apart, the robot was able to
+localize to within several centimeters, then move using dead-reckoning to another landmark
+zone.
+The primary disadvantage of landmark-based navigation is that in general <span class="alert"><alert style="color: #821131;">it requires significant
+environmental modification</alert></span>. Landmarks are local, and therefore a large number is usually required
+to cover a large factory area or research laboratory. For example, the Robotics Laboratory at
+Stanford made use of approximately 30 discrete landmarks, all affixed individually to the
+ceiling.
+
+</p>
+<!--l. 2028--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="RoboticsLectureBook.pdf#subsection.1.6.2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">1.6.2</span> <span class="title">  <a 
+ id="x9-290001.6.2"></a>Globally Unique Localisation</span></h4></div><p>
+</p><!--l. 2030--><p class="noindent" >The landmark-based navigation approach makes a strong general assumption:
+</p>
+<div class="warning">
+<!--l. 2034--><p class="noindent" >when the landmark is in the robot’s field of view, localisation is essentially perfect.
+</p>
+</div>
+<!--l. 2036--><p class="noindent" >One way to reach the near perfect <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span>
+localisation is to effectively enable such an assumption to be valid wherever the robot is located. It
+would be revolutionary the robot’s sensors immediately identified its particular location, uniquely, and
+repeatedly.
+Such a strategy for localisation is surely aggressive, but the question of whether it can be done is
+primarily a question of sensor technology software. Clearly, such a localisation system would need to
+use a sensor which collects a very large amount of information.
+</p>
+<div class="knowledge">
+<!--l. 2047--><p class="noindent" >Since vision does indeed collect far more information than other sensors, it has been used as the sensor
+of choice in research towards globally unique localisation.
+</p>
+</div><p class="noindent">
+<div class="warning">
+                                                                                
+                                                                                
+<!--l. 2053--><p class="noindent" >If humans were able to look at an individual picture and identify the robot’s location in a well-known
+environment, then one could argue that the information for globally unique localisation does exist
+within the picture. It must simply be interpreted correctly.
+</p>
+</div>
+<!--l. 2055--><p class="noindent" >One such approach has been attempted by several researchers and involves constructing one or more
+image histograms to represent the information content of an image stably (see for example Figure 4.51
+and Section 4.3.2.2). A robot using such an image histogramming system has been shown to
+uniquely identify individual rooms in an office building as well as individual sidewalks in an
+outdoor environment. However, such a system is highly sensitive to external illumination and
+provides only a level of localisation resolution equal to the visual footprint of the camera
+optics.
+</p><!--l. 2063--><p class="noindent" >The Angular histogram depicted in Figure 5.37 is another example in which the robot’s sensor values
+are transformed into an identifier of location. However, due to the limited information content of sonar
+ranging strikes, it is likely that two places in the robot’s environment may have angular histograms that
+are too similar to be differentiated successfully.
+</p><!--l. 2069--><p class="noindent" >One way of attempting to gather sufficient sonar information for global localisation is to allow the robot
+time to gather a large amount of sonar data into a local evidence grid (i.e. occupancy grid) first, then
+match the local evidence grid with a global metric map of the environment. In [115] the researchers
+demonstrate such a system as able to localize on-thefly even as significant changes are made to the
+environment, degrading the fidelity of the map. Most interesting is that the local evidence grid
+represents information well enough that it can be used to correct and update the map over time,
+thereby leading to a localisation system that provides corrective feedback to the environment
+representation directly. This is similar in spirit to the idea of taking rejected observed features
+in the Kalman filter localisation algorithm and using them to create new features in the
+map.
+</p><!--l. 2081--><p class="noindent" >A most promising, new method for globally unique localisation is called Mosaic-based localisation [114].
+This fascinating approach takes advantage of an environmental feature that is rarely used by
+<span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span>s: fine-grained floor texture. This
+method succeeds primarily because of the recent ubiquity of very fast processors, very fast cameras and
+very large storage media.
+The robot is fitted with a high-quality high-speed <span class="acronym"><span class="acronym-short"><a 
+href="#glo:ccd" class="glossary" >CCD</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:ccd" class="glossary" >Charge Coupled Device</a></span><span class="acronym-desc"><a 
+href="#glo:ccd" class="glossary" >Charge Coupled Device</a></span></span></span>
+camera pointed toward the floor, ideally situated between the robot’s wheels and illuminated by a
+specialized light pattern off the camera axis to enhance floor texture. The robot begins by collecting
+images of the entire floor in the robot’s workspace using this camera. Of course the memory
+requirements are significant, requiring a 10GB drive in order to store the complete image library of a
+300 x 300 meter area. Once the complete image mosaic is stored, the robot can travel any trajectory
+on the floor while tracking its own position without difficulty. Localisation is performed
+by simply re cording one image, performing action update, then performing perception
+update by matching the image to the mosaic database using simple techniques based on
+image database matching. The resulting performance has been impressive: such a robot has
+been shown to localize repeatedly with 1mm precision while moving at 25 km/hr. The key
+advantage of globally unique localisation is that, when these systems function correctly, they
+greatly simplify robot navigation. The robot can move to any point and will always be
+assured of localizing by collecting a sensor scan. But the main disadvantage of globally
+                                                                                
+                                                                                
+unique localisation is that it is likely that this method will never offer a complete solution
+to the localisation problem. There will always be cases where local sensory information is
+truly ambiguous and, therefore, globally unique localisa- tion using only current sensor
+information is unlikely to succeed. Humans often have excel- lent local positioning systems,
+particularly in non-repeating and well-known environments such as their homes. However, there
+are a number of environments in which such immediate localisation is challenging even for
+humans: consider hedge mazes and large new office buildings with repeating halls that are
+identical. Indeed, the mosaic-based localisation pro- totype described above encountered such a
+problem in its first implementation. The floor of the factory floor had been freshly painted
+and was thus devoid of sufficient micro-fractures to generate texture for correlation. Their
+solution was to modify the environment after all, painting random texture onto the factory
+floor.
+
+</p>
+<!--l. 2114--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="RoboticsLectureBook.pdf#subsection.1.6.3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">1.6.3</span> <span class="title">  <a 
+ id="x9-300001.6.3"></a>Positioning Beacon systems</span></h4></div><p>
+</p>
+<div class="figure" 
+>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+<!--l. 2118--><p class="noindent" ><img 
+ 
+src="figures/Mobile-Robot-Localisation/raster/beacon-based-localisation.png" alt="PIC"  
+style="" /> <a 
+ id="x9-30001r16"></a>
+</p>
+<figcaption class="caption" ><span class="id"><span 
+class="ec-lmbx-7">Figure</span><span 
+class="ec-lmbx-7"> 1.16:</span><span 
+class="ec-lmbx-7"> </span></span><span  
+class="content">                                                                     </span></figcaption><!--tex4ht:label?: x9-30001r16 -->
+                                                                                
+                                                                                
+</div>
+<!--l. 2123--><p class="noindent" >With most beacon systems, the design depicted depends foremost upon geometric principles to effect
+localisation. In this case the robots must know the positions of the two pinger units in the global
+coordinate frame in order to localize themselves to the global coordinate frame. A popular type of
+beacon system in industrial robotic applications is depicted in Figure 5.39. In this case beacons are
+retroreflective markers that can be easily detected by a <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous
+Mobile Robotics</a></span></span></span> based on their reflection of energy back to the robot. Given known positions for the
+optical retroreflectors, a <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span>
+can identify its position whenever it has three such beacons in sight simultaneously. Of
+course, a robot with encoders can localize over time as well, and does not need to measure
+its angle to all three beacons at the same instant. The advantage of such beacon-based
+systems is usually extremely high engineered reliabil- ity. By the same token, significant
+engineering usually surrounds the installation of such a system in a specific commercial
+setting. Therefore, moving the robot to a different factory floor will be both time-consuming
+and expensive. Usually, even changing the routes used by the robot will require serious
+re-engineering.
+
+</p>
+<!--l. 2138--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="RoboticsLectureBook.pdf#subsection.1.6.4"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">1.6.4</span> <span class="title">  <a 
+ id="x9-310001.6.4"></a>Route-Based Localisation</span></h4></div><p>
+</p><!--l. 2140--><p class="noindent" >Even more reliable than beacon-based systems are route-based localisation strategies. In this
+case, the route of the robot is explicitly marked so that it can determine its position, not
+relative to some global coordinate frame, but relative to the specific path it is allowed to
+<span class="margin"><span>travel.</span><span class="sidenote"><img 
+ 
+src="figures/Mobile-Robot-Localisation/raster/line-following-robot.jpg" alt="PIC"  
+style="" />A perfect example for these kind of localisation is the traditional line following
+robot. The robot does not need to know where it is as its only job is to make sure the line
+it is following is within its vision <span class="cite"><span class="cite-show">[<span 
+class="ts1-lmr10-">†</span>]</span><span class="cite-detail"><a 
+ id="x9-31001"></a>AaaravG. <span 
+class="ec-lmri-10">How to Make Line Follower Robot Using</span>
+<span 
+class="ec-lmri-10">Arduino </span>2018</span></span>.</span></span> There are many techniques for marking such a route and the subsequent
+intersections.
+</p>
+<div class="warning">
+<!--l. 2152--><p class="noindent" >In all cases, one is effectively creating a railway system, except the railway system is somewhat more
+flexible and certainly more human-friendly actual rail.
+</p>
+</div>
+<!--l. 2154--><p class="noindent" >For example, high UV-reflective, optically transparent paint can mark the route such that only the
+robot, using a specialized sensor, easily detects it. Alternatively, a guide wire buried underneath the
+hall can be detected using inductive coils located on the robot chassis.
+</p><!--l. 2158--><p class="noindent" >In all such cases, the robot localisation problem is effectively trivialized by forcing the robot to always
+follow a prescribed path. While this may remove the <span class="alert"><alert style="color: #821131;">autonomous</alert></span> part of <span class="acronym"><span class="acronym-short"><a 
+href="#glo:amr" class="glossary" >AMR</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile
+Robotics</a></span><span class="acronym-desc"><a 
+href="#glo:amr" class="glossary" >Autonomous Mobile Robotics</a></span></span></span>, there are industrial unmanned guided vehicles that do deviate
+briefly from their route in order to avoid obstacles. Nevertheless, the cost of this extreme reliability is
+obvious:
+</p>
+<div class="warning">
+                                                                                
+                                                                                
+<!--l. 2167--><p class="noindent" >the robot is much more inflexible give such localisation means, and therefore any change to the robot’s
+behavior requires significant engineering and time.
+</p>
+</div>
+                                                                                
+                                                                                
+<div class="crosslinks-bottom"><a 
+href="BuildingMaps.html" ><span class="nav-next">NEXT</span></a><a 
+href="ProbabilisticMapBasedLocalisation.html" ><span class="nav-prev">PREV</span></a><a 
+href="ProbabilisticMapBasedLocalisation.html#tailProbabilisticMapBasedLocalisation.html" ><span class="nav-prev-tail">PREV-TAIL</span></a><a 
+href="OtherExamplesofLocalisationMethods.html" ><span class="nav-front">FRONT</span></a><a 
+href="MobileRobotLocalisation.html#OtherExamplesofLocalisationMethods.html" ><span class="nav-up">UP</span></a></nav><a 
+ id="tailOtherExamplesofLocalisationMethods.html"></a>  </div> <div class="footer"> <div class="footer-left"><span class="footer-lecture">D. T. McGuiness, PhD</span> 
+<span class="footer-webBook"><span id="bold" style="font-weight:bold;">Last Updated:</span> 18.5.2026, at 11:25.</span> </div> </div> </div> <div class="author-notes"><span class="note">Authors Note </span><span class="text">The website you are
+viewing is auto-generated using ParSnip and therefore subject to slight errors in typography and
+formatting. When in doubt, please consult the LectureBook. </span></div>  
+</body> 
+</html>

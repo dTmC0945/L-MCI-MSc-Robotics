@@ -1,0 +1,717 @@
+<!DOCTYPE html> 
+<html lang="en">  
+<head><title>A Practical Look into Actions</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="RoboticsLectureBook.css" /> 
+<meta name="src" content="RoboticsLectureBook.tex" /> 
+ <link rel="stylesheet" type="text/css" href="flatweb.css"> 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+
+<link href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css" rel="stylesheet" type="text/css" /> 
+ <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script> 
+ <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"> </script>  
+<link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"/>  
+<script src="flatjs.js"> </script>  <script src="/Users/danielmcguiness/GitHub/MCI-Source-Files/Configuration/ScriptsHTML/webBook/sidenote.js"> </script>   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/matlab.min.js"> </script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dockerfile.min.js"> </script>
+<!--l. 885--><p class="noindent" ><header> </header> 
+</head><body 
+>
+<page> 
+<nav class="wide"><div class="header"> <div class="header-left"><span class="header-lecture">M.Sc Robotics</span> 
+<span class="header-webBook">WebBook</span> </div> <div class="header-right"><span class="header-version">2026.SS</span> 
+<span class="header-chapter">Command Line Tools</span></div></div> <div class="toc"><span class="chapterToc"><span class="number">0</span><span class="title"><a 
+href="index.html#x2-10000">index</a></span></span><span class="chapterToc"><span class="number">1</span><span class="title"><a 
+href="MobileRobotLocalisation.html#x3-20001">Mobile Robot Localisation</a></span></span><span class="sectionToc"><span class="number">1.1</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-30001.1">The Problems of Noise and Aliasing</a></span></span><span class="subsectionToc"><span class="number">1.1.1</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-40001.1.1">Sensor
+Noise</a></span></span><span class="subsectionToc"><span class="number">1.1.2</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-50001.1.2">Sensor Aliasing</a></span></span><span class="subsectionToc"><span class="number">1.1.3</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-60001.1.3">Effector Noise</a></span></span><span class="subsectionToc"><span class="number">1.1.4</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-70001.1.4">An Error Model for Odometric
+Position Estimation</a></span></span><span class="sectionToc"><span class="number">1.2</span><span class="title"><a 
+href="LocalisationvHardCodedNavigation.html#x5-80001.2">Localisation v. Hard-Coded Navigation</a></span></span><span class="sectionToc"><span class="number">1.3</span><span class="title"><a 
+href="RepresentingBelief.html#x6-90001.3">Representing
+Belief</a></span></span><span class="subsectionToc"><span class="number">1.3.1</span><span class="title"><a 
+href="RepresentingBelief.html#x6-100001.3.1">Single Hypothesis Belief</a></span></span><span class="subsectionToc"><span class="number">1.3.2</span><span class="title"><a 
+href="RepresentingBelief.html#x6-110001.3.2">Multiple Hypothesis Belief</a></span></span><span class="sectionToc"><span class="number">1.4</span><span class="title"><a 
+href="RepresentingMaps.html#x7-120001.4">Representing
+Maps</a></span></span><span class="subsectionToc"><span class="number">1.4.1</span><span class="title"><a 
+href="RepresentingMaps.html#x7-130001.4.1">Continuous Representation</a></span></span><span class="subsectionToc"><span class="number">1.4.2</span><span class="title"><a 
+href="RepresentingMaps.html#x7-140001.4.2">Decomposition Methods</a></span></span><span class="subsectionToc"><span class="number">1.4.3</span><span class="title"><a 
+href="RepresentingMaps.html#x7-150001.4.3">Current
+Challenges</a></span></span><span class="sectionToc"><span class="number">1.5</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-160001.5">Probabilistic Map-Based Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.1</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-170001.5.1">Markov Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.2</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-210001.5.2">Kalman
+Filter Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.3</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-220001.5.3">An Implementation of Kalman Filter</a></span></span><span class="sectionToc"><span class="number">1.6</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-270001.6">Other Examples
+of Localisation Methods</a></span></span><span class="subsectionToc"><span class="number">1.6.1</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-280001.6.1">Landmark-based Navigation</a></span></span><span class="subsectionToc"><span class="number">1.6.2</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-290001.6.2">Globally Unique
+Localisation</a></span></span><span class="subsectionToc"><span class="number">1.6.3</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-300001.6.3">Positioning Beacon systems</a></span></span><span class="subsectionToc"><span class="number">1.6.4</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-310001.6.4">Route-Based Localisation</a></span></span><span class="sectionToc"><span class="number">1.7</span><span class="title"><a 
+href="BuildingMaps.html#x10-320001.7">Building
+Maps</a></span></span><span class="subsectionToc"><span class="number">1.7.1</span><span class="title"><a 
+href="BuildingMaps.html#x10-330001.7.1">Stochastic Map Technique</a></span></span><span class="subsectionToc"><span class="number">1.7.2</span><span class="title"><a 
+href="BuildingMaps.html#x10-340001.7.2">Other Mapping Techniques</a></span></span><span class="chapterToc"><span class="number">2</span><span class="title"><a 
+href="WelcometoLinux.html#x11-370002">Welcome to
+Linux</a></span></span><span class="sectionToc"><span class="number">2.1</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-380002.1">Learning the Linux Command Line</a></span></span><span class="subsectionToc"><span class="number">2.1.1</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-390002.1.1">A History of UNIX/Linux</a></span></span><span class="subsectionToc"><span class="number">2.1.2</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-410002.1.2">A
+Short History on Computer Interfaces</a></span></span><span class="subsectionToc"><span class="number">2.1.3</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-430002.1.3">Linux is a Nutshell</a></span></span><span class="subsectionToc"><span class="number">2.1.4</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-460002.1.4">Linux
+Distributions</a></span></span><span class="sectionToc"><span class="number">2.2</span><span class="title"><a 
+href="Installation.html#x13-470002.2">Installation</a></span></span><span class="sectionToc"><span class="number">2.3</span><span class="title"><a 
+href="Docker.html#x14-480002.3">Docker</a></span></span><span class="subsectionToc"><span class="number">2.3.1</span><span class="title"><a 
+href="Docker.html#x14-490002.3.1">Dockerfile</a></span></span><span class="subsectionToc"><span class="number">2.3.2</span><span class="title"><a 
+href="Docker.html#x14-500002.3.2">Running the Container</a></span></span><span class="chapterToc"><span class="number">3</span><span class="title"><a 
+href="CommandLineFundamentals.html#x15-510003">Command
+Line Fundamentals</a></span></span><span class="sectionToc"><span class="number">3.1</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-520003.1">To Command a Computer</a></span></span><span class="subsectionToc"><span class="number">3.1.1</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-530003.1.1">The Command Line Interface</a></span></span><span class="subsectionToc"><span class="number">3.1.2</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-540003.1.2">The
+Structure of Commands</a></span></span><span class="subsectionToc"><span class="number">3.1.3</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-550003.1.3">Some Rules Regarding the Syntax</a></span></span><span class="sectionToc"><span class="number">3.2</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-560003.2">When We Need Help
+with Commands</a></span></span><span class="subsectionToc"><span class="number">3.2.1</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-570003.2.1">Use Tab completion on the Shell</a></span></span><span class="subsectionToc"><span class="number">3.2.2</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-580003.2.2">The info command</a></span></span><span class="subsectionToc"><span class="number">3.2.3</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-590003.2.3">The
+whatis command</a></span></span><span class="chapterToc"><span class="number">4</span><span class="title"><a 
+href="WorkingwithFilesandFolders.html#x18-610004">Working with Files and Folders</a></span></span><span class="sectionToc"><span class="number">4.1</span><span class="title"><a 
+href="FilesandFolders.html#x19-620004.1">Files and Folders</a></span></span><span class="subsectionToc"><span class="number">4.1.1</span><span class="title"><a 
+href="FilesandFolders.html#x19-630004.1.1">A Detailed Look
+in ls Command</a></span></span><span class="subsectionToc"><span class="number">4.1.2</span><span class="title"><a 
+href="FilesandFolders.html#x19-640004.1.2">Creating and Removing Folders</a></span></span><span class="subsectionToc"><span class="number">4.1.3</span><span class="title"><a 
+href="FilesandFolders.html#x19-650004.1.3">Move, Copy and Delete Files and
+Folders</a></span></span><span class="sectionToc"><span class="number">4.2</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-720004.2">Permissions and Links</a></span></span><span class="subsectionToc"><span class="number">4.2.1</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-730004.2.1">Role to Users and sudo</a></span></span><span class="subsectionToc"><span class="number">4.2.2</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-740004.2.2">File Permissions</a></span></span><span class="subsectionToc"><span class="number">4.2.3</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-770004.2.3">Hard
+and Symbolic Links</a></span></span><span class="subsectionToc"><span class="number">4.2.4</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-780004.2.4">Soft (Symbolic) Links</a></span></span><span class="subsectionToc"><span class="number">4.2.5</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-800004.2.5">The Linux File System</a></span></span><span class="subsectionToc"><span class="number">4.2.6</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-810004.2.6">The
+UNIX Philosophy</a></span></span><span class="sectionToc"><span class="number">4.3</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-820004.3">Common Command-Line Tools and Tasks</a></span></span><span class="subsectionToc"><span class="number">4.3.1</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-830004.3.1">Connecting
+Commands with Pipes</a></span></span><span class="subsectionToc"><span class="number">4.3.2</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-840004.3.2">Viewing Text Files with cat, head, tail, and less</a></span></span><span class="subsectionToc"><span class="number">4.3.3</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-850004.3.3">Finding
+Linux Distribution and Kernel Information</a></span></span><span class="subsectionToc"><span class="number">4.3.4</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-870004.3.4">Find System Hardware and Disk
+Information</a></span></span><span class="chapterToc"><span class="number">5</span><span class="title"><a 
+href="ROSConcepts.html#x22-890005">ROS Concepts</a></span></span><span class="sectionToc"><span class="number">5.1</span><span class="title"><a 
+href="PublisherandSubscriberArchitecture.html#x23-900005.1">Publisher and Subscriber Architecture</a></span></span><span class="subsectionToc"><span class="number">5.1.1</span><span class="title"><a 
+href="PublisherandSubscriberArchitecture.html#x23-910005.1.1">ROS 2
+Architecture</a></span></span><span class="sectionToc"><span class="number">5.2</span><span class="title"><a 
+href="BuildingBlocks.html#x24-930005.2">Building Blocks</a></span></span><span class="subsectionToc"><span class="number">5.2.1</span><span class="title"><a 
+href="BuildingBlocks.html#x24-940005.2.1">Nodes</a></span></span><span class="subsectionToc"><span class="number">5.2.2</span><span class="title"><a 
+href="BuildingBlocks.html#x24-950005.2.2">The Discovery Process</a></span></span><span class="subsectionToc"><span class="number">5.2.3</span><span class="title"><a 
+href="BuildingBlocks.html#x24-960005.2.3">Communication
+Interface</a></span></span><span class="subsectionToc"><span class="number">5.2.4</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1050005.2.4">Topics</a></span></span><span class="subsectionToc"><span class="number">5.2.5</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1090005.2.5">Services</a></span></span><span class="subsectionToc"><span class="number">5.2.6</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1120005.2.6">Actions</a></span></span><span class="subsectionToc"><span class="number">5.2.7</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1150005.2.7">Parameters</a></span></span><span class="subsectionToc"><span class="number">5.2.8</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1240005.2.8">Working with
+Command Line</a></span></span><span class="subsectionToc"><span class="number">5.2.9</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1260005.2.9">Launch Files</a></span></span><span class="sectionToc"><span class="number">5.3</span><span class="title"><a 
+href="AdvancedConcepts.html#x25-1270005.3">Advanced Concepts</a></span></span><span class="subsectionToc"><span class="number">5.3.1</span><span class="title"><a 
+href="AdvancedConcepts.html#x25-1280005.3.1">ROS DOMAIN
+ID</a></span></span><span class="chapterToc"><span class="number">6</span><span class="title"><a 
+href="CommandLineTools.html#x26-1300006">Command Line Tools</a></span></span><span class="sectionToc"><span class="number">6.1</span><span class="title"><a 
+href="SettingtheEnvironment.html#x27-1310006.1">Setting the Environment</a></span></span><span class="sectionToc"><span class="number">6.2</span><span class="title"><a 
+href="TurtlesandGraphs.html#x28-1360006.2">Turtles and Graphs</a></span></span><span class="sectionToc"><span class="number">6.3</span><span class="title"><a 
+href="ADeeperLookintoNodes.html#x29-1440006.3">A
+Deeper Look into Nodes</a></span></span><span class="sectionToc"><span class="number">6.4</span><span class="title"><a 
+href="WorkingwithTopics.html#x30-1490006.4">Working with Topics</a></span></span><span class="sectionToc"><span class="number">6.5</span><span class="title"><a 
+href="WorkingwithServices.html#x31-1550006.5">Working with Services</a></span></span><span class="sectionToc"><span class="number">6.6</span><span class="title"><a 
+href="WorkingwithParameters.html#x32-1620006.6">Working
+with Parameters</a></span></span><span class="sectionToc"><span class="number">6.7</span><span class="title"><a 
+href="#x33-1690006.7">A Practical Look into Actions</a></span></span><span class="sectionToc"><span class="number">6.8</span><span class="title"><a 
+href="LaunchingNodes.html#x34-1760006.8">Launching Nodes</a></span></span><span class="chapterToc"><span class="number">7</span><span class="title"><a 
+href="ClientLibraries.html#x35-1780007">Client
+Libraries</a></span></span><span class="sectionToc"><span class="number">7.1</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1790007.1">Getting Started with Colcon</a></span></span><span class="subsectionToc"><span class="number">7.1.1</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1800007.1.1">The Structure of a Package</a></span></span><span class="subsectionToc"><span class="number">7.1.2</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1810007.1.2">Sourcing
+an Underlay</a></span></span><span class="subsectionToc"><span class="number">7.1.3</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1820007.1.3">Building the Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.4</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1830007.1.4">Sourcing the New Package</a></span></span><span class="subsectionToc"><span class="number">7.1.5</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1840007.1.5">Creating a
+Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.6</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1850007.1.6">Sourcing the Environment</a></span></span><span class="subsectionToc"><span class="number">7.1.7</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1860007.1.7">Creating a New Directory</a></span></span><span class="subsectionToc"><span class="number">7.1.8</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1870007.1.8">Cloning a
+Sample Repo</a></span></span><span class="subsectionToc"><span class="number">7.1.9</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1880007.1.9">Resolving Dependencies</a></span></span><span class="subsectionToc"><span class="number">7.1.10</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1890007.1.10">Building the Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.11</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1900007.1.11">Sourcing our
+Overlay</a></span></span><span class="subsectionToc"><span class="number">7.1.12</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1910007.1.12">Modifying the Overlay</a></span></span><span class="subsectionToc"><span class="number">7.1.13</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1920007.1.13">Creating a Package</a></span></span><span class="sectionToc"><span class="number">7.2</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-1950007.2">Writing a Simple Publisher
+and Subscriber</a></span></span><span class="subsectionToc"><span class="number">7.2.1</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-1960007.2.1">Creating a ROS Packages</a></span></span><span class="subsectionToc"><span class="number">7.2.2</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-1970007.2.2">Writing the Publisher Node</a></span></span><span class="subsectionToc"><span class="number">7.2.3</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-2020007.2.3">Writing
+the Subscriber Node</a></span></span><span class="subsectionToc"><span class="number">7.2.4</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-2050007.2.4">Building and Running</a></span></span><span class="sectionToc"><span class="number">7.3</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2060007.3">Writing a Simple Service and
+                                                                                
+                                                                                
+Client</a></span></span><span class="subsectionToc"><span class="number">7.3.1</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2070007.3.1">Creating a New Package</a></span></span><span class="subsectionToc"><span class="number">7.3.2</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2100007.3.2">Writing the Service Node</a></span></span><span class="subsectionToc"><span class="number">7.3.3</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2130007.3.3">Writing the Client
+Node</a></span></span><span class="sectionToc"><span class="number">7.4</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2160007.4">Creating Custom msg and srv Files</a></span></span><span class="subsectionToc"><span class="number">7.4.1</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2170007.4.1">Creating a New Package</a></span></span><span class="subsectionToc"><span class="number">7.4.2</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2180007.4.2">Creating
+Custom Definitions</a></span></span><span class="subsectionToc"><span class="number">7.4.3</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2250007.4.3">Testing the Newly Built Interfaces</a></span></span><span class="sectionToc"><span class="number">7.5</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2270007.5">Using Parameters in a
+Class</a></span></span><span class="subsectionToc"><span class="number">7.5.1</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2280007.5.1">Creating a Package</a></span></span><span class="subsectionToc"><span class="number">7.5.2</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2300007.5.2">Writing our Python Code</a></span></span><span class="subsectionToc"><span class="number">7.5.3</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2350007.5.3">Changing Output using
+the Console</a></span></span><span class="subsectionToc"><span class="number">7.5.4</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2360007.5.4">Changing using the Launch File</a></span></span><span class="sectionToc"><span class="number">7.6</span><span class="title"><a 
+href="ManagingDependencies.html#x41-2370007.6">Managing Dependencies</a></span></span><span class="sectionToc"><span class="number">7.7</span><span class="title"><a 
+href="CreatinganAction.html#x42-2390007.7">Creating
+an Action</a></span></span><span class="sectionToc"><span class="number">7.8</span><span class="title"><a 
+href="WritinganActionServerandClient.html#x43-2420007.8">Writing an Action Server and Client</a></span></span><span class="sectionToc"><span class="number">7.9</span><span class="title"><a 
+href="WritingaLaunchFile.html#x44-2440007.9">Writing a Launch File</a></span></span>
+ 
+
+</div></div></nav> 
+
+<article class="chapter"> 
+<nav class="crosslinks-top"> <a 
+href="LaunchingNodes.html" ><span class="nav-next">NEXT</span></a><a 
+href="WorkingwithParameters.html" ><span class="nav-prev">PREV</span></a><a 
+href="WorkingwithParameters.html#tailWorkingwithParameters.html" ><span class="nav-prev-tail">PREV-TAIL</span></a><a 
+href="#tailAPracticalLookintoActions.html"><span class="nav-tail">TAIL</span></a><a 
+href="CommandLineTools.html#APracticalLookintoActions.html" ><span class="nav-up">UP</span></a></nav> 
+<div class="section-header"><h3><a class="pdf-icon" href="RoboticsLectureBook.pdf#section.6.7"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">6.7</span> <span class="title">  <a 
+ id="x33-1690006.7"></a>A Practical Look into Actions</span></h3></div><p>
+<!--l. 887--><p class="noindent" >Actions are one of the communication types in <span class="acronym"><span class="acronym-short"><a 
+href="#glo:ros" class="glossary" >ROS</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:ros" class="glossary" >Robot Operating System 2</a></span><span class="acronym-desc"><a 
+href="#glo:ros" class="glossary" >Robot Operating System
+2</a></span></span></span> and are intended for long running tasks. They consist of three (<span class="alert"><alert style="color: #821131;">3</alert></span>) parts: <div class="quote">  a goal, feedback, and a
+result.  </p></div><p>
+Actions are built on topics and services. Their functionality is similar to services, except actions can be
+canceled. They also provide steady feedback, as opposed to services which return a single
+response.
+<!--l. 898--><p class="noindent" >Actions use a client-server model, similar to the publisher-subscriber model. An “action client” node
+sends a goal to an “action server” node that acknowledges the goal and returns a stream of feedback
+and a result.
+</p><!--l. 902--><p class="noindent" >To begin we start with a fresh new terminal (<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd>) and type the following command:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb234"><a 
+ id="x33-169002r603"></a><span 
+class="ec-lmtt-10">ros2 run turtlesim turtlesim_node</span></pre>
+</div><p>
+<!--l. 907--><p class="noindent" >And of course we would like to control this turtle so we need to add the <code class="verb">teleop</code> node as
+well.
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb235"><a 
+ id="x33-169004r608"></a><span 
+class="ec-lmtt-10">ros2 run turtlesim turtle_teleop_key</span></pre>
+</div><p>
+<!--l. 912--><p class="noindent" >When we launch the <code class="verb">/teleop_turtle</code> node, we will see the following message in our terminal:
+<div class="code">
+</p>
+<pre class="fancyvrb" id="fancyvrb236"><a 
+ id="x33-169006r733"></a><span 
+class="ec-lmtt-10">Use arrow keys to move the turtle.</span> 
+<a 
+ id="x33-169008r734"></a><span 
+class="ec-lmtt-10">Use G|B|V|C|D|E|R|T keys to rotate to absolute orientations. </span><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">F</span><span 
+class="ts1-lmtt10-">&#x0027; </span><span 
+class="ec-lmtt-10">to cancel a rotation.</span></pre>
+</div><p>
+<!--l. 916--><p class="noindent" >Let’s focus on the second line, which corresponds to an action. Pay attention to the terminal where the
+<code class="verb">/turtlesim</code> 
+node is running. Each time we press one of these keys, we are sending a goal to an action
+server that is part of the <code class="verb">/turtlesim</code> node. The goal is to rotate the turtle to face a particular
+direction. A message relaying the result of the goal should display once the turtle completes its
+rotation:
+<div class="code">
+</p>
+<pre class="fancyvrb" id="fancyvrb237"><a 
+ id="x33-169010r739"></a><span 
+class="ec-lmtt-10">[INFO] [turtlesim]: Rotation goal completed successfully</span></pre>
+                                                                                
+                                                                                
+</div><p>
+<!--l. 924--><p class="noindent" >The <kbd>F</kbd> key will cancel a goal mid-execution.
+</p><!--l. 926--><p class="noindent" >Try pressing the <kbd>C</kbd> key, and then pressing the <kbd>F</kbd> key before the turtle can complete its rotation. In the
+terminal where the <code class="verb">/turtlesim</code> node is running, we will see the message:
+<div class="code">
+</p>
+<pre class="fancyvrb" id="fancyvrb238"><a 
+ id="x33-169012r744"></a><span 
+class="ec-lmtt-10">[INFO] [turtlesim]: Rotation goal canceled</span></pre>
+</div><p>
+<!--l. 932--><p class="noindent" >Not only can the client-side, our input in the <code class="verb">teleop</code>, stop a goal, but the server-side, the <code class="verb">/turtlesim</code>
+node, can as well. When the server-side chooses to stop processing a goal, it is said to “abort” the
+goal.
+Try hitting the <kbd>D</kbd> key, then the <kbd>G</kbd> key before the first rotation can complete. In the terminal where the
+<code class="verb">/turtlesim</code> 
+node is running, we will see the message:
+<div class="code">
+</p>
+<pre class="fancyvrb" id="fancyvrb239"><a 
+ id="x33-169014r749"></a><span 
+class="ec-lmtt-10">[WARN] [turtlesim]: Rotation goal received before a previous goal finished.</span> 
+<a 
+ id="x33-169016r750"></a>                    <span 
+class="ec-lmtt-10">Aborting previous goal</span></pre>
+</div><p>
+<!--l. 941--><p class="noindent" >This action server chose to abort the first goal because it got a new one. It could have chosen
+something else, like reject the new goal or execute the second goal after the first one finished.
+Don’t assume every action server will choose to abort the current goal when it gets a new
+one.
+
+</p>
+<!--l. 946--><p class="noindent" ><span class="paragraphHead"> <a 
+ id="x33-170000"></a>ros2 node info</span>
+To see the list of actions a node provides, <code class="verb">/turtlesim</code> in this case, open a new terminal and run the
+command:
+</p>
+ <div class="code">
+<pre class="fancyvrb" id="fancyvrb240"><a 
+ id="x33-170002r755"></a><span 
+class="ec-lmtt-10">ros2 node info /turtlesim</span></pre>
+</div><p> <div class="code">
+<pre class="fancyvrb" id="fancyvrb241"><a 
+ id="x33-170004r760"></a><span 
+class="ec-lmtt-10">/turtlesim</span> 
+<a 
+ id="x33-170006r761"></a>  <span 
+class="ec-lmtt-10">Subscribers:</span> 
+<a 
+ id="x33-170008r762"></a>    <span 
+class="ec-lmtt-10">/parameter_events: rcl_interfaces/msg/ParameterEvent</span> 
+<a 
+ id="x33-170010r763"></a>    <span 
+class="ec-lmtt-10">/turtle1/cmd_vel: geometry_msgs/msg/Twist</span> 
+<a 
+ id="x33-170012r764"></a>  <span 
+class="ec-lmtt-10">Publishers:</span> 
+<a 
+ id="x33-170014r765"></a>    <span 
+class="ec-lmtt-10">/parameter_events: rcl_interfaces/msg/ParameterEvent</span> 
+<a 
+ id="x33-170016r766"></a>    <span 
+class="ec-lmtt-10">/rosout: rcl_interfaces/msg/Log</span> 
+<a 
+ id="x33-170018r767"></a>    <span 
+class="ec-lmtt-10">/turtle1/color_sensor: turtlesim/msg/Color</span> 
+<a 
+ id="x33-170020r768"></a>    <span 
+class="ec-lmtt-10">/turtle1/pose: turtlesim/msg/Pose</span> 
+<a 
+ id="x33-170022r769"></a>  <span 
+class="ec-lmtt-10">Service Servers:</span> 
+<a 
+ id="x33-170024r770"></a>    <span 
+class="ec-lmtt-10">/clear: std_srvs/srv/Empty</span> 
+<a 
+ id="x33-170026r771"></a>    <span 
+class="ec-lmtt-10">/kill: turtlesim/srv/Kill</span> 
+<a 
+ id="x33-170028r772"></a>    <span 
+class="ec-lmtt-10">/reset: std_srvs/srv/Empty</span> 
+<a 
+ id="x33-170030r773"></a>    <span 
+class="ec-lmtt-10">/spawn: turtlesim/srv/Spawn</span> 
+<a 
+ id="x33-170032r774"></a>    <span 
+class="ec-lmtt-10">/turtle1/set_pen: turtlesim/srv/SetPen</span> 
+<a 
+ id="x33-170034r775"></a>    <span 
+class="ec-lmtt-10">/turtle1/teleport_absolute: turtlesim/srv/TeleportAbsolute</span> 
+<a 
+ id="x33-170036r776"></a>    <span 
+class="ec-lmtt-10">/turtle1/teleport_relative: turtlesim/srv/TeleportRelative</span> 
+<a 
+ id="x33-170038r777"></a>    <span 
+class="ec-lmtt-10">/turtlesim/describe_parameters: rcl_interfaces/srv/DescribeParameters</span> 
+<a 
+ id="x33-170040r778"></a>    <span 
+class="ec-lmtt-10">/turtlesim/get_parameter_types: rcl_interfaces/srv/GetParameterTypes</span> 
+<a 
+ id="x33-170042r779"></a>    <span 
+class="ec-lmtt-10">/turtlesim/get_parameters: rcl_interfaces/srv/GetParameters</span> 
+<a 
+ id="x33-170044r780"></a>    <span 
+class="ec-lmtt-10">/turtlesim/list_parameters: rcl_interfaces/srv/ListParameters</span> 
+<a 
+ id="x33-170046r781"></a>    <span 
+class="ec-lmtt-10">/turtlesim/set_parameters: rcl_interfaces/srv/SetParameters</span> 
+<a 
+ id="x33-170048r782"></a>    <span 
+class="ec-lmtt-10">/turtlesim/set_parameters_atomically: rcl_interfaces/srv/SetParametersAtomically</span> 
+<a 
+ id="x33-170050r783"></a>  <span 
+class="ec-lmtt-10">Service Clients:</span> 
+<a 
+ id="x33-170052r784"></a> 
+<a 
+ id="x33-170054r785"></a>  <span 
+class="ec-lmtt-10">Action Servers:</span> 
+<a 
+ id="x33-170056r786"></a>    <span 
+class="ec-lmtt-10">/turtle1/rotate_absolute: turtlesim/action/RotateAbsolute</span> 
+<a 
+ id="x33-170058r787"></a>  <span 
+class="ec-lmtt-10">Action Clients:</span></pre>
+</div><p> 
+The command returns a list of /turtlesim’s subscribers, publishers, services, action servers and action
+clients.
+<!--l. 958--><p class="noindent" >Notice that the <code class="verb">/turtle1/rotate_absolute</code> action for <code class="verb">/turtlesim</code> is under Action Servers. This
+means /turtlesim responds to and provides feedback for the <code class="verb">/turtle1/rotate_absolute</code>
+action.
+The <code class="verb">/teleop_turtle</code> node has the name <code class="verb">/turtle1/rotate_absolute</code> under Action Clients meaning
+that it sends goals for that action name. To see that, run:
+</p>
+ <div class="code">
+                                                                                
+                                                                                
+<pre class="fancyvrb" id="fancyvrb242"><a 
+ id="x33-170060r792"></a><span 
+class="ec-lmtt-10">ros2 node info /teleop_turtle</span></pre>
+</div><p> <div class="code">
+<pre class="fancyvrb" id="fancyvrb243"><a 
+ id="x33-170062r797"></a><span 
+class="ec-lmtt-10">/teleop_turtle</span> 
+<a 
+ id="x33-170064r798"></a>  <span 
+class="ec-lmtt-10">Subscribers:</span> 
+<a 
+ id="x33-170066r799"></a>    <span 
+class="ec-lmtt-10">/parameter_events: rcl_interfaces/msg/ParameterEvent</span> 
+<a 
+ id="x33-170068r800"></a>  <span 
+class="ec-lmtt-10">Publishers:</span> 
+<a 
+ id="x33-170070r801"></a>    <span 
+class="ec-lmtt-10">/parameter_events: rcl_interfaces/msg/ParameterEvent</span> 
+<a 
+ id="x33-170072r802"></a>    <span 
+class="ec-lmtt-10">/rosout: rcl_interfaces/msg/Log</span> 
+<a 
+ id="x33-170074r803"></a>    <span 
+class="ec-lmtt-10">/turtle1/cmd_vel: geometry_msgs/msg/Twist</span> 
+<a 
+ id="x33-170076r804"></a>  <span 
+class="ec-lmtt-10">Service Servers:</span> 
+<a 
+ id="x33-170078r805"></a>    <span 
+class="ec-lmtt-10">/teleop_turtle/describe_parameters: rcl_interfaces/srv/DescribeParameters</span> 
+<a 
+ id="x33-170080r806"></a>    <span 
+class="ec-lmtt-10">/teleop_turtle/get_parameter_types: rcl_interfaces/srv/GetParameterTypes</span> 
+<a 
+ id="x33-170082r807"></a>    <span 
+class="ec-lmtt-10">/teleop_turtle/get_parameters: rcl_interfaces/srv/GetParameters</span> 
+<a 
+ id="x33-170084r808"></a>    <span 
+class="ec-lmtt-10">/teleop_turtle/list_parameters: rcl_interfaces/srv/ListParameters</span> 
+<a 
+ id="x33-170086r809"></a>    <span 
+class="ec-lmtt-10">/teleop_turtle/set_parameters: rcl_interfaces/srv/SetParameters</span> 
+<a 
+ id="x33-170088r810"></a>    <span 
+class="ec-lmtt-10">/teleop_turtle/set_parameters_atomically: rcl_interfaces/srv/SetParametersAtomically</span> 
+<a 
+ id="x33-170090r811"></a>  <span 
+class="ec-lmtt-10">Service Clients:</span> 
+<a 
+ id="x33-170092r812"></a> 
+<a 
+ id="x33-170094r813"></a>  <span 
+class="ec-lmtt-10">Action Servers:</span> 
+<a 
+ id="x33-170096r814"></a> 
+<a 
+ id="x33-170098r815"></a>  <span 
+class="ec-lmtt-10">Action Clients:</span> 
+<a 
+ id="x33-170100r816"></a>    <span 
+class="ec-lmtt-10">/turtle1/rotate_absolute: turtlesim/action/RotateAbsolute</span></pre>
+</div><p> 
+
+<!--l. 970--><p class="noindent" ><span class="paragraphHead"> <a 
+ id="x33-171000"></a>ros2 action list</span>
+To identify all the actions in the ROS graph, run the command:
+</p>
+ <div class="code">
+<pre class="fancyvrb" id="fancyvrb244"><a 
+ id="x33-171002r823"></a><span 
+class="ec-lmtt-10">ros2 action list</span></pre>
+</div><p> <div class="code">
+<pre class="fancyvrb" id="fancyvrb245"><a 
+ id="x33-171004r828"></a><span 
+class="ec-lmtt-10">/turtle1/rotate_absolute</span></pre>
+</div><p> 
+<!--l. 979--><p class="noindent" >This is the only action in the ROS graph right now. It controls the turtle’s rotation, as we saw earlier.
+We also already know that there is one action client, part of <code class="verb">/teleop_turtle</code>, and one
+action server, part of <code class="verb">/turtlesim</code>, for this action from using the ros2 node info <code class="verb">&#x003C;node_name&#x003E;</code>
+command.
+
+</p>
+<!--l. 984--><p class="noindent" ><span class="paragraphHead"> <a 
+ id="x33-172000"></a>ros2 action list -t</span>
+Actions have types, similar to topics and services. To find <code class="verb">/turtle1/rotate_absolute</code>’s type, run the
+command:
+</p>
+ <div class="code">
+<pre class="fancyvrb" id="fancyvrb246"><a 
+ id="x33-172002r835"></a><span 
+class="ec-lmtt-10">ros2 action list</span> <span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">t</span></pre>
+</div><p> <div class="code">
+<pre class="fancyvrb" id="fancyvrb247"><a 
+ id="x33-172004r840"></a><span 
+class="ec-lmtt-10">/turtle1/rotate_absolute [turtlesim/action/RotateAbsolute]</span></pre>
+</div><p> 
+In brackets to the right of each action name,in this case only <code class="verb">/turtle1/rotate_absolute</code>, is the action
+type, <code class="verb">turtlesim/action/RotateAbsolute</code>. We will need this when we want to execute an action from
+the command line or from code.
+
+                                                                                
+                                                                                
+<!--l. 998--><p class="noindent" ><span class="paragraphHead"> <a 
+ id="x33-173000"></a>ros2 action info</span>
+We can further introspect the <code class="verb">/turtle1/rotate_absolute</code> action with the command:
+</p>
+ <div class="code">
+<pre class="fancyvrb" id="fancyvrb248"><a 
+ id="x33-173002r847"></a><span 
+class="ec-lmtt-10">ros2 action info /turtle1/rotate_absolute</span></pre>
+</div><p> <div class="code">
+<pre class="fancyvrb" id="fancyvrb249"><a 
+ id="x33-173004r852"></a><span 
+class="ec-lmtt-10">Action: /turtle1/rotate_absolute</span> 
+<a 
+ id="x33-173006r853"></a><span 
+class="ec-lmtt-10">Action clients: 1</span> 
+<a 
+ id="x33-173008r854"></a>    <span 
+class="ec-lmtt-10">/teleop_turtle</span> 
+<a 
+ id="x33-173010r855"></a><span 
+class="ec-lmtt-10">Action servers: 1</span> 
+<a 
+ id="x33-173012r856"></a>    <span 
+class="ec-lmtt-10">/turtlesim</span></pre>
+</div><p> 
+This tells us what we learned earlier from running ros2 node info on each node: <div class="quote">  The
+<code class="verb">/teleop_turtle</code> 
+node has an action client and the <code class="verb">/turtlesim</code> node has an action server for the
+<code class="verb">/turtle1/rotate_absolute</code> 
+action.  </div><p>
+
+<!--l. 1014--><p class="noindent" ><span class="paragraphHead"> <a 
+ id="x33-174000"></a>ros2 interface show</span>
+One more piece of information we will need before sending or executing an action goal ourselves is the
+structure of the action type.
+</p><!--l. 1019--><p class="noindent" >Recall we’ve identified <code class="verb">/turtle1/rotate_absolute</code>s type when running the command
+<code class="verb">ros2 action list -t</code>
+. Enter the following command with the action type in the terminal:
+</p>
+ <div class="code">
+<pre class="fancyvrb" id="fancyvrb250"><a 
+ id="x33-174002r864"></a><span 
+class="ec-lmtt-10">ros2 interface show turtlesim/action/RotateAbsolute</span></pre>
+</div><p> <div class="code">
+<pre class="fancyvrb" id="fancyvrb251"><a 
+ id="x33-174004r869"></a><span 
+class="ec-lmtt-10"># The desired heading in radians</span> 
+<a 
+ id="x33-174006r870"></a><span 
+class="ec-lmtt-10">float32 theta</span> 
+<a 
+ id="x33-174008r871"></a><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">-</span> 
+<a 
+ id="x33-174010r872"></a><span 
+class="ec-lmtt-10"># The angular displacement in radians to the starting position</span> 
+<a 
+ id="x33-174012r873"></a><span 
+class="ec-lmtt-10">float32 delta</span> 
+<a 
+ id="x33-174014r874"></a><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">-</span> 
+<a 
+ id="x33-174016r875"></a><span 
+class="ec-lmtt-10"># The remaining rotation in radians</span> 
+<a 
+ id="x33-174018r876"></a><span 
+class="ec-lmtt-10">float32 remaining</span></pre>
+</div><p> 
+The section of this message above the first <code class="verb">---</code> is the structure <span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">data type and name.</span></span> of the goal
+request. The next section is the structure of the result. The last section is the structure of the
+feedback.
+
+<!--l. 1032--><p class="noindent" ><span class="paragraphHead"> <a 
+ id="x33-175000"></a>ros2 action send_goal</span>
+Now lets send an action goal from the command line with the following syntax:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb252"><a 
+ id="x33-175002r884"></a><span 
+class="ec-lmtt-10">ros2 action send_goal &#x003C;action_name&#x003E; &#x003C;action_type&#x003E; &#x003C;values&#x003E;</span></pre>
+</div><p>
+<code class="verb">&#x003C;values&#x003E;</code> 
+need to be in YAML format.
+Keep an eye on the turtlesim window, and enter the following command into our terminal:
+ <div class="code">
+<pre class="fancyvrb" id="fancyvrb253"><a 
+ id="x33-175004r889"></a><span 
+class="ec-lmtt-10">ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute </span><span style="color:#78730D;"><span 
+class="ec-lmtt-10">&#x0022;{theta: 1.57}&#x0022;</span></span></pre>
+                                                                                
+                                                                                
+</div><p> <div class="code">
+<pre class="fancyvrb" id="fancyvrb254"><a 
+ id="x33-175006r894"></a><span 
+class="ec-lmtt-10">Waiting for an action server to become available...</span> 
+<a 
+ id="x33-175008r895"></a><span 
+class="ec-lmtt-10">Sending goal:</span> 
+<a 
+ id="x33-175010r896"></a>   <span 
+class="ec-lmtt-10">theta: 1.57</span> 
+<a 
+ id="x33-175012r897"></a> 
+<a 
+ id="x33-175014r898"></a><span 
+class="ec-lmtt-10">Goal accepted with ID: f8db8f44410849eaa93d3feb747dd444</span> 
+<a 
+ id="x33-175016r899"></a> 
+<a 
+ id="x33-175018r900"></a><span 
+class="ec-lmtt-10">Result:</span> 
+<a 
+ id="x33-175020r901"></a>  <span 
+class="ec-lmtt-10">delta:</span> <span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">1.568000316619873</span> 
+<a 
+ id="x33-175022r902"></a> 
+<a 
+ id="x33-175024r903"></a><span 
+class="ec-lmtt-10">Goal finished with status: SUCCEEDED</span></pre>
+</div><p> 
+<!--l. 1047--><p class="noindent" >We should see the turtle rotating.
+</p><!--l. 1049--><p class="noindent" >All goals have a unique ID, shown in the return message. We can also see the result, a field with the
+name delta, which is the displacement to the starting position.
+</p><!--l. 1052--><p class="noindent" >To see the feedback of this goal, add <code class="verb">--feedback</code> to the <code class="verb">ros2 action send_goal</code> command:
+</p>
+ <div class="code">
+<pre class="fancyvrb" id="fancyvrb255"><a 
+ id="x33-175026r908"></a><span 
+class="ec-lmtt-10">ros2 action send_goal </span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">\</span></span> 
+<a 
+ id="x33-175028r909"></a>     <span 
+class="ec-lmtt-10">/turtle1/rotate_absolute </span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">\</span></span> 
+<a 
+ id="x33-175030r910"></a>     <span 
+class="ec-lmtt-10">turtlesim/action/RotateAbsolute </span><span style="color:#78730D;"><span 
+class="ec-lmtt-10">&#x0022;{theta:</span> <span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">1.57}&#x0022;</span></span> <span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">feedback</span></pre>
+</div><p> <div class="code">
+<pre class="fancyvrb" id="fancyvrb256"><a 
+ id="x33-175032r915"></a><span 
+class="ec-lmtt-10">Sending goal:</span> 
+<a 
+ id="x33-175034r916"></a>   <span 
+class="ec-lmtt-10">theta:</span> <span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">1.57</span> 
+<a 
+ id="x33-175036r917"></a> 
+<a 
+ id="x33-175038r918"></a><span 
+class="ec-lmtt-10">Goal accepted with ID: e6092c831f994afda92f0086f220da27</span> 
+<a 
+ id="x33-175040r919"></a> 
+<a 
+ id="x33-175042r920"></a><span 
+class="ec-lmtt-10">Feedback:</span> 
+<a 
+ id="x33-175044r921"></a>  <span 
+class="ec-lmtt-10">remaining:</span> <span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">3.1268222332000732</span> 
+<a 
+ id="x33-175046r922"></a> 
+<a 
+ id="x33-175048r923"></a><span 
+class="ec-lmtt-10">Feedback:</span> 
+<a 
+ id="x33-175050r924"></a>  <span 
+class="ec-lmtt-10">remaining:</span> <span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">3.1108222007751465</span> 
+<a 
+ id="x33-175052r925"></a> 
+<a 
+ id="x33-175054r926"></a> 
+<a 
+ id="x33-175056r927"></a> 
+<a 
+ id="x33-175058r928"></a><span 
+class="ec-lmtt-10">Result:</span> 
+<a 
+ id="x33-175060r929"></a>  <span 
+class="ec-lmtt-10">delta: 3.1200008392333984</span> 
+<a 
+ id="x33-175062r930"></a> 
+<a 
+ id="x33-175064r931"></a><span 
+class="ec-lmtt-10">Goal finished with status: SUCCEEDED</span></pre>
+</div><p> 
+We will continue to receive feedback, the remaining radians, until the goal is complete.
+                                                                                
+                                                                                
+<div class="crosslinks-bottom"><a 
+href="LaunchingNodes.html" ><span class="nav-next">NEXT</span></a><a 
+href="WorkingwithParameters.html" ><span class="nav-prev">PREV</span></a><a 
+href="WorkingwithParameters.html#tailWorkingwithParameters.html" ><span class="nav-prev-tail">PREV-TAIL</span></a><a 
+href="APracticalLookintoActions.html" ><span class="nav-front">FRONT</span></a><a 
+href="CommandLineTools.html#APracticalLookintoActions.html" ><span class="nav-up">UP</span></a></nav><a 
+ id="tailAPracticalLookintoActions.html"></a>  </div> <div class="footer"> <div class="footer-left"><span class="footer-lecture">D. T. McGuiness, PhD</span> 
+<span class="footer-webBook"><span id="bold" style="font-weight:bold;">Last Updated:</span> 18.5.2026, at 11:25.</span> </div> </div> </div> <div class="author-notes"><span class="note">Authors Note </span><span class="text">The website you are
+viewing is auto-generated using ParSnip and therefore subject to slight errors in typography and
+formatting. When in doubt, please consult the LectureBook. </span></div>  
+</body> 
+</html>

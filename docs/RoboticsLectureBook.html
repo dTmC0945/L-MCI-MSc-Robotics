@@ -1,0 +1,144 @@
+<!DOCTYPE html> 
+<html lang="en">  
+<head>
+<title></title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="RoboticsLectureBook.css" /> 
+<meta name="src" content="RoboticsLectureBook.tex" /> 
+ <link rel="stylesheet" type="text/css" href="flatweb.css"> 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+
+<link href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css" rel="stylesheet" type="text/css" /> 
+ <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script> 
+ <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"> </script>  
+<link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"/>  
+<script src="flatjs.js"> </script>  <script src="/Users/danielmcguiness/GitHub/MCI-Source-Files/Configuration/ScriptsHTML/webBook/sidenote.js"> </script>   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/matlab.min.js"> </script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dockerfile.min.js"> </script>
+<header> </header> 
+</head><body 
+>                                                                               
+                                                                                
+                                                                                
+                                                                                
+<div class="tableofcontents"><span class="chapterToc"><span class="number">0</span><span class="title"><a 
+href="index.html#x2-10000" id="QQ2-2-1">index</a></span></span><span class="chapterToc"><span class="number">1</span><span class="title"><a 
+href="MobileRobotLocalisation.html#x3-20001" id="QQ2-3-2">Mobile Robot Localisation</a></span></span><span class="sectionToc"><span class="number">1.1</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-30001.1" id="QQ2-4-5">The Problems of Noise and Aliasing</a></span></span><span class="sectionToc"><span class="number">1.2</span><span class="title"><a 
+href="LocalisationvHardCodedNavigation.html#x5-80001.2" id="QQ2-5-10">Localisation
+v.     Hard-Coded     Navigation</a></span></span><span class="sectionToc"><span class="number">1.3</span><span class="title"><a 
+href="RepresentingBelief.html#x6-90001.3" id="QQ2-6-15">Representing     Belief</a></span></span><span class="sectionToc"><span class="number">1.4</span><span class="title"><a 
+href="RepresentingMaps.html#x7-120001.4" id="QQ2-7-19">Representing
+Maps</a></span></span><span class="sectionToc"><span class="number">1.5</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-160001.5" id="QQ2-8-26">Probabilistic Map-Based Localisation</a></span></span><span class="sectionToc"><span class="number">1.6</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-270001.6" id="QQ2-9-42">Other Examples of Localisation
+Methods</a></span></span><span class="sectionToc"><span class="number">1.7</span><span class="title"><a 
+href="BuildingMaps.html#x10-320001.7" id="QQ2-10-49">Building Maps</a></span></span><span class="chapterToc"><span class="number">2</span><span class="title"><a 
+href="WelcometoLinux.html#x11-370002" id="QQ2-11-58">Welcome to Linux</a></span></span><span class="sectionToc"><span class="number">2.1</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-380002.1" id="QQ2-12-59">Learning the Linux Command
+Line</a></span></span><span class="sectionToc"><span class="number">2.2</span><span class="title"><a 
+href="Installation.html#x13-470002.2" id="QQ2-13-74">Installation</a></span></span><span class="sectionToc"><span class="number">2.3</span><span class="title"><a 
+href="Docker.html#x14-480002.3" id="QQ2-14-76">Docker</a></span></span><span class="chapterToc"><span class="number">3</span><span class="title"><a 
+href="CommandLineFundamentals.html#x15-510003" id="QQ2-15-79">Command Line Fundamentals</a></span></span><span class="sectionToc"><span class="number">3.1</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-520003.1" id="QQ2-16-80">To Command a
+Computer</a></span></span><span class="sectionToc"><span class="number">3.2</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-560003.2" id="QQ2-17-86">When We Need Help with Commands</a></span></span><span class="chapterToc"><span class="number">4</span><span class="title"><a 
+href="WorkingwithFilesandFolders.html#x18-610004" id="QQ2-18-92">Working with Files and
+Folders</a></span></span><span class="sectionToc"><span class="number">4.1</span><span class="title"><a 
+href="FilesandFolders.html#x19-620004.1" id="QQ2-19-93">Files and Folders</a></span></span><span class="sectionToc"><span class="number">4.2</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-720004.2" id="QQ2-20-103">Permissions and Links</a></span></span><span class="sectionToc"><span class="number">4.3</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-820004.3" id="QQ2-21-118">Common Command-Line
+Tools and Tasks</a></span></span><span class="chapterToc"><span class="number">5</span><span class="title"><a 
+href="ROSConcepts.html#x22-890005" id="QQ2-22-125">ROS Concepts</a></span></span><span class="sectionToc"><span class="number">5.1</span><span class="title"><a 
+href="PublisherandSubscriberArchitecture.html#x23-900005.1" id="QQ2-23-126">Publisher and Subscriber Architecture</a></span></span><span class="sectionToc"><span class="number">5.2</span><span class="title"><a 
+href="BuildingBlocks.html#x24-930005.2" id="QQ2-24-132">Building
+Blocks</a></span></span><span class="sectionToc"><span class="number">5.3</span><span class="title"><a 
+href="AdvancedConcepts.html#x25-1270005.3" id="QQ2-25-167">Advanced Concepts</a></span></span><span class="chapterToc"><span class="number">6</span><span class="title"><a 
+href="CommandLineTools.html#x26-1300006" id="QQ2-26-170">Command Line Tools</a></span></span><span class="sectionToc"><span class="number">6.1</span><span class="title"><a 
+href="SettingtheEnvironment.html#x27-1310006.1" id="QQ2-27-171">Setting the Environment</a></span></span><span class="sectionToc"><span class="number">6.2</span><span class="title"><a 
+href="TurtlesandGraphs.html#x28-1360006.2" id="QQ2-28-176">Turtles
+and Graphs</a></span></span><span class="sectionToc"><span class="number">6.3</span><span class="title"><a 
+href="ADeeperLookintoNodes.html#x29-1440006.3" id="QQ2-29-185">A Deeper Look into Nodes</a></span></span><span class="sectionToc"><span class="number">6.4</span><span class="title"><a 
+href="WorkingwithTopics.html#x30-1490006.4" id="QQ2-30-190">Working with Topics</a></span></span><span class="sectionToc"><span class="number">6.5</span><span class="title"><a 
+href="WorkingwithServices.html#x31-1550006.5" id="QQ2-31-199">Working with
+Services</a></span></span><span class="sectionToc"><span class="number">6.6</span><span class="title"><a 
+href="WorkingwithParameters.html#x32-1620006.6" id="QQ2-32-206">Working with Parameters</a></span></span><span class="sectionToc"><span class="number">6.7</span><span class="title"><a 
+href="APracticalLookintoActions.html#x33-1690006.7" id="QQ2-33-213">A Practical Look into Actions</a></span></span><span class="sectionToc"><span class="number">6.8</span><span class="title"><a 
+href="LaunchingNodes.html#x34-1760006.8" id="QQ2-34-220">Launching
+Nodes</a></span></span><span class="chapterToc"><span class="number">7</span><span class="title"><a 
+href="ClientLibraries.html#x35-1780007" id="QQ2-35-222">Client Libraries</a></span></span><span class="sectionToc"><span class="number">7.1</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1790007.1" id="QQ2-36-223">Getting Started with Colcon</a></span></span><span class="sectionToc"><span class="number">7.2</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-1950007.2" id="QQ2-37-239">Writing a Simple Publisher
+and Subscriber</a></span></span><span class="sectionToc"><span class="number">7.3</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2060007.3" id="QQ2-38-250">Writing a Simple Service and Client</a></span></span><span class="sectionToc"><span class="number">7.4</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2160007.4" id="QQ2-39-260">Creating Custom msg
+and srv Files</a></span></span><span class="sectionToc"><span class="number">7.5</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2270007.5" id="QQ2-40-271">Using Parameters in a Class</a></span></span><span class="sectionToc"><span class="number">7.6</span><span class="title"><a 
+href="ManagingDependencies.html#x41-2370007.6" id="QQ2-41-281">Managing Dependencies</a></span></span><span class="sectionToc"><span class="number">7.7</span><span class="title"><a 
+href="CreatinganAction.html#x42-2390007.7" id="QQ2-42-283">Creating
+an Action</a></span></span><span class="sectionToc"><span class="number">7.8</span><span class="title"><a 
+href="WritinganActionServerandClient.html#x43-2420007.8" id="QQ2-43-286">Writing an Action Server and Client</a></span></span><span class="sectionToc"><span class="number">7.9</span><span class="title"><a 
+href="WritingaLaunchFile.html#x44-2440007.9" id="QQ2-44-288">Writing a Launch File</a></span></span>
+</div>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+</p>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+</p><!--l. 8--><p class="noindent" >
+                                                                                
+                                                                                
+</p>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+</p><!--l. 8--><p class="noindent" >
+                                                                                
+                                                                                
+</p>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+</p><!--l. 8--><p class="noindent" >
+                                                                                
+                                                                                
+</p>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+</p><!--l. 7--><p class="noindent" >
+                                                                                
+                                                                                
+</p>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+</p><!--l. 7--><p class="noindent" >
+                                                                                
+                                                                                
+</p>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+</p><!--l. 8--><p class="noindent" >
+                                                                                
+                                                                                
+</p></p></p></div> <div class="footer"> <div class="footer-left"><span class="footer-lecture">D. T. McGuiness, PhD</span> 
+<span class="footer-webBook"><span id="bold" style="font-weight:bold;">Last Updated:</span> 18.5.2026, at 11:25.</span> </div> </div> </div>
+<div class="author-notes"><span class="note">Authors Note </span><span class="text">The website you are viewing is auto-generated using ParSnip and therefore subject to slight
+errors in typography and formatting. When in doubt, please consult the LectureBook. </span></div>
+ 
+</body> 
+</html>
+                                                                                
+
+

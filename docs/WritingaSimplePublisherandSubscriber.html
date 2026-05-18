@@ -1,0 +1,1150 @@
+<!DOCTYPE html> 
+<html lang="en">  
+<head><title>Writing a Simple Publisher and Subscriber</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="RoboticsLectureBook.css" /> 
+<meta name="src" content="RoboticsLectureBook.tex" /> 
+ <link rel="stylesheet" type="text/css" href="flatweb.css"> 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+
+<link href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css" rel="stylesheet" type="text/css" /> 
+ <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script> 
+ <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"> </script>  
+<link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"/>  
+<script src="flatjs.js"> </script>  <script src="/Users/danielmcguiness/GitHub/MCI-Source-Files/Configuration/ScriptsHTML/webBook/sidenote.js"> </script>   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/matlab.min.js"> </script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dockerfile.min.js"> </script>
+<!--l. 459--><p class="noindent" ><header> </header> 
+</head><body 
+>
+<page> 
+<nav class="wide"><div class="header"> <div class="header-left"><span class="header-lecture">M.Sc Robotics</span> 
+<span class="header-webBook">WebBook</span> </div> <div class="header-right"><span class="header-version">2026.SS</span> 
+<span class="header-chapter">Client Libraries</span></div></div> <div class="toc"><span class="chapterToc"><span class="number">0</span><span class="title"><a 
+href="index.html#x2-10000">index</a></span></span><span class="chapterToc"><span class="number">1</span><span class="title"><a 
+href="MobileRobotLocalisation.html#x3-20001">Mobile Robot Localisation</a></span></span><span class="sectionToc"><span class="number">1.1</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-30001.1">The Problems of Noise and Aliasing</a></span></span><span class="subsectionToc"><span class="number">1.1.1</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-40001.1.1">Sensor
+Noise</a></span></span><span class="subsectionToc"><span class="number">1.1.2</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-50001.1.2">Sensor Aliasing</a></span></span><span class="subsectionToc"><span class="number">1.1.3</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-60001.1.3">Effector Noise</a></span></span><span class="subsectionToc"><span class="number">1.1.4</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-70001.1.4">An Error Model for Odometric
+Position Estimation</a></span></span><span class="sectionToc"><span class="number">1.2</span><span class="title"><a 
+href="LocalisationvHardCodedNavigation.html#x5-80001.2">Localisation v. Hard-Coded Navigation</a></span></span><span class="sectionToc"><span class="number">1.3</span><span class="title"><a 
+href="RepresentingBelief.html#x6-90001.3">Representing
+Belief</a></span></span><span class="subsectionToc"><span class="number">1.3.1</span><span class="title"><a 
+href="RepresentingBelief.html#x6-100001.3.1">Single Hypothesis Belief</a></span></span><span class="subsectionToc"><span class="number">1.3.2</span><span class="title"><a 
+href="RepresentingBelief.html#x6-110001.3.2">Multiple Hypothesis Belief</a></span></span><span class="sectionToc"><span class="number">1.4</span><span class="title"><a 
+href="RepresentingMaps.html#x7-120001.4">Representing
+Maps</a></span></span><span class="subsectionToc"><span class="number">1.4.1</span><span class="title"><a 
+href="RepresentingMaps.html#x7-130001.4.1">Continuous Representation</a></span></span><span class="subsectionToc"><span class="number">1.4.2</span><span class="title"><a 
+href="RepresentingMaps.html#x7-140001.4.2">Decomposition Methods</a></span></span><span class="subsectionToc"><span class="number">1.4.3</span><span class="title"><a 
+href="RepresentingMaps.html#x7-150001.4.3">Current
+Challenges</a></span></span><span class="sectionToc"><span class="number">1.5</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-160001.5">Probabilistic Map-Based Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.1</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-170001.5.1">Markov Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.2</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-210001.5.2">Kalman
+Filter Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.3</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-220001.5.3">An Implementation of Kalman Filter</a></span></span><span class="sectionToc"><span class="number">1.6</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-270001.6">Other Examples
+of Localisation Methods</a></span></span><span class="subsectionToc"><span class="number">1.6.1</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-280001.6.1">Landmark-based Navigation</a></span></span><span class="subsectionToc"><span class="number">1.6.2</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-290001.6.2">Globally Unique
+Localisation</a></span></span><span class="subsectionToc"><span class="number">1.6.3</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-300001.6.3">Positioning Beacon systems</a></span></span><span class="subsectionToc"><span class="number">1.6.4</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-310001.6.4">Route-Based Localisation</a></span></span><span class="sectionToc"><span class="number">1.7</span><span class="title"><a 
+href="BuildingMaps.html#x10-320001.7">Building
+Maps</a></span></span><span class="subsectionToc"><span class="number">1.7.1</span><span class="title"><a 
+href="BuildingMaps.html#x10-330001.7.1">Stochastic Map Technique</a></span></span><span class="subsectionToc"><span class="number">1.7.2</span><span class="title"><a 
+href="BuildingMaps.html#x10-340001.7.2">Other Mapping Techniques</a></span></span><span class="chapterToc"><span class="number">2</span><span class="title"><a 
+href="WelcometoLinux.html#x11-370002">Welcome to
+Linux</a></span></span><span class="sectionToc"><span class="number">2.1</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-380002.1">Learning the Linux Command Line</a></span></span><span class="subsectionToc"><span class="number">2.1.1</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-390002.1.1">A History of UNIX/Linux</a></span></span><span class="subsectionToc"><span class="number">2.1.2</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-410002.1.2">A
+Short History on Computer Interfaces</a></span></span><span class="subsectionToc"><span class="number">2.1.3</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-430002.1.3">Linux is a Nutshell</a></span></span><span class="subsectionToc"><span class="number">2.1.4</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-460002.1.4">Linux
+Distributions</a></span></span><span class="sectionToc"><span class="number">2.2</span><span class="title"><a 
+href="Installation.html#x13-470002.2">Installation</a></span></span><span class="sectionToc"><span class="number">2.3</span><span class="title"><a 
+href="Docker.html#x14-480002.3">Docker</a></span></span><span class="subsectionToc"><span class="number">2.3.1</span><span class="title"><a 
+href="Docker.html#x14-490002.3.1">Dockerfile</a></span></span><span class="subsectionToc"><span class="number">2.3.2</span><span class="title"><a 
+href="Docker.html#x14-500002.3.2">Running the Container</a></span></span><span class="chapterToc"><span class="number">3</span><span class="title"><a 
+href="CommandLineFundamentals.html#x15-510003">Command
+Line Fundamentals</a></span></span><span class="sectionToc"><span class="number">3.1</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-520003.1">To Command a Computer</a></span></span><span class="subsectionToc"><span class="number">3.1.1</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-530003.1.1">The Command Line Interface</a></span></span><span class="subsectionToc"><span class="number">3.1.2</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-540003.1.2">The
+Structure of Commands</a></span></span><span class="subsectionToc"><span class="number">3.1.3</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-550003.1.3">Some Rules Regarding the Syntax</a></span></span><span class="sectionToc"><span class="number">3.2</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-560003.2">When We Need Help
+with Commands</a></span></span><span class="subsectionToc"><span class="number">3.2.1</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-570003.2.1">Use Tab completion on the Shell</a></span></span><span class="subsectionToc"><span class="number">3.2.2</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-580003.2.2">The info command</a></span></span><span class="subsectionToc"><span class="number">3.2.3</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-590003.2.3">The
+whatis command</a></span></span><span class="chapterToc"><span class="number">4</span><span class="title"><a 
+href="WorkingwithFilesandFolders.html#x18-610004">Working with Files and Folders</a></span></span><span class="sectionToc"><span class="number">4.1</span><span class="title"><a 
+href="FilesandFolders.html#x19-620004.1">Files and Folders</a></span></span><span class="subsectionToc"><span class="number">4.1.1</span><span class="title"><a 
+href="FilesandFolders.html#x19-630004.1.1">A Detailed Look
+in ls Command</a></span></span><span class="subsectionToc"><span class="number">4.1.2</span><span class="title"><a 
+href="FilesandFolders.html#x19-640004.1.2">Creating and Removing Folders</a></span></span><span class="subsectionToc"><span class="number">4.1.3</span><span class="title"><a 
+href="FilesandFolders.html#x19-650004.1.3">Move, Copy and Delete Files and
+Folders</a></span></span><span class="sectionToc"><span class="number">4.2</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-720004.2">Permissions and Links</a></span></span><span class="subsectionToc"><span class="number">4.2.1</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-730004.2.1">Role to Users and sudo</a></span></span><span class="subsectionToc"><span class="number">4.2.2</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-740004.2.2">File Permissions</a></span></span><span class="subsectionToc"><span class="number">4.2.3</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-770004.2.3">Hard
+and Symbolic Links</a></span></span><span class="subsectionToc"><span class="number">4.2.4</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-780004.2.4">Soft (Symbolic) Links</a></span></span><span class="subsectionToc"><span class="number">4.2.5</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-800004.2.5">The Linux File System</a></span></span><span class="subsectionToc"><span class="number">4.2.6</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-810004.2.6">The
+UNIX Philosophy</a></span></span><span class="sectionToc"><span class="number">4.3</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-820004.3">Common Command-Line Tools and Tasks</a></span></span><span class="subsectionToc"><span class="number">4.3.1</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-830004.3.1">Connecting
+Commands with Pipes</a></span></span><span class="subsectionToc"><span class="number">4.3.2</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-840004.3.2">Viewing Text Files with cat, head, tail, and less</a></span></span><span class="subsectionToc"><span class="number">4.3.3</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-850004.3.3">Finding
+Linux Distribution and Kernel Information</a></span></span><span class="subsectionToc"><span class="number">4.3.4</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-870004.3.4">Find System Hardware and Disk
+Information</a></span></span><span class="chapterToc"><span class="number">5</span><span class="title"><a 
+href="ROSConcepts.html#x22-890005">ROS Concepts</a></span></span><span class="sectionToc"><span class="number">5.1</span><span class="title"><a 
+href="PublisherandSubscriberArchitecture.html#x23-900005.1">Publisher and Subscriber Architecture</a></span></span><span class="subsectionToc"><span class="number">5.1.1</span><span class="title"><a 
+href="PublisherandSubscriberArchitecture.html#x23-910005.1.1">ROS 2
+Architecture</a></span></span><span class="sectionToc"><span class="number">5.2</span><span class="title"><a 
+href="BuildingBlocks.html#x24-930005.2">Building Blocks</a></span></span><span class="subsectionToc"><span class="number">5.2.1</span><span class="title"><a 
+href="BuildingBlocks.html#x24-940005.2.1">Nodes</a></span></span><span class="subsectionToc"><span class="number">5.2.2</span><span class="title"><a 
+href="BuildingBlocks.html#x24-950005.2.2">The Discovery Process</a></span></span><span class="subsectionToc"><span class="number">5.2.3</span><span class="title"><a 
+href="BuildingBlocks.html#x24-960005.2.3">Communication
+Interface</a></span></span><span class="subsectionToc"><span class="number">5.2.4</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1050005.2.4">Topics</a></span></span><span class="subsectionToc"><span class="number">5.2.5</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1090005.2.5">Services</a></span></span><span class="subsectionToc"><span class="number">5.2.6</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1120005.2.6">Actions</a></span></span><span class="subsectionToc"><span class="number">5.2.7</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1150005.2.7">Parameters</a></span></span><span class="subsectionToc"><span class="number">5.2.8</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1240005.2.8">Working with
+Command Line</a></span></span><span class="subsectionToc"><span class="number">5.2.9</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1260005.2.9">Launch Files</a></span></span><span class="sectionToc"><span class="number">5.3</span><span class="title"><a 
+href="AdvancedConcepts.html#x25-1270005.3">Advanced Concepts</a></span></span><span class="subsectionToc"><span class="number">5.3.1</span><span class="title"><a 
+href="AdvancedConcepts.html#x25-1280005.3.1">ROS DOMAIN
+ID</a></span></span><span class="chapterToc"><span class="number">6</span><span class="title"><a 
+href="CommandLineTools.html#x26-1300006">Command Line Tools</a></span></span><span class="sectionToc"><span class="number">6.1</span><span class="title"><a 
+href="SettingtheEnvironment.html#x27-1310006.1">Setting the Environment</a></span></span><span class="sectionToc"><span class="number">6.2</span><span class="title"><a 
+href="TurtlesandGraphs.html#x28-1360006.2">Turtles and Graphs</a></span></span><span class="sectionToc"><span class="number">6.3</span><span class="title"><a 
+href="ADeeperLookintoNodes.html#x29-1440006.3">A
+Deeper Look into Nodes</a></span></span><span class="sectionToc"><span class="number">6.4</span><span class="title"><a 
+href="WorkingwithTopics.html#x30-1490006.4">Working with Topics</a></span></span><span class="sectionToc"><span class="number">6.5</span><span class="title"><a 
+href="WorkingwithServices.html#x31-1550006.5">Working with Services</a></span></span><span class="sectionToc"><span class="number">6.6</span><span class="title"><a 
+href="WorkingwithParameters.html#x32-1620006.6">Working
+with Parameters</a></span></span><span class="sectionToc"><span class="number">6.7</span><span class="title"><a 
+href="APracticalLookintoActions.html#x33-1690006.7">A Practical Look into Actions</a></span></span><span class="sectionToc"><span class="number">6.8</span><span class="title"><a 
+href="LaunchingNodes.html#x34-1760006.8">Launching Nodes</a></span></span><span class="chapterToc"><span class="number">7</span><span class="title"><a 
+href="ClientLibraries.html#x35-1780007">Client
+Libraries</a></span></span><span class="sectionToc"><span class="number">7.1</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1790007.1">Getting Started with Colcon</a></span></span><span class="subsectionToc"><span class="number">7.1.1</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1800007.1.1">The Structure of a Package</a></span></span><span class="subsectionToc"><span class="number">7.1.2</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1810007.1.2">Sourcing
+an Underlay</a></span></span><span class="subsectionToc"><span class="number">7.1.3</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1820007.1.3">Building the Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.4</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1830007.1.4">Sourcing the New Package</a></span></span><span class="subsectionToc"><span class="number">7.1.5</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1840007.1.5">Creating a
+Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.6</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1850007.1.6">Sourcing the Environment</a></span></span><span class="subsectionToc"><span class="number">7.1.7</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1860007.1.7">Creating a New Directory</a></span></span><span class="subsectionToc"><span class="number">7.1.8</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1870007.1.8">Cloning a
+Sample Repo</a></span></span><span class="subsectionToc"><span class="number">7.1.9</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1880007.1.9">Resolving Dependencies</a></span></span><span class="subsectionToc"><span class="number">7.1.10</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1890007.1.10">Building the Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.11</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1900007.1.11">Sourcing our
+Overlay</a></span></span><span class="subsectionToc"><span class="number">7.1.12</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1910007.1.12">Modifying the Overlay</a></span></span><span class="subsectionToc"><span class="number">7.1.13</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1920007.1.13">Creating a Package</a></span></span><span class="sectionToc"><span class="number">7.2</span><span class="title"><a 
+href="#x37-1950007.2">Writing a Simple Publisher
+and Subscriber</a></span></span><span class="subsectionToc"><span class="number">7.2.1</span><span class="title"><a 
+href="#x37-1960007.2.1">Creating a ROS Packages</a></span></span><span class="subsectionToc"><span class="number">7.2.2</span><span class="title"><a 
+href="#x37-1970007.2.2">Writing the Publisher Node</a></span></span><span class="subsectionToc"><span class="number">7.2.3</span><span class="title"><a 
+href="#x37-2020007.2.3">Writing
+the Subscriber Node</a></span></span><span class="subsectionToc"><span class="number">7.2.4</span><span class="title"><a 
+href="#x37-2050007.2.4">Building and Running</a></span></span><span class="sectionToc"><span class="number">7.3</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2060007.3">Writing a Simple Service and
+                                                                                
+                                                                                
+Client</a></span></span><span class="subsectionToc"><span class="number">7.3.1</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2070007.3.1">Creating a New Package</a></span></span><span class="subsectionToc"><span class="number">7.3.2</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2100007.3.2">Writing the Service Node</a></span></span><span class="subsectionToc"><span class="number">7.3.3</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2130007.3.3">Writing the Client
+Node</a></span></span><span class="sectionToc"><span class="number">7.4</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2160007.4">Creating Custom msg and srv Files</a></span></span><span class="subsectionToc"><span class="number">7.4.1</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2170007.4.1">Creating a New Package</a></span></span><span class="subsectionToc"><span class="number">7.4.2</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2180007.4.2">Creating
+Custom Definitions</a></span></span><span class="subsectionToc"><span class="number">7.4.3</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2250007.4.3">Testing the Newly Built Interfaces</a></span></span><span class="sectionToc"><span class="number">7.5</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2270007.5">Using Parameters in a
+Class</a></span></span><span class="subsectionToc"><span class="number">7.5.1</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2280007.5.1">Creating a Package</a></span></span><span class="subsectionToc"><span class="number">7.5.2</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2300007.5.2">Writing our Python Code</a></span></span><span class="subsectionToc"><span class="number">7.5.3</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2350007.5.3">Changing Output using
+the Console</a></span></span><span class="subsectionToc"><span class="number">7.5.4</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2360007.5.4">Changing using the Launch File</a></span></span><span class="sectionToc"><span class="number">7.6</span><span class="title"><a 
+href="ManagingDependencies.html#x41-2370007.6">Managing Dependencies</a></span></span><span class="sectionToc"><span class="number">7.7</span><span class="title"><a 
+href="CreatinganAction.html#x42-2390007.7">Creating
+an Action</a></span></span><span class="sectionToc"><span class="number">7.8</span><span class="title"><a 
+href="WritinganActionServerandClient.html#x43-2420007.8">Writing an Action Server and Client</a></span></span><span class="sectionToc"><span class="number">7.9</span><span class="title"><a 
+href="WritingaLaunchFile.html#x44-2440007.9">Writing a Launch File</a></span></span>
+ 
+
+</div></div></nav> 
+
+<article class="chapter"> 
+<nav class="crosslinks-top"> <a 
+href="WritingaSimpleServiceandClient.html" ><span class="nav-next">NEXT</span></a><a 
+href="GettingStartedwithColcon.html" ><span class="nav-prev">PREV</span></a><a 
+href="GettingStartedwithColcon.html#tailGettingStartedwithColcon.html" ><span class="nav-prev-tail">PREV-TAIL</span></a><a 
+href="#tailWritingaSimplePublisherandSubscriber.html"><span class="nav-tail">TAIL</span></a><a 
+href="ClientLibraries.html#WritingaSimplePublisherandSubscriber.html" ><span class="nav-up">UP</span></a></nav> 
+<div class="section-header"><h3><a class="pdf-icon" href="RoboticsLectureBook.pdf#section.7.2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">7.2</span> <span class="title">  <a 
+ id="x37-1950007.2"></a>Writing a Simple Publisher and Subscriber</span></h3></div><p>
+<!--l. 461--><p class="noindent" >In this exercise, we will create <span class="alert"><alert style="color: #821131;">nodes</alert></span> which passes information in the form of string messages to each
+other over a <span class="alert"><alert style="color: #821131;">topic</alert></span>. The example we will use here is a simple “talker” and “listener” system. <span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">This
+is an example we have looked previously where we’ve used a pre-built exercise.</span></span> <div class="quote">  In this
+system, one publishes data and the other subscribes to the topic so it can receive that data.
+</p></div><p>
+
+<!--l. 471--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="RoboticsLectureBook.pdf#subsection.7.2.1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">7.2.1</span> <span class="title">  <a 
+ id="x37-1960007.2.1"></a>Creating a ROS Packages</span></h4></div><p>
+</p><!--l. 473--><p class="noindent" >To begin, we open a new terminal window and navigate to our previously created <span class="code-directory"><code class="verb">ros2\_ws</code></span>.
+</p>
+<div class="warning">
+<!--l. 479--><p class="noindent" >Packages should be created in the <span class="code-directory"><code class="verb">src</code></span> directory and <span id="bold" style="font-weight:bold;">NOT</span> the root <code class="verb">/</code> of the workspace.
+</p>
+</div>
+<!--l. 481--><p class="noindent" >So naturally, let’s navigate into the <code class="verb">ros2_ws/src</code> directory, and run the package creation
+command:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb289"><a 
+ id="x37-196002r210"></a><span 
+class="ec-lmtt-10">ros2 pkg create</span> <span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">build</span><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">type ament_python</span> <span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">license Apache</span><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">2.0 py_pubsub</span></pre>
+</div><p>
+<!--l. 486--><p class="noindent" >If everything works well, our terminal will return a message verifying the creation of our package
+<code class="verb">py_pubsub</code> 
+and all its necessary files and folders.
+
+</p>
+<!--l. 489--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="RoboticsLectureBook.pdf#subsection.7.2.2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">7.2.2</span> <span class="title">  <a 
+ id="x37-1970007.2.2"></a>Writing the Publisher Node</span></h4></div><p>
+</p><!--l. 491--><p class="noindent" >Now that we have a package template, please navigate into <code class="verb">ros2_ws/src/py_pubsub/py_pubsub</code>. To
+get started, download the example <span class="alert"><alert style="color: #821131;">talker code</alert></span> by entering the following command:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb290"><a 
+ id="x37-197002r215"></a><span 
+class="ec-lmtt-10">wget https://raw.githubusercontent.com/ros2/examples/humble/rclpy/topics/minimal_publisher/examples_rclpy_minimal_publisher/publisher_member_function.py</span></pre>
+                                                                                
+                                                                                
+</div><p>
+<!--l. 497--><p class="noindent" >Here the <code class="verb">wget</code> command basically access the file in a web-server and then downloads it to the
+current working directory. If the code works successfully, there will be a new file named
+<code class="verb">publisher_member_function.py</code> 
+adjacent to <code class="verb">__init__.py</code>. Now let’s open the code and see what is
+going on under the hood.
+
+</p>
+<h5 class="subsubsectionHead"> <a 
+ id="x37-198000"></a>Deconstructing the Code</h5>
+<!--l. 504--><p class="noindent" >The following is the code in full with snippets and detailed explanation to follow:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb291"><a 
+ id="x37-198002r221"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">import</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">rclpy</span></span> 
+<a 
+ id="x37-198004r222"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">from</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">rclpy.node</span></span> <span style="color:#9E0005;"><span 
+class="ec-lmtt-10">import</span></span> <span 
+class="ec-lmtt-10">Node</span> 
+<a 
+ id="x37-198006r223"></a> 
+<a 
+ id="x37-198008r224"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">from</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">std_msgs.msg</span></span> <span style="color:#9E0005;"><span 
+class="ec-lmtt-10">import</span></span> <span 
+class="ec-lmtt-10">String</span> 
+<a 
+ id="x37-198010r225"></a> 
+<a 
+ id="x37-198012r226"></a> 
+<a 
+ id="x37-198014r227"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">class</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">MinimalPublisher</span></span><span 
+class="ec-lmtt-10">(Node):</span> 
+<a 
+ id="x37-198016r228"></a> 
+<a 
+ id="x37-198018r229"></a>    <span style="color:#9E0005;"><span 
+class="ec-lmtt-10">def</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">__init__</span></span><span 
+class="ec-lmtt-10">(</span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">):</span> 
+<a 
+ id="x37-198020r230"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">super</span></span><span 
+class="ec-lmtt-10">().</span><span style="color:#427A59;"><span 
+class="ec-lmtt-10">__init__</span></span><span 
+class="ec-lmtt-10">(</span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">minimal_publisher</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">)</span> 
+<a 
+ id="x37-198022r231"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.publisher_ = </span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.create_publisher(String, </span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">topic</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">, </span><span style="color:#8F4070;"><span 
+class="ec-lmtt-10">10</span></span><span 
+class="ec-lmtt-10">)</span> 
+<a 
+ id="x37-198024r232"></a>        <span 
+class="ec-lmtt-10">timer_period = </span><span style="color:#8F4070;"><span 
+class="ec-lmtt-10">0.5</span></span>  <span style="color:#918273;"><italic># seconds</italic></span> 
+<a 
+ id="x37-198026r233"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.timer = </span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.create_timer(timer_period, </span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.timer_callback)</span> 
+<a 
+ id="x37-198028r234"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.i = </span><span style="color:#8F4070;"><span 
+class="ec-lmtt-10">0</span></span> 
+<a 
+ id="x37-198030r235"></a> 
+<a 
+ id="x37-198032r236"></a>    <span style="color:#9E0005;"><span 
+class="ec-lmtt-10">def</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">timer_callback</span></span><span 
+class="ec-lmtt-10">(</span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">):</span> 
+<a 
+ id="x37-198034r237"></a>        <span 
+class="ec-lmtt-10">msg = String()</span> 
+<a 
+ id="x37-198036r238"></a>        <span 
+class="ec-lmtt-10">msg.data = </span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">Hello World: </span></span><span style="color:#78730D;"><span 
+class="ec-lmtt-10">%d</span></span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span></span> <span 
+class="ec-lmtt-10">% </span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.i</span> 
+<a 
+ id="x37-198038r239"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.publisher_.publish(msg)</span> 
+<a 
+ id="x37-198040r240"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.get_logger().info(</span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">Publishing: &#x0022;</span></span><span style="color:#78730D;"><span 
+class="ec-lmtt-10">%s</span></span><span style="color:#78730D;"><span 
+class="ec-lmtt-10">&#x0022;</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span> <span 
+class="ec-lmtt-10">% msg.data)</span> 
+<a 
+ id="x37-198042r241"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.i += </span><span style="color:#8F4070;"><span 
+class="ec-lmtt-10">1</span></span> 
+<a 
+ id="x37-198044r242"></a> 
+<a 
+ id="x37-198046r243"></a> 
+<a 
+ id="x37-198048r244"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">def</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">main</span></span><span 
+class="ec-lmtt-10">(args=</span><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">None</span></span><span 
+class="ec-lmtt-10">):</span> 
+<a 
+ id="x37-198050r245"></a>    <span 
+class="ec-lmtt-10">rclpy.init(args=args)</span> 
+<a 
+ id="x37-198052r246"></a> 
+<a 
+ id="x37-198054r247"></a>    <span 
+class="ec-lmtt-10">minimal_publisher = MinimalPublisher()</span> 
+<a 
+ id="x37-198056r248"></a> 
+<a 
+ id="x37-198058r249"></a>    <span 
+class="ec-lmtt-10">rclpy.spin(minimal_publisher)</span> 
+<a 
+ id="x37-198060r250"></a> 
+<a 
+ id="x37-198062r251"></a>    <span style="color:#918273;"><italic># Destroy the node explicitly (optional)</italic></span> 
+<a 
+ id="x37-198064r252"></a>    <span style="color:#918273;"><italic># Or it will be done automatically with garbage collector</italic></span> 
+<a 
+ id="x37-198066r253"></a>    <span 
+class="ec-lmtt-10">minimal_publisher.destroy_node()</span> 
+<a 
+ id="x37-198068r254"></a>    <span 
+class="ec-lmtt-10">rclpy.shutdown()</span> 
+<a 
+ id="x37-198070r255"></a> 
+<a 
+ id="x37-198072r256"></a> 
+<a 
+ id="x37-198074r257"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">if</span></span> <span style="color:#086678;"><span 
+class="ec-lmtt-10">__name__</span></span> <span 
+class="ec-lmtt-10">== </span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">__main__</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">:</span> 
+<a 
+ id="x37-198076r258"></a>    <span 
+class="ec-lmtt-10">main()</span></pre>
+</div><p>
+<!--l. 508--><p class="noindent" >The first lines of code after the comments import <code class="verb">rclpy</code> so its <span class="alert"><alert style="color: #821131;">Node class</alert></span> can be used. <span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">As a reminder,
+the <code class="verb">rclpy</code> is the <span class="acronym"><span class="acronym-short"><a 
+href="#glo:ros" class="glossary" >ROS</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:ros" class="glossary" >Robot Operating System 2</a></span><span class="acronym-desc"><a 
+href="#glo:ros" class="glossary" >Robot Operating System 2</a></span></span></span> library written for
+Python.</span></span>
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb292"><a 
+ id="x37-198078r221"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">import</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">rclpy</span></span> 
+<a 
+ id="x37-198080r222"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">from</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">rclpy.node</span></span> <span style="color:#9E0005;"><span 
+class="ec-lmtt-10">import</span></span> <span 
+class="ec-lmtt-10">Node</span></pre>
+</div><p>
+<!--l. 514--><p class="noindent" >The next statement imports the built-in string message type which the node uses to structure the data
+it passes on the topic.
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb293"><a 
+ id="x37-198082r224"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">from</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">std_msgs.msg</span></span> <span style="color:#9E0005;"><span 
+class="ec-lmtt-10">import</span></span> <span 
+class="ec-lmtt-10">String</span></pre>
+</div><p>
+<!--l. 519--><p class="noindent" >These aforementioned lines represent the node’s <span class="alert"><alert style="color: #821131;">dependencies</alert></span>. Recall that dependencies have to be
+added to <code class="verb">package.xml</code>, which we will have a look at in just a little bit. Next, the <code class="verb">MinimalPublisher</code>
+class is created, which inherits <span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">or is a subclass of</span></span> from Node.
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb294"><a 
+ id="x37-198084r227"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">class</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">MinimalPublisher</span></span><span 
+class="ec-lmtt-10">(Node):</span></pre>
+</div><p>
+<!--l. 526--><p class="noindent" >Following is the definition of the class’s constructor. <code class="verb">super().__init__</code> calls the Node class’s
+constructor and gives it our node name, in this case <code class="verb">minimal_publisher</code>.
+<div class="info-block"> <span class="info-upper"> <span class="info-header"><span id="bold" style="font-weight:bold;">Information: </span></span><span class="info-title">The point of <code class="verb">super</code></span> </span> <div class="body"><p>
+The <code class="verb">super()</code> function is used to refer to the parent class. When used in conjunction with the
+<code class="verb">__init__()</code> 
+method, allows the child class to invoke the constructor of its parent class.
+                                                                                
+                                                                                
+This is especially useful when you want to add functionality to the child class’s constructor without
+completely overriding the parent class’s constructor.
+</p></div></div><p class="noindent">
+<code class="verb">create_publisher</code> 
+declares the node publishes messages of type String, <span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">which is imported
+from the <code class="verb">std_msgs.msg</code> module</span></span> over a topic named topic, and that the “queue size” is
+<code class="verb">10</code>
+.
+</p>
+<div class="knowledge">
+<!--l. 547--><p class="noindent" >Queue size is a required QoS (quality of service) setting which limits the amount of queued messages if
+a subscriber is <span id="bold" style="font-weight:bold;">NOT</span> receiving them fast enough.
+</p>
+</div><p class="noindent">
+<!--l. 549--><p class="noindent" >Next, a timer is created (<code class="verb">create_timer</code>) with a callback to execute every <code class="verb">0.5</code> seconds. <code class="verb">self.i</code> is a
+counter used in the callback.
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb295"><a 
+ id="x37-198086r229"></a>    <span style="color:#9E0005;"><span 
+class="ec-lmtt-10">def</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">__init__</span></span><span 
+class="ec-lmtt-10">(</span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">):</span> 
+<a 
+ id="x37-198088r230"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">super</span></span><span 
+class="ec-lmtt-10">().</span><span style="color:#427A59;"><span 
+class="ec-lmtt-10">__init__</span></span><span 
+class="ec-lmtt-10">(</span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">minimal_publisher</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">)</span> 
+<a 
+ id="x37-198090r231"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.publisher_ = </span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.create_publisher(String, </span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">topic</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">, </span><span style="color:#8F4070;"><span 
+class="ec-lmtt-10">10</span></span><span 
+class="ec-lmtt-10">)</span> 
+<a 
+ id="x37-198092r232"></a>        <span 
+class="ec-lmtt-10">timer_period = </span><span style="color:#8F4070;"><span 
+class="ec-lmtt-10">0.5</span></span>  <span style="color:#918273;"><italic># seconds</italic></span> 
+<a 
+ id="x37-198094r233"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.timer = </span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.create_timer(timer_period, </span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.timer_callback)</span> 
+<a 
+ id="x37-198096r234"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.i = </span><span style="color:#8F4070;"><span 
+class="ec-lmtt-10">0</span></span></pre>
+</div><p>
+<code class="verb">timer_callback</code> 
+creates a message with the counter value appended, and publishes it to the console
+with <code class="verb">get_logger().info</code>.
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb296"><a 
+ id="x37-198098r236"></a>    <span style="color:#9E0005;"><span 
+class="ec-lmtt-10">def</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">timer_callback</span></span><span 
+class="ec-lmtt-10">(</span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">):</span> 
+<a 
+ id="x37-198100r237"></a>        <span 
+class="ec-lmtt-10">msg = String()</span> 
+<a 
+ id="x37-198102r238"></a>        <span 
+class="ec-lmtt-10">msg.data = </span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">Hello World: </span></span><span style="color:#78730D;"><span 
+class="ec-lmtt-10">%d</span></span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span></span> <span 
+class="ec-lmtt-10">% </span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.i</span> 
+<a 
+ id="x37-198104r239"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.publisher_.publish(msg)</span> 
+<a 
+ id="x37-198106r240"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.get_logger().info(</span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">Publishing: &#x0022;</span></span><span style="color:#78730D;"><span 
+class="ec-lmtt-10">%s</span></span><span style="color:#78730D;"><span 
+class="ec-lmtt-10">&#x0022;</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span> <span 
+class="ec-lmtt-10">% msg.data)</span> 
+<a 
+ id="x37-198108r241"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.i += </span><span style="color:#8F4070;"><span 
+class="ec-lmtt-10">1</span></span></pre>
+</div><p>
+<!--l. 559--><p class="noindent" >Lastly, the main function is defined.
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb297"><a 
+ id="x37-198110r244"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">def</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">main</span></span><span 
+class="ec-lmtt-10">(args=</span><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">None</span></span><span 
+class="ec-lmtt-10">):</span> 
+<a 
+ id="x37-198112r245"></a>    <span 
+class="ec-lmtt-10">rclpy.init(args=args)</span> 
+<a 
+ id="x37-198114r246"></a> 
+<a 
+ id="x37-198116r247"></a>    <span 
+class="ec-lmtt-10">minimal_publisher = MinimalPublisher()</span> 
+<a 
+ id="x37-198118r248"></a> 
+<a 
+ id="x37-198120r249"></a>    <span 
+class="ec-lmtt-10">rclpy.spin(minimal_publisher)</span> 
+<a 
+ id="x37-198122r250"></a> 
+<a 
+ id="x37-198124r251"></a>    <span style="color:#918273;"><italic># Destroy the node explicitly (optional)</italic></span> 
+<a 
+ id="x37-198126r252"></a>    <span style="color:#918273;"><italic># Or it will be done automatically with garbage collector</italic></span> 
+<a 
+ id="x37-198128r253"></a>    <span 
+class="ec-lmtt-10">minimal_publisher.destroy_node()</span> 
+<a 
+ id="x37-198130r254"></a>    <span 
+class="ec-lmtt-10">rclpy.shutdown()</span> 
+<a 
+ id="x37-198132r255"></a></pre>
+</div><p>
+<!--l. 563--><p class="noindent" >First the <code class="verb">rclpy</code> library is initialized, then the node is created, and then it “spins” the node so its callbacks are
+called. <span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">the <code class="verb">.spin</code> is a blocking function call which keeps a <span class="acronym"><span class="acronym-short"><a 
+href="#glo:ros" class="glossary" >ROS</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:ros" class="glossary" >Robot Operating System 2</a></span><span class="acronym-desc"><a 
+href="#glo:ros" class="glossary" >Robot Operating
+System 2</a></span></span></span> node active, allowing it to process incoming messages, service requests, and timer callbacks.
+Without spinning, a node’s callbacks will never execute. It ensures the program waits for and executes
+callbacks until the node is shut down.</span></span>
+
+</p>
+<h5 class="subsubsectionHead"> <a 
+ id="x37-199000"></a>Adding Dependencies</h5>
+<!--l. 572--><p class="noindent" >Navigate one level back to the <code class="verb">ros2_ws/src/py_pubsub</code> directory, where the <code class="verb">setup.py</code>, <code class="verb">setup.cfg</code>,
+and <code class="verb">package.xml</code> files have been created for us. Open <code class="verb">package.xml</code> with our favourite text editor. <span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">This
+could of course be Emacs, or something which is <span id="bold" style="font-weight:bold;">NOT</span> emacs so we can see why emacs is
+better.</span></span>
+                                                                                
+                                                                                
+</p><!--l. 577--><p class="noindent" >As mentioned previously, let’s fill in the <code class="verb">&#x003C;description&#x003E;</code>, <code class="verb">&#x003C;maintainer&#x003E;</code> and <code class="verb">&#x003C;license&#x003E;</code>
+tags:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb298"><a 
+ id="x37-199002r157"></a><span style="color:#427A59;"><span 
+class="ec-lmtt-10">&#x003C;description&#x003E;</span></span><span 
+class="ec-lmtt-10">Examples of minimal publisher/subscriber using rclpy</span><span style="color:#427A59;"><span 
+class="ec-lmtt-10">&#x003C;/description&#x003E;</span></span> 
+<a 
+ id="x37-199004r158"></a><span style="color:#427A59;"><span 
+class="ec-lmtt-10">&#x003C;maintainer</span></span> <span style="color:#B57514;"><span 
+class="ec-lmtt-10">email=</span></span><span style="color:#78730D;"><span 
+class="ec-lmtt-10">&#x0022;you@email.com&#x0022;</span></span><span style="color:#427A59;"><span 
+class="ec-lmtt-10">&#x003E;</span></span><span 
+class="ec-lmtt-10">Your Name</span><span style="color:#427A59;"><span 
+class="ec-lmtt-10">&#x003C;/maintainer&#x003E;</span></span> 
+<a 
+ id="x37-199006r159"></a><span style="color:#427A59;"><span 
+class="ec-lmtt-10">&#x003C;license&#x003E;</span></span><span 
+class="ec-lmtt-10">Apache License 2.0</span><span style="color:#427A59;"><span 
+class="ec-lmtt-10">&#x003C;/license&#x003E;</span></span></pre>
+</div><p>
+<!--l. 582--><p class="noindent" >After the lines above, add these dependencies corresponding to our node’s import statements:
+<span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">Remember, we need to let <span class="acronym"><span class="acronym-short"><a 
+href="#glo:ros" class="glossary" >ROS</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:ros" class="glossary" >Robot Operating System 2</a></span><span class="acronym-desc"><a 
+href="#glo:ros" class="glossary" >Robot Operating System 2</a></span></span></span> know the
+dependencies required by the python script.</span></span>
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb299"><a 
+ id="x37-199008r164"></a><span style="color:#427A59;"><span 
+class="ec-lmtt-10">&#x003C;exec_depend&#x003E;</span></span><span 
+class="ec-lmtt-10">rclpy</span><span style="color:#427A59;"><span 
+class="ec-lmtt-10">&#x003C;/exec_depend&#x003E;</span></span> 
+<a 
+ id="x37-199010r165"></a><span style="color:#427A59;"><span 
+class="ec-lmtt-10">&#x003C;exec_depend&#x003E;</span></span><span 
+class="ec-lmtt-10">std_msgs</span><span style="color:#427A59;"><span 
+class="ec-lmtt-10">&#x003C;/exec_depend&#x003E;</span></span></pre>
+</div><p>
+<!--l. 588--><p class="noindent" >This declares the package needs <code class="verb">rclpy</code> and <code class="verb">std_msgs</code> when its code is executed.
+
+</p>
+<h5 class="subsubsectionHead"> <a 
+ id="x37-200000"></a>Adding An Entry Point</h5>
+<!--l. 592--><p class="noindent" >Given we have sorted our package manifesto, we need to configure our python code. Open the
+<code class="verb">setup.py</code> 
+file. Again, match the <code class="verb">maintainer</code>, <code class="verb">maintainer_email</code>, <code class="verb">description</code> and <code class="verb">license</code> fields to
+our <code class="verb">package.xml</code>:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb300"><a 
+ id="x37-200002r172"></a><span 
+class="ec-lmtt-10">maintainer=</span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">YourName</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">,</span> 
+<a 
+ id="x37-200004r173"></a><span 
+class="ec-lmtt-10">maintainer_email=</span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">you@email.com</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">,</span> 
+<a 
+ id="x37-200006r174"></a><span 
+class="ec-lmtt-10">description=</span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">Examples of minimal publisher/subscriber using rclpy</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">,</span> 
+<a 
+ id="x37-200008r175"></a><span 
+class="ec-lmtt-10">license=</span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">Apache License 2.0</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">,</span></pre>
+</div><p>
+<!--l. 598--><p class="noindent" >Add the following line within the <code class="verb">console_scripts</code> brackets of the <code class="verb">entry_points</code> field:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb301"><a 
+ id="x37-200010r180"></a><span 
+class="ec-lmtt-10">entry_points={</span> 
+<a 
+ id="x37-200012r181"></a>        <span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">console_scripts</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">: [</span> 
+<a 
+ id="x37-200014r182"></a>                <span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">talker = py_pubsub.publisher_member_function:main</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">,</span> 
+<a 
+ id="x37-200016r183"></a>        <span 
+class="ec-lmtt-10">],</span> 
+<a 
+ id="x37-200018r184"></a><span 
+class="ec-lmtt-10">},</span></pre>
+</div><p>
+
+<h5 class="subsubsectionHead"> <a 
+ id="x37-201000"></a>Checking the Configuration File</h5>
+<!--l. 604--><p class="noindent" >The contents of the <code class="verb">setup.cfg</code> file should be correctly populated automatically, like so:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb302"><a 
+ id="x37-201002r191"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">[develop]</span></span> 
+<a 
+ id="x37-201004r192"></a><span style="color:#B57514;"><span 
+class="ec-lmtt-10">script_dir</span></span><span 
+class="ec-lmtt-10">=</span><span style="color:#78730D;"><span 
+class="ec-lmtt-10">$base/lib/py_pubsub</span></span> 
+<a 
+ id="x37-201006r193"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">[install]</span></span> 
+<a 
+ id="x37-201008r194"></a><span style="color:#B57514;"><span 
+class="ec-lmtt-10">install_scripts</span></span><span 
+class="ec-lmtt-10">=</span><span style="color:#78730D;"><span 
+class="ec-lmtt-10">$base/lib/py_pubsub</span></span></pre>
+                                                                                
+                                                                                
+</div><p>
+<!--l. 609--><p class="noindent" >This code is simply telling <a 
+href="https://setuptools.pypa.io/en/latest/userguide/" >setuptools</a> to put our executables in <span class="code-directory"><code class="verb">lib</code></span>, as <code class="verb">ros2 run</code> will look for them
+there. We could build our package now, source the local setup files, and run it, but let’s create the
+subscriber node first so we can see the full system at work.
+
+</p>
+<!--l. 614--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="RoboticsLectureBook.pdf#subsection.7.2.3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">7.2.3</span> <span class="title">  <a 
+ id="x37-2020007.2.3"></a>Writing the Subscriber Node</span></h4></div><p>
+</p><!--l. 616--><p class="noindent" >Return to <code class="verb">ros2_ws/src/py_pubsub/py_pubsub</code> to create the next node. Enter the following code into
+our terminal:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb303"><a 
+ id="x37-202002r325"></a><span 
+class="ec-lmtt-10">wget https://raw.githubusercontent.com/ros2/examples/humble/rclpy/topics/minimal_subscriber/examples_rclpy_minimal_subscriber/subscriber_member_function.py</span></pre>
+</div><p>
+<!--l. 621--><p class="noindent" >Now the directory should have these files:
+</p><!--l. 623--><p class="noindent" ><div class="quote"> <code class="verb">__init__.py</code>, <code class="verb">publisher_member_function.py</code> and <code class="verb">subscriber_member_function.py</code>
+</p></div><p>
+
+<h5 class="subsubsectionHead"> <a 
+ id="x37-203000"></a>Examining the Code</h5>
+<!--l. 630--><p class="noindent" >Open the <code class="verb">subscriber_member_function.py</code> with our preferred text editor.
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb304"><a 
+ id="x37-203002r332"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">import</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">rclpy</span></span> 
+<a 
+ id="x37-203004r333"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">from</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">rclpy.node</span></span> <span style="color:#9E0005;"><span 
+class="ec-lmtt-10">import</span></span> <span 
+class="ec-lmtt-10">Node</span> 
+<a 
+ id="x37-203006r334"></a> 
+<a 
+ id="x37-203008r335"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">from</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">std_msgs.msg</span></span> <span style="color:#9E0005;"><span 
+class="ec-lmtt-10">import</span></span> <span 
+class="ec-lmtt-10">String</span> 
+<a 
+ id="x37-203010r336"></a> 
+<a 
+ id="x37-203012r337"></a> 
+<a 
+ id="x37-203014r338"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">class</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">MinimalSubscriber</span></span><span 
+class="ec-lmtt-10">(Node):</span> 
+<a 
+ id="x37-203016r339"></a> 
+<a 
+ id="x37-203018r340"></a>    <span style="color:#9E0005;"><span 
+class="ec-lmtt-10">def</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">__init__</span></span><span 
+class="ec-lmtt-10">(</span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">):</span> 
+<a 
+ id="x37-203020r341"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">super</span></span><span 
+class="ec-lmtt-10">().</span><span style="color:#427A59;"><span 
+class="ec-lmtt-10">__init__</span></span><span 
+class="ec-lmtt-10">(</span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">minimal_subscriber</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">)</span> 
+<a 
+ id="x37-203022r342"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.subscription = </span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.create_subscription(</span> 
+<a 
+ id="x37-203024r343"></a>            <span 
+class="ec-lmtt-10">String,</span> 
+<a 
+ id="x37-203026r344"></a>            <span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">topic</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">,</span> 
+<a 
+ id="x37-203028r345"></a>            <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.listener_callback,</span> 
+<a 
+ id="x37-203030r346"></a>            <span style="color:#8F4070;"><span 
+class="ec-lmtt-10">10</span></span><span 
+class="ec-lmtt-10">)</span> 
+<a 
+ id="x37-203032r347"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.subscription  </span><span style="color:#918273;"><italic># prevent unused variable warning</italic></span> 
+<a 
+ id="x37-203034r348"></a> 
+<a 
+ id="x37-203036r349"></a>    <span style="color:#9E0005;"><span 
+class="ec-lmtt-10">def</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">listener_callback</span></span><span 
+class="ec-lmtt-10">(</span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">, msg):</span> 
+<a 
+ id="x37-203038r350"></a>        <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.get_logger().info(</span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">I heard: &#x0022;</span></span><span style="color:#78730D;"><span 
+class="ec-lmtt-10">%s</span></span><span style="color:#78730D;"><span 
+class="ec-lmtt-10">&#x0022;</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span> <span 
+class="ec-lmtt-10">% msg.data)</span> 
+<a 
+ id="x37-203040r351"></a> 
+<a 
+ id="x37-203042r352"></a> 
+<a 
+ id="x37-203044r353"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">def</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">main</span></span><span 
+class="ec-lmtt-10">(args=</span><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">None</span></span><span 
+class="ec-lmtt-10">):</span> 
+<a 
+ id="x37-203046r354"></a>    <span 
+class="ec-lmtt-10">rclpy.init(args=args)</span> 
+<a 
+ id="x37-203048r355"></a> 
+<a 
+ id="x37-203050r356"></a>    <span 
+class="ec-lmtt-10">minimal_subscriber = MinimalSubscriber()</span> 
+<a 
+ id="x37-203052r357"></a> 
+<a 
+ id="x37-203054r358"></a>    <span 
+class="ec-lmtt-10">rclpy.spin(minimal_subscriber)</span> 
+<a 
+ id="x37-203056r359"></a> 
+<a 
+ id="x37-203058r360"></a>    <span style="color:#918273;"><italic># Destroy the node explicitly</italic></span> 
+<a 
+ id="x37-203060r361"></a>    <span style="color:#918273;"><italic># (optional - otherwise it will be done automatically</italic></span> 
+<a 
+ id="x37-203062r362"></a>    <span style="color:#918273;"><italic># when the garbage collector destroys the node object)</italic></span> 
+<a 
+ id="x37-203064r363"></a>    <span 
+class="ec-lmtt-10">minimal_subscriber.destroy_node()</span> 
+<a 
+ id="x37-203066r364"></a>    <span 
+class="ec-lmtt-10">rclpy.shutdown()</span> 
+<a 
+ id="x37-203068r365"></a> 
+<a 
+ id="x37-203070r366"></a> 
+<a 
+ id="x37-203072r367"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">if</span></span> <span style="color:#086678;"><span 
+class="ec-lmtt-10">__name__</span></span> <span 
+class="ec-lmtt-10">== </span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">__main__</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">:</span> 
+<a 
+ id="x37-203074r368"></a>    <span 
+class="ec-lmtt-10">main()</span></pre>
+</div><p>
+<!--l. 634--><p class="noindent" >The subscriber node’s code is nearly identical to the publisher’s. The constructor creates a subscriber
+with the same arguments as the publisher.
+</p>
+<div class="warning">
+<!--l. 640--><p class="noindent" >Topic name and message type used by the publisher and subscriber must match to allow them to
+communicate.
+</p>
+</div>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb305"><a 
+ id="x37-203076r373"></a><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.subscription = </span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.create_subscription(</span> 
+<a 
+ id="x37-203078r374"></a>    <span 
+class="ec-lmtt-10">String,</span> 
+<a 
+ id="x37-203080r375"></a>    <span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">topic</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">,</span> 
+<a 
+ id="x37-203082r376"></a>    <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.listener_callback,</span> 
+<a 
+ id="x37-203084r377"></a>    <span style="color:#8F4070;"><span 
+class="ec-lmtt-10">10</span></span><span 
+class="ec-lmtt-10">)</span></pre>
+</div><p>
+<!--l. 644--><p class="noindent" >The subscriber’s constructor and callback don’t include any timer definition, because it doesn’t need
+one. Its callback gets called as soon as it receives a message.
+</p><!--l. 647--><p class="noindent" >The callback definition simply prints an info message to the console, along with the data it
+received.
+                                                                                
+                                                                                
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb306"><a 
+ id="x37-203086r382"></a><span style="color:#9E0005;"><span 
+class="ec-lmtt-10">def</span></span> <span style="color:#427A59;"><span 
+class="ec-lmtt-10">listener_callback</span></span><span 
+class="ec-lmtt-10">(</span><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">, msg):</span> 
+<a 
+ id="x37-203088r383"></a>    <span style="color:#B03B03;"><span 
+class="ec-lmtt-10">self</span></span><span 
+class="ec-lmtt-10">.get_logger().info(</span><span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">I heard: &#x0022;</span></span><span style="color:#78730D;"><span 
+class="ec-lmtt-10">%s</span></span><span style="color:#78730D;"><span 
+class="ec-lmtt-10">&#x0022;</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span> <span 
+class="ec-lmtt-10">% msg.data)</span></pre>
+</div><p>
+<!--l. 652--><p class="noindent" >The main definition is almost exactly the same, replacing the creation and spinning of the publisher
+with the subscriber.
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb307"><a 
+ id="x37-203090r388"></a><span 
+class="ec-lmtt-10">minimal_subscriber = MinimalSubscriber()</span> 
+<a 
+ id="x37-203092r389"></a> 
+<a 
+ id="x37-203094r390"></a><span 
+class="ec-lmtt-10">rclpy.spin(minimal_subscriber)</span></pre>
+</div><p>
+<!--l. 657--><p class="noindent" >Since this node has the same dependencies as the publisher, there’s nothing new to add to
+<span class="code-directory"><code class="verb">package.xml</code></span>.
+</p><!--l. 660--><p class="noindent" >The <code class="verb">setup.cfg</code> file can also remain untouched.
+
+</p>
+<h5 class="subsubsectionHead"> <a 
+ id="x37-204000"></a>Adding an Entry Point</h5>
+<!--l. 664--><p class="noindent" >Reopen setup.py and add the entry point for the subscriber node below the publisher’s entry point. The
+<code class="verb">entry_points</code> 
+field should now look like this:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb308"><a 
+ id="x37-204002r397"></a><span 
+class="ec-lmtt-10">entry_points={</span> 
+<a 
+ id="x37-204004r398"></a>        <span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">console_scripts</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">: [</span> 
+<a 
+ id="x37-204006r399"></a>                <span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">talker = py_pubsub.publisher_member_function:main</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">,</span> 
+<a 
+ id="x37-204008r400"></a>                <span style="color:#78730D;"><span 
+class="ts1-lmtt10-">&#x0027;</span><span 
+class="ec-lmtt-10">listener = py_pubsub.subscriber_member_function:main</span><span 
+class="ts1-lmtt10-">&#x0027;</span></span><span 
+class="ec-lmtt-10">,</span> 
+<a 
+ id="x37-204010r401"></a>        <span 
+class="ec-lmtt-10">],</span> 
+<a 
+ id="x37-204012r402"></a><span 
+class="ec-lmtt-10">},</span></pre>
+</div><p>
+
+<!--l. 669--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="RoboticsLectureBook.pdf#subsection.7.2.4"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">7.2.4</span> <span class="title">  <a 
+ id="x37-2050007.2.4"></a>Building and Running</span></h4></div><p>
+</p><!--l. 671--><p class="noindent" >We likely already have the <code class="verb">rclpy</code> and <code class="verb">std_msgs</code> packages installed as part of our <span class="acronym"><span class="acronym-short"><a 
+href="#glo:ros" class="glossary" >ROS</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:ros" class="glossary" >Robot Operating
+System 2</a></span><span class="acronym-desc"><a 
+href="#glo:ros" class="glossary" >Robot Operating System 2</a></span></span></span> system. It’s good practice to run <code class="verb">rosdep</code> in the root of our
+workspace (<span class="code-directory"><code class="verb">ros2\_ws</code></span>) to check for missing dependencies before building:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb309"><a 
+ id="x37-205002r409"></a><span 
+class="ec-lmtt-10">rosdep install</span> <span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">i</span> <span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">from</span><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">path src</span> <span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">rosdistro humble</span> <span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">y</span></pre>
+</div><p>
+<!--l. 677--><p class="noindent" >Still in the root of our workspace, <span class="code-directory"><code class="verb">ros2\_ws</code></span>, build your new package:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb310"><a 
+ id="x37-205004r414"></a><span 
+class="ec-lmtt-10">colcon build</span> <span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">packages</span><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">select py_pubsub</span></pre>
+                                                                                
+                                                                                
+</div><p>
+<!--l. 681--><p class="noindent" >Open a new terminal, navigate to <code class="verb">ros2_ws</code>, and source the setup files:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb311"><a 
+ id="x37-205006r419"></a><span 
+class="ec-lmtt-10">source install/setup.bash</span></pre>
+</div><p>
+<!--l. 685--><p class="noindent" >Now run the talker node. The terminal should start publishing info messages every 0.5
+seconds:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb312"><a 
+ id="x37-205008r424"></a><span 
+class="ec-lmtt-10">ros2 run py_pubsub talker</span></pre>
+</div><p>
+<!--l. 689--><p class="noindent" >Open another terminal, source the setup files from inside <code class="verb">ros2_ws</code> again, and then start the listener
+node. The listener will start printing messages to the console, starting at whatever message count the
+publisher is on at that time, like so:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb313"><a 
+ id="x37-205010r429"></a><span 
+class="ec-lmtt-10">ros2 run py_pubsub listener</span></pre>
+</div><p>
+                                                                                
+                                                                                
+<div class="crosslinks-bottom"><a 
+href="WritingaSimpleServiceandClient.html" ><span class="nav-next">NEXT</span></a><a 
+href="GettingStartedwithColcon.html" ><span class="nav-prev">PREV</span></a><a 
+href="GettingStartedwithColcon.html#tailGettingStartedwithColcon.html" ><span class="nav-prev-tail">PREV-TAIL</span></a><a 
+href="WritingaSimplePublisherandSubscriber.html" ><span class="nav-front">FRONT</span></a><a 
+href="ClientLibraries.html#WritingaSimplePublisherandSubscriber.html" ><span class="nav-up">UP</span></a></nav><a 
+ id="tailWritingaSimplePublisherandSubscriber.html"></a>  </div> <div class="footer"> <div class="footer-left"><span class="footer-lecture">D. T. McGuiness, PhD</span> 
+<span class="footer-webBook"><span id="bold" style="font-weight:bold;">Last Updated:</span> 18.5.2026, at 11:25.</span> </div> </div> </div> <div class="author-notes"><span class="note">Authors Note </span><span class="text">The website you are
+viewing is auto-generated using ParSnip and therefore subject to slight errors in typography and
+formatting. When in doubt, please consult the LectureBook. </span></div>  
+</body> 
+</html>

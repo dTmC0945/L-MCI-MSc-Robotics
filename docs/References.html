@@ -1,0 +1,562 @@
+<!DOCTYPE html> 
+<html lang="en">  
+<head><title>7.9 References</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="RoboticsLectureBook.css" /> 
+<meta name="src" content="RoboticsLectureBook.tex" /> 
+ <link rel="stylesheet" type="text/css" href="flatweb.css"> 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+
+<link href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css" rel="stylesheet" type="text/css" /> 
+ <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script> 
+ <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"> </script>  
+<link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"/>  
+<script src="flatjs.js"> </script>  <script src="/Users/danielmcguiness/GitHub/MCI-Source-Files/Configuration/ScriptsHTML/webBook/sidenote.js"> </script>   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/matlab.min.js"> </script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dockerfile.min.js"> </script>
+<!--l. 107--><p class="noindent" ><header> </header> 
+</head><body 
+>
+<page> 
+<nav class="wide"><div class="header"> <div class="header-left"><span class="header-lecture">M.Sc Robotics</span> 
+<span class="header-webBook">WebBook</span> </div> <div class="header-right"><span class="header-version">2026.SS</span> 
+<span class="header-chapter">Client Libraries</span></div></div> <div class="toc"><span class="chapterToc"><span class="number">0</span><span class="title"><a 
+href="index.html#x2-10000">index</a></span></span><span class="chapterToc"><span class="number">1</span><span class="title"><a 
+href="MobileRobotLocalisation.html#x3-20001">Mobile Robot Localisation</a></span></span><span class="sectionToc"><span class="number">1.1</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-30001.1">The Problems of Noise and Aliasing</a></span></span><span class="subsectionToc"><span class="number">1.1.1</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-40001.1.1">Sensor
+Noise</a></span></span><span class="subsectionToc"><span class="number">1.1.2</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-50001.1.2">Sensor Aliasing</a></span></span><span class="subsectionToc"><span class="number">1.1.3</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-60001.1.3">Effector Noise</a></span></span><span class="subsectionToc"><span class="number">1.1.4</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-70001.1.4">An Error Model for Odometric
+Position Estimation</a></span></span><span class="sectionToc"><span class="number">1.2</span><span class="title"><a 
+href="LocalisationvHardCodedNavigation.html#x5-80001.2">Localisation v. Hard-Coded Navigation</a></span></span><span class="sectionToc"><span class="number">1.3</span><span class="title"><a 
+href="RepresentingBelief.html#x6-90001.3">Representing
+Belief</a></span></span><span class="subsectionToc"><span class="number">1.3.1</span><span class="title"><a 
+href="RepresentingBelief.html#x6-100001.3.1">Single Hypothesis Belief</a></span></span><span class="subsectionToc"><span class="number">1.3.2</span><span class="title"><a 
+href="RepresentingBelief.html#x6-110001.3.2">Multiple Hypothesis Belief</a></span></span><span class="sectionToc"><span class="number">1.4</span><span class="title"><a 
+href="RepresentingMaps.html#x7-120001.4">Representing
+Maps</a></span></span><span class="subsectionToc"><span class="number">1.4.1</span><span class="title"><a 
+href="RepresentingMaps.html#x7-130001.4.1">Continuous Representation</a></span></span><span class="subsectionToc"><span class="number">1.4.2</span><span class="title"><a 
+href="RepresentingMaps.html#x7-140001.4.2">Decomposition Methods</a></span></span><span class="subsectionToc"><span class="number">1.4.3</span><span class="title"><a 
+href="RepresentingMaps.html#x7-150001.4.3">Current
+Challenges</a></span></span><span class="sectionToc"><span class="number">1.5</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-160001.5">Probabilistic Map-Based Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.1</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-170001.5.1">Markov Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.2</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-210001.5.2">Kalman
+Filter Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.3</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-220001.5.3">An Implementation of Kalman Filter</a></span></span><span class="sectionToc"><span class="number">1.6</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-270001.6">Other Examples
+of Localisation Methods</a></span></span><span class="subsectionToc"><span class="number">1.6.1</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-280001.6.1">Landmark-based Navigation</a></span></span><span class="subsectionToc"><span class="number">1.6.2</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-290001.6.2">Globally Unique
+Localisation</a></span></span><span class="subsectionToc"><span class="number">1.6.3</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-300001.6.3">Positioning Beacon systems</a></span></span><span class="subsectionToc"><span class="number">1.6.4</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-310001.6.4">Route-Based Localisation</a></span></span><span class="sectionToc"><span class="number">1.7</span><span class="title"><a 
+href="BuildingMaps.html#x10-320001.7">Building
+Maps</a></span></span><span class="subsectionToc"><span class="number">1.7.1</span><span class="title"><a 
+href="BuildingMaps.html#x10-330001.7.1">Stochastic Map Technique</a></span></span><span class="subsectionToc"><span class="number">1.7.2</span><span class="title"><a 
+href="BuildingMaps.html#x10-340001.7.2">Other Mapping Techniques</a></span></span><span class="chapterToc"><span class="number">2</span><span class="title"><a 
+href="WelcometoLinux.html#x11-370002">Welcome to
+Linux</a></span></span><span class="sectionToc"><span class="number">2.1</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-380002.1">Learning the Linux Command Line</a></span></span><span class="subsectionToc"><span class="number">2.1.1</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-390002.1.1">A History of UNIX/Linux</a></span></span><span class="subsectionToc"><span class="number">2.1.2</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-410002.1.2">A
+Short History on Computer Interfaces</a></span></span><span class="subsectionToc"><span class="number">2.1.3</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-430002.1.3">Linux is a Nutshell</a></span></span><span class="subsectionToc"><span class="number">2.1.4</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-460002.1.4">Linux
+Distributions</a></span></span><span class="sectionToc"><span class="number">2.2</span><span class="title"><a 
+href="Installation.html#x13-470002.2">Installation</a></span></span><span class="sectionToc"><span class="number">2.3</span><span class="title"><a 
+href="Docker.html#x14-480002.3">Docker</a></span></span><span class="subsectionToc"><span class="number">2.3.1</span><span class="title"><a 
+href="Docker.html#x14-490002.3.1">Dockerfile</a></span></span><span class="subsectionToc"><span class="number">2.3.2</span><span class="title"><a 
+href="Docker.html#x14-500002.3.2">Running the Container</a></span></span><span class="chapterToc"><span class="number">3</span><span class="title"><a 
+href="CommandLineFundamentals.html#x15-510003">Command
+Line Fundamentals</a></span></span><span class="sectionToc"><span class="number">3.1</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-520003.1">To Command a Computer</a></span></span><span class="subsectionToc"><span class="number">3.1.1</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-530003.1.1">The Command Line Interface</a></span></span><span class="subsectionToc"><span class="number">3.1.2</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-540003.1.2">The
+Structure of Commands</a></span></span><span class="subsectionToc"><span class="number">3.1.3</span><span class="title"><a 
+href="ToCommandaComputer.html#x16-550003.1.3">Some Rules Regarding the Syntax</a></span></span><span class="sectionToc"><span class="number">3.2</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-560003.2">When We Need Help
+with Commands</a></span></span><span class="subsectionToc"><span class="number">3.2.1</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-570003.2.1">Use Tab completion on the Shell</a></span></span><span class="subsectionToc"><span class="number">3.2.2</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-580003.2.2">The info command</a></span></span><span class="subsectionToc"><span class="number">3.2.3</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-590003.2.3">The
+whatis command</a></span></span><span class="chapterToc"><span class="number">4</span><span class="title"><a 
+href="WorkingwithFilesandFolders.html#x18-610004">Working with Files and Folders</a></span></span><span class="sectionToc"><span class="number">4.1</span><span class="title"><a 
+href="FilesandFolders.html#x19-620004.1">Files and Folders</a></span></span><span class="subsectionToc"><span class="number">4.1.1</span><span class="title"><a 
+href="FilesandFolders.html#x19-630004.1.1">A Detailed Look
+in ls Command</a></span></span><span class="subsectionToc"><span class="number">4.1.2</span><span class="title"><a 
+href="FilesandFolders.html#x19-640004.1.2">Creating and Removing Folders</a></span></span><span class="subsectionToc"><span class="number">4.1.3</span><span class="title"><a 
+href="FilesandFolders.html#x19-650004.1.3">Move, Copy and Delete Files and
+Folders</a></span></span><span class="sectionToc"><span class="number">4.2</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-720004.2">Permissions and Links</a></span></span><span class="subsectionToc"><span class="number">4.2.1</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-730004.2.1">Role to Users and sudo</a></span></span><span class="subsectionToc"><span class="number">4.2.2</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-740004.2.2">File Permissions</a></span></span><span class="subsectionToc"><span class="number">4.2.3</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-770004.2.3">Hard
+and Symbolic Links</a></span></span><span class="subsectionToc"><span class="number">4.2.4</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-780004.2.4">Soft (Symbolic) Links</a></span></span><span class="subsectionToc"><span class="number">4.2.5</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-800004.2.5">The Linux File System</a></span></span><span class="subsectionToc"><span class="number">4.2.6</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-810004.2.6">The
+UNIX Philosophy</a></span></span><span class="sectionToc"><span class="number">4.3</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-820004.3">Common Command-Line Tools and Tasks</a></span></span><span class="subsectionToc"><span class="number">4.3.1</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-830004.3.1">Connecting
+Commands with Pipes</a></span></span><span class="subsectionToc"><span class="number">4.3.2</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-840004.3.2">Viewing Text Files with cat, head, tail, and less</a></span></span><span class="subsectionToc"><span class="number">4.3.3</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-850004.3.3">Finding
+Linux Distribution and Kernel Information</a></span></span><span class="subsectionToc"><span class="number">4.3.4</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-870004.3.4">Find System Hardware and Disk
+Information</a></span></span><span class="chapterToc"><span class="number">5</span><span class="title"><a 
+href="ROSConcepts.html#x22-890005">ROS Concepts</a></span></span><span class="sectionToc"><span class="number">5.1</span><span class="title"><a 
+href="PublisherandSubscriberArchitecture.html#x23-900005.1">Publisher and Subscriber Architecture</a></span></span><span class="subsectionToc"><span class="number">5.1.1</span><span class="title"><a 
+href="PublisherandSubscriberArchitecture.html#x23-910005.1.1">ROS 2
+Architecture</a></span></span><span class="sectionToc"><span class="number">5.2</span><span class="title"><a 
+href="BuildingBlocks.html#x24-930005.2">Building Blocks</a></span></span><span class="subsectionToc"><span class="number">5.2.1</span><span class="title"><a 
+href="BuildingBlocks.html#x24-940005.2.1">Nodes</a></span></span><span class="subsectionToc"><span class="number">5.2.2</span><span class="title"><a 
+href="BuildingBlocks.html#x24-950005.2.2">The Discovery Process</a></span></span><span class="subsectionToc"><span class="number">5.2.3</span><span class="title"><a 
+href="BuildingBlocks.html#x24-960005.2.3">Communication
+Interface</a></span></span><span class="subsectionToc"><span class="number">5.2.4</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1050005.2.4">Topics</a></span></span><span class="subsectionToc"><span class="number">5.2.5</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1090005.2.5">Services</a></span></span><span class="subsectionToc"><span class="number">5.2.6</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1120005.2.6">Actions</a></span></span><span class="subsectionToc"><span class="number">5.2.7</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1150005.2.7">Parameters</a></span></span><span class="subsectionToc"><span class="number">5.2.8</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1240005.2.8">Working with
+Command Line</a></span></span><span class="subsectionToc"><span class="number">5.2.9</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1260005.2.9">Launch Files</a></span></span><span class="sectionToc"><span class="number">5.3</span><span class="title"><a 
+href="AdvancedConcepts.html#x25-1270005.3">Advanced Concepts</a></span></span><span class="subsectionToc"><span class="number">5.3.1</span><span class="title"><a 
+href="AdvancedConcepts.html#x25-1280005.3.1">ROS DOMAIN
+ID</a></span></span><span class="chapterToc"><span class="number">6</span><span class="title"><a 
+href="CommandLineTools.html#x26-1300006">Command Line Tools</a></span></span><span class="sectionToc"><span class="number">6.1</span><span class="title"><a 
+href="SettingtheEnvironment.html#x27-1310006.1">Setting the Environment</a></span></span><span class="sectionToc"><span class="number">6.2</span><span class="title"><a 
+href="TurtlesandGraphs.html#x28-1360006.2">Turtles and Graphs</a></span></span><span class="sectionToc"><span class="number">6.3</span><span class="title"><a 
+href="ADeeperLookintoNodes.html#x29-1440006.3">A
+Deeper Look into Nodes</a></span></span><span class="sectionToc"><span class="number">6.4</span><span class="title"><a 
+href="WorkingwithTopics.html#x30-1490006.4">Working with Topics</a></span></span><span class="sectionToc"><span class="number">6.5</span><span class="title"><a 
+href="WorkingwithServices.html#x31-1550006.5">Working with Services</a></span></span><span class="sectionToc"><span class="number">6.6</span><span class="title"><a 
+href="WorkingwithParameters.html#x32-1620006.6">Working
+with Parameters</a></span></span><span class="sectionToc"><span class="number">6.7</span><span class="title"><a 
+href="APracticalLookintoActions.html#x33-1690006.7">A Practical Look into Actions</a></span></span><span class="sectionToc"><span class="number">6.8</span><span class="title"><a 
+href="LaunchingNodes.html#x34-1760006.8">Launching Nodes</a></span></span><span class="chapterToc"><span class="number">7</span><span class="title"><a 
+href="ClientLibraries.html#x35-1780007">Client
+Libraries</a></span></span><span class="sectionToc"><span class="number">7.1</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1790007.1">Getting Started with Colcon</a></span></span><span class="subsectionToc"><span class="number">7.1.1</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1800007.1.1">The Structure of a Package</a></span></span><span class="subsectionToc"><span class="number">7.1.2</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1810007.1.2">Sourcing
+an Underlay</a></span></span><span class="subsectionToc"><span class="number">7.1.3</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1820007.1.3">Building the Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.4</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1830007.1.4">Sourcing the New Package</a></span></span><span class="subsectionToc"><span class="number">7.1.5</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1840007.1.5">Creating a
+Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.6</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1850007.1.6">Sourcing the Environment</a></span></span><span class="subsectionToc"><span class="number">7.1.7</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1860007.1.7">Creating a New Directory</a></span></span><span class="subsectionToc"><span class="number">7.1.8</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1870007.1.8">Cloning a
+Sample Repo</a></span></span><span class="subsectionToc"><span class="number">7.1.9</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1880007.1.9">Resolving Dependencies</a></span></span><span class="subsectionToc"><span class="number">7.1.10</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1890007.1.10">Building the Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.11</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1900007.1.11">Sourcing our
+Overlay</a></span></span><span class="subsectionToc"><span class="number">7.1.12</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1910007.1.12">Modifying the Overlay</a></span></span><span class="subsectionToc"><span class="number">7.1.13</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1920007.1.13">Creating a Package</a></span></span><span class="sectionToc"><span class="number">7.2</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-1950007.2">Writing a Simple Publisher
+and Subscriber</a></span></span><span class="subsectionToc"><span class="number">7.2.1</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-1960007.2.1">Creating a ROS Packages</a></span></span><span class="subsectionToc"><span class="number">7.2.2</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-1970007.2.2">Writing the Publisher Node</a></span></span><span class="subsectionToc"><span class="number">7.2.3</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-2020007.2.3">Writing
+the Subscriber Node</a></span></span><span class="subsectionToc"><span class="number">7.2.4</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-2050007.2.4">Building and Running</a></span></span><span class="sectionToc"><span class="number">7.3</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2060007.3">Writing a Simple Service and
+Client</a></span></span><span class="subsectionToc"><span class="number">7.3.1</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2070007.3.1">Creating a New Package</a></span></span><span class="subsectionToc"><span class="number">7.3.2</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2100007.3.2">Writing the Service Node</a></span></span><span class="subsectionToc"><span class="number">7.3.3</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2130007.3.3">Writing the Client
+                                                                                
+                                                                                
+Node</a></span></span><span class="sectionToc"><span class="number">7.4</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2160007.4">Creating Custom msg and srv Files</a></span></span><span class="subsectionToc"><span class="number">7.4.1</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2170007.4.1">Creating a New Package</a></span></span><span class="subsectionToc"><span class="number">7.4.2</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2180007.4.2">Creating
+Custom Definitions</a></span></span><span class="subsectionToc"><span class="number">7.4.3</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2250007.4.3">Testing the Newly Built Interfaces</a></span></span><span class="sectionToc"><span class="number">7.5</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2270007.5">Using Parameters in a
+Class</a></span></span><span class="subsectionToc"><span class="number">7.5.1</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2280007.5.1">Creating a Package</a></span></span><span class="subsectionToc"><span class="number">7.5.2</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2300007.5.2">Writing our Python Code</a></span></span><span class="subsectionToc"><span class="number">7.5.3</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2350007.5.3">Changing Output using
+the Console</a></span></span><span class="subsectionToc"><span class="number">7.5.4</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2360007.5.4">Changing using the Launch File</a></span></span><span class="sectionToc"><span class="number">7.6</span><span class="title"><a 
+href="ManagingDependencies.html#x41-2370007.6">Managing Dependencies</a></span></span><span class="sectionToc"><span class="number">7.7</span><span class="title"><a 
+href="CreatinganAction.html#x42-2390007.7">Creating
+an Action</a></span></span><span class="sectionToc"><span class="number">7.8</span><span class="title"><a 
+href="WritinganActionServerandClient.html#x43-2420007.8">Writing an Action Server and Client</a></span></span><span class="sectionToc"><span class="number">7.9</span><span class="title"><a 
+href="WritingaLaunchFile.html#x44-2440007.9">Writing a Launch File</a></span></span>
+ 
+
+</div></div></nav> 
+
+<article class="chapter"> 
+<nav class="crosslinks-top"> <span class="nav-inactive"><span class="nav-next">NEXT</span></span> <a 
+href="ClientLibraries.html" ><span class="nav-prev">PREV</span></a><a 
+href="ClientLibraries.html#tailClientLibraries.html" ><span class="nav-prev-tail">PREV-TAIL</span></a><a 
+href="#tailReferences.html"><span class="nav-tail">TAIL</span></a><a 
+href="RoboticsLectureBook.html#References.html" ><span class="nav-up">UP</span></a></nav> 
+<h2 class="addchapHead">  <a 
+ id="x45-250000"></a>References</h2>
+<dl class="thebibliography"><dt id="X0-UoW2023" class="thebibliography"> 
+1.  
+</dt><dd 
+id="bib-127" class="thebibliography">
+<!--l. 107--><p class="noindent" >UoW. How Mars rovers use artificial intelligence 2023.
+</p>    
+</dd>
+<dt id="X0-bailey2002mobile" class="thebibliography">
+2.  
+</dt><dd 
+id="bib-128" class="thebibliography">
+<!--l. 107--><p class="noindent" >Bailey, T. Mobile robot localisation and mapping in extensive outdoor environments PhD
+thesis (Citeseer, 2002).
+</p>    
+</dd>
+<dt id="X0-campbell2020localization" class="thebibliography">
+3.  
+</dt><dd 
+id="bib-129" class="thebibliography">
+<!--l. 107--><p class="noindent" >Campbell, S. et al. Where am I? Localization techniques for mobile robots a review in 2020
+6th International Conference on Mechatronics and Robotics Engineering (ICMRE) (2020),
+43–47.
+</p>    
+</dd>
+<dt id="X0-hodge2023sensors" class="thebibliography">
+4.  
+</dt><dd 
+id="bib-130" class="thebibliography">
+<!--l. 107--><p class="noindent" >Hodge, V. J. Sensors and data in mobile robotics for localisation. Encyclopedia of Data
+Science and Machine Learning, 2223–2238 (2023).
+</p>    
+</dd>
+<dt id="X0-jaradat2017challenges" class="thebibliography">
+5.  
+</dt><dd 
+id="bib-131" class="thebibliography">
+<!--l. 107--><p class="noindent" >Jaradat, O., Sljivo, I., Habli, I. &#x0026; Hawkins, R. Challenges of safety assurance for industry
+4.0 in 2017 13th European Dependable Computing Conference (EDCC) (2017), 103–106.
+</p>    
+</dd>
+<dt id="X0-filliat2003map" class="thebibliography">
+6.  
+</dt><dd 
+id="bib-132" class="thebibliography">
+<!--l. 107--><p class="noindent" >Filliat, D. &#x0026; Meyer, J.-A. Map-based navigation in mobile robots:: I. a review of localization
+strategies. Cognitive systems research <span id="bold" style="font-weight:bold;">4</span><span id="bold" style="font-weight:bold;">,</span> 243–282 (2003).
+</p>    
+</dd>
+<dt id="X0-leonard2012directed" class="thebibliography">
+7.  
+</dt><dd 
+id="bib-133" class="thebibliography">
+<!--l. 107--><p class="noindent" >Leonard, J. J. &#x0026; Durrant-Whyte, H. F. Directed sonar sensing for mobile robot navigation
+(Springer Science &#x0026; Business Media, 2012).
+</p>    
+</dd>
+<dt id="X0-wing2005consumer" class="thebibliography">
+8.  
+</dt><dd 
+id="bib-134" class="thebibliography">
+<!--l. 107--><p class="noindent" >Wing,  M. G.,  Eklund,  A.  &#x0026;  Kellogg,  L. D.  Consumer-grade  global  positioning  system
+(GPS) accuracy and reliability. Journal of forestry <span id="bold" style="font-weight:bold;">103</span><span id="bold" style="font-weight:bold;">,</span> 169–173 (2005).
+</p>    
+</dd>
+<dt id="X0-bellotto2007people" class="thebibliography">
+9.  
+</dt><dd 
+id="bib-135" class="thebibliography">
+                                                                                
+                                                                                
+    
+<!--l. 107--><p class="noindent" >Bellotto,  N.  &#x0026;  Hu,  H.  People  tracking  and  identification  with  a  mobile  robot  in  2007
+International Conference on Mechatronics and Automation (2007), 3565–3570.
+</p>    
+</dd>
+<dt id="X0-sridharan2009color" class="thebibliography">
+10.  
+</dt><dd 
+id="bib-136" class="thebibliography">
+<!--l. 107--><p class="noindent" >Sridharan, M. &#x0026; Stone, P. Color learning and illumination invariance on mobile robots: A
+survey. Robotics and Autonomous Systems <span id="bold" style="font-weight:bold;">57</span><span id="bold" style="font-weight:bold;">,</span> 629–644 (2009).
+</p>    
+</dd>
+<dt id="X0-GALAR20171" class="thebibliography">
+11.  
+</dt><dd 
+id="bib-137" class="thebibliography">
+<!--l. 107--><p class="noindent" >Galar, D. &#x0026; Kumar, U. Chapter 1 - Sensors and Data Acquisition in eMaintenance (eds
+Galar, D. &#x0026; Kumar, U.) 1–72 (Academic Press, 2017).
+</p>    
+</dd>
+<dt id="X0-williams1985aliasing" class="thebibliography">
+12.  
+</dt><dd 
+id="bib-138" class="thebibliography">
+<!--l. 107--><p class="noindent" >Williams, D. R. Aliasing in human foveal vision. Vision research <span id="bold" style="font-weight:bold;">25</span><span id="bold" style="font-weight:bold;">,</span> 195–205 (1985).
+</p>    
+</dd>
+<dt id="X0-maksim2006" class="thebibliography">
+13.  
+</dt><dd 
+id="bib-139" class="thebibliography">
+<!--l. 107--><p class="noindent" >maksim. An example of a poorly sampled brick pattern 2006.
+</p>    
+</dd>
+<dt id="X0-blumrosen2014noncontact" class="thebibliography">
+14.  
+</dt><dd 
+id="bib-140" class="thebibliography">
+<!--l. 107--><p class="noindent" >Blumrosen, G., Fishman, B. &#x0026; Yovel, Y. Noncontact wideband sonar for human activity
+detection and classification. IEEE Sensors Journal <span id="bold" style="font-weight:bold;">14</span><span id="bold" style="font-weight:bold;">,</span> 4043–4054 (2014).
+</p>    
+</dd>
+<dt id="X0-sabatini1998method" class="thebibliography">
+15.  
+</dt><dd 
+id="bib-141" class="thebibliography">
+<!--l. 107--><p class="noindent" >Sabatini, A. M. &#x0026; Colla, V. A method for sonar based recognition of walking people.
+Robotics and Autonomous Systems <span id="bold" style="font-weight:bold;">25</span><span id="bold" style="font-weight:bold;">,</span> 117–126 (1998).
+</p>    
+</dd>
+<dt id="X0-batavia2000path" class="thebibliography">
+16.  
+</dt><dd 
+id="bib-142" class="thebibliography">
+<!--l. 107--><p class="noindent" >Batavia, P. H. &#x0026; Nourbakhsh, I. Path planning for the Cye personal robot in Proceedings.
+2000  IEEE/RSJ  International  Conference  on  Intelligent  Robots  and  Systems  (IROS
+2000)(Cat. No. 00CH37113) <span id="bold" style="font-weight:bold;">1</span> (2000), 15–20.
+</p>    
+</dd>
+<dt id="X0-xkcd2025" class="thebibliography">
+17.  
+</dt><dd 
+id="bib-143" class="thebibliography">
+<!--l. 107--><p class="noindent" >xkcd. xkcd-Spirit 2025.
+</p>    
+</dd>
+<dt id="X0-reuter1999scan" class="thebibliography">
+18.  
+</dt><dd 
+id="bib-144" class="thebibliography">
+<!--l. 107--><p class="noindent" >Reuter, J. Scan-and featurebased multiple hypothesis tracking for mobile robot localization:
+a data fusion approach in IEEE SMC’99 Conference Proceedings. 1999 IEEE International
+Conference on Systems, Man, and Cybernetics (Cat. No. 99CH37028) <span id="bold" style="font-weight:bold;">4</span> (1999), 714–719.
+</p>    
+</dd>
+<dt id="X0-fankhauser2018probabilistic" class="thebibliography">
+19.  
+</dt><dd 
+id="bib-145" class="thebibliography">
+<!--l. 107--><p class="noindent" >Fankhauser, P., Bloesch, M. &#x0026; Hutter, M. Probabilistic terrain mapping for mobile robots
+with uncertain localization. IEEE Robotics and Automation Letters <span id="bold" style="font-weight:bold;">3</span><span id="bold" style="font-weight:bold;">,</span> 3019–3026 (2018).
+                                                                                
+                                                                                
+    
+</p>
+</dd>    
+<dt id="X0-yonhap2018" class="thebibliography">
+20.  
+</dt><dd 
+id="bib-146" class="thebibliography">
+<!--l. 107--><p class="noindent" >Agency., Y. N. Museum guide robot 2018.
+</p>    
+</dd>
+<dt id="X0-brock1999high" class="thebibliography">
+21.  
+</dt><dd 
+id="bib-147" class="thebibliography">
+<!--l. 107--><p class="noindent" >Brock, O. &#x0026; Khatib, O. High-speed navigation using the global dynamic window approach
+in Proceedings 1999 ieee international conference on robotics and automation (Cat. No.
+99CH36288C) <span id="bold" style="font-weight:bold;">1</span> (1999), 341–346.
+</p>    
+</dd>
+<dt id="X0-borensteinfast" class="thebibliography">
+22.  
+</dt><dd 
+id="bib-148" class="thebibliography">
+<!--l. 107--><p class="noindent" >Borenstein, J &#x0026; Koren, Y. Fast obstacle avoidance for mobile robots. IEEE Trans Rob
+Autom. v7, 278–287.
+</p>    
+</dd>
+<dt id="X0-brooks1986robust" class="thebibliography">
+23.  
+</dt><dd 
+id="bib-149" class="thebibliography">
+<!--l. 107--><p class="noindent" >Brooks, R. A robust layered control system for a mobile robot. IEEE journal on robotics
+and automation <span id="bold" style="font-weight:bold;">2</span><span id="bold" style="font-weight:bold;">,</span> 14–23 (1986).
+</p>    
+</dd>
+<dt id="X0-nourbakhsh1995dervish" class="thebibliography">
+24.  
+</dt><dd 
+id="bib-150" class="thebibliography">
+<!--l. 107--><p class="noindent" >Nourbakhsh,  I.,  Powers,  R.  &#x0026;  Birchfield,  S.  DERVISH  an  office-navigating  robot.  AI
+magazine <span id="bold" style="font-weight:bold;">16</span><span id="bold" style="font-weight:bold;">,</span> 53–53 (1995).
+</p>    
+</dd>
+<dt id="X0-wang2022object" class="thebibliography">
+25.  
+</dt><dd 
+id="bib-151" class="thebibliography">
+<!--l. 107--><p class="noindent" >Wang, F. et al. Object-based reliable visual navigation for mobile robot. Sensors <span id="bold" style="font-weight:bold;">22</span><span id="bold" style="font-weight:bold;">,</span> 2387
+(2022).
+</p>    
+</dd>
+<dt id="X0-AaaravG2018" class="thebibliography">
+26.  
+</dt><dd 
+id="bib-152" class="thebibliography">
+<!--l. 107--><p class="noindent" >AaaravG. How to Make Line Follower Robot Using Arduino 2018.
+</p>    
+</dd>
+<dt id="X0-mcnamara1989subjective" class="thebibliography">
+27.  
+</dt><dd 
+id="bib-153" class="thebibliography">
+<!--l. 107--><p class="noindent" >McNamara, T. P., Hardy, J. K. &#x0026; Hirtle, S. C. Subjective hierarchies in spatial memory.
+Journal of Experimental Psychology: Learning, Memory, and Cognition <span id="bold" style="font-weight:bold;">15</span><span id="bold" style="font-weight:bold;">,</span> 211 (1989).
+</p>    
+</dd>
+<dt id="X0-chun1998contextual" class="thebibliography">
+28.  
+</dt><dd 
+id="bib-154" class="thebibliography">
+<!--l. 107--><p class="noindent" >Chun, M. M. &#x0026; Jiang, Y. Contextual cueing: Implicit learning and memory of visual context
+guides spatial attention. Cognitive psychology <span id="bold" style="font-weight:bold;">36</span><span id="bold" style="font-weight:bold;">,</span> 28–71 (1998).
+</p>    
+</dd>
+<dt id="X0-huang2023visual" class="thebibliography">
+29.  
+</dt><dd 
+id="bib-155" class="thebibliography">
+<!--l. 107--><p class="noindent" >Huang, C., Mees, O., Zeng, A. &#x0026; Burgard, W. Visual language maps for robot navigation
+in  2023  IEEE  International  Conference  on  Robotics  and  Automation  (ICRA)  (2023),
+10608–10615.
+</p>    
+</dd>
+<dt id="X0-meyer2011using" class="thebibliography">
+30.  
+</dt><dd 
+id="bib-156" class="thebibliography">
+                                                                                
+                                                                                
+    
+<!--l. 107--><p class="noindent" >Meyer-Delius, D., Beinhofer, M., Kleiner, A. &#x0026; Burgard, W. Using artificial landmarks to
+reduce the ambiguity in the environment of a mobile robot in 2011 IEEE International
+Conference on Robotics and Automation (2011), 5173–5178.
+</p>    
+</dd>
+<dt id="X0-hazik2022fleet" class="thebibliography">
+31.  
+</dt><dd 
+id="bib-157" class="thebibliography">
+<!--l. 107--><p class="noindent" >Hazik, J., Dekan, M., Beno, P. &#x0026; Duchon, F. Fleet management system for an industry
+environment. Journal of Robotics and Control (JRC) <span id="bold" style="font-weight:bold;">3</span><span id="bold" style="font-weight:bold;">,</span> 779–789 (2022).
+</p>    
+</dd>
+<dt id="X0-xidias2022intelligent" class="thebibliography">
+32.  
+</dt><dd 
+id="bib-158" class="thebibliography">
+<!--l. 107--><p class="noindent" >Xidias, E., Zacharia, P. &#x0026; Nearchou, A. Intelligent fleet management of autonomous vehicles
+for city logistics. Applied Intelligence <span id="bold" style="font-weight:bold;">52</span><span id="bold" style="font-weight:bold;">,</span> 18030–18048 (2022).
+</p>    
+</dd>
+<dt id="X0-Kivaan2007" class="thebibliography">
+33.  
+</dt><dd 
+id="bib-159" class="thebibliography">
+<!--l. 107--><p class="noindent" >Kivaan. An official DARPA photograph of Stanley at the 2005 DARPA Grand Challenge.
+2007.
+</p>    
+</dd>
+<dt id="X0-hashimoto2002humanoid" class="thebibliography">
+34.  
+</dt><dd 
+id="bib-160" class="thebibliography">
+<!--l. 107--><p class="noindent" >Hashimoto,  S.  et  al.  Humanoid  robots  in  waseda  university–hadaly-2  and  wabian.
+Autonomous Robots <span id="bold" style="font-weight:bold;">12</span><span id="bold" style="font-weight:bold;">,</span> 25–38 (2002).
+</p>    
+</dd>
+<dt id="X0-carroll2017transformation" class="thebibliography">
+35.  
+</dt><dd 
+id="bib-161" class="thebibliography">
+<!--l. 107--><p class="noindent" >Carroll, R. J. &#x0026; Ruppert, D. Transformation and weighting in regression (Chapman and
+Hall/CRC, 2017).
+</p>    
+</dd>
+<dt id="X0-bruce2000fast" class="thebibliography">
+36.  
+</dt><dd 
+id="bib-162" class="thebibliography">
+<!--l. 107--><p class="noindent" >Bruce,  J.,  Balch,  T.  &#x0026;  Veloso,  M.  Fast  and  inexpensive  color  image  segmentation  for
+interactive robots in Proceedings. 2000 IEEE/RSJ International Conference on Intelligent
+Robots and Systems (IROS 2000)(Cat. No. 00CH37113) <span id="bold" style="font-weight:bold;">3</span> (2000), 2061–2066.
+</p>    
+</dd>
+<dt id="X0-nourbakhsh1997mobile" class="thebibliography">
+37.  
+</dt><dd 
+id="bib-163" class="thebibliography">
+<!--l. 107--><p class="noindent" >Nourbakhsh, I. R., Andre, D., Tomasi, C. &#x0026; Genesereth, M. R. Mobile robot obstacle
+avoidance via depth from focus. Robotics and Autonomous Systems <span id="bold" style="font-weight:bold;">22</span><span id="bold" style="font-weight:bold;">,</span> 151–158 (1997).
+</p>    
+</dd>
+<dt id="X0-Manske2009" class="thebibliography">
+38.  
+</dt><dd 
+id="bib-164" class="thebibliography">
+<!--l. 107--><p class="noindent" >Manske.  Hughes  Letter-Printing  Telegraph  Set  built  by  Siemens  and  Halske  in  Saint
+Petersburg, Russia, ca.1900 2009.
+</p>    
+</dd>
+<dt id="X0-koren2006study" class="thebibliography">
+39.  
+</dt><dd 
+id="bib-165" class="thebibliography">
+<!--l. 107--><p class="noindent" >Koren, O. A study of the Linux kernel evolution. ACM SIGOPS Operating Systems Review
+<span id="bold" style="font-weight:bold;">40</span><span id="bold" style="font-weight:bold;">,</span> 110–112 (2006).
+</p>    
+</dd>
+<dt id="X0-bach1986design" class="thebibliography">
+40.  
+</dt><dd 
+id="bib-166" class="thebibliography">
+                                                                                
+                                                                                
+    
+<!--l. 107--><p class="noindent" >Bach, M. J. The Design of the UNIX. RTM. Operating system Prentice Hall, 312–329
+(1986).
+</p>    
+</dd>
+<dt id="X0-johnson1978unix" class="thebibliography">
+41.  
+</dt><dd 
+id="bib-167" class="thebibliography">
+<!--l. 107--><p class="noindent" >Johnson, S. C. &#x0026; Ritchie, D. M. UNIX time-sharing system: Portability of C programs and
+the UNIX system. The Bell System Technical Journal <span id="bold" style="font-weight:bold;">57</span><span id="bold" style="font-weight:bold;">,</span> 2021–2048 (1978).
+</p>    
+</dd>
+<dt id="X0-Debianpackageros2025" class="thebibliography">
+42.  
+</dt><dd 
+id="bib-168" class="thebibliography">
+<!--l. 107--><p class="noindent" >Debian. python3-colcon-ros 2025.</p></dd></dl>
+                                                                                
+                                                                                
+<div class="crosslinks-bottom"><span class="nav-inactive"><span class="nav-next">NEXT</span></span> <a 
+href="ClientLibraries.html" ><span class="nav-prev">PREV</span></a><a 
+href="ClientLibraries.html#tailClientLibraries.html" ><span class="nav-prev-tail">PREV-TAIL</span></a><a 
+href="References.html" ><span class="nav-front">FRONT</span></a><a 
+href="RoboticsLectureBook.html#References.html" ><span class="nav-up">UP</span></a></nav><a 
+ id="tailReferences.html"></a></div> <div class="footer"> <div class="footer-left"><span class="footer-lecture">D. T. McGuiness, PhD</span> 
+<span class="footer-webBook"><span id="bold" style="font-weight:bold;">Last Updated:</span> 18.5.2026, at 11:25.</span> </div> </div> </div> <div class="author-notes"><span class="note">Authors Note </span><span class="text">The website you are
+viewing is auto-generated using ParSnip and therefore subject to slight errors in typography and
+formatting. When in doubt, please consult the LectureBook. </span></div>  
+</body> 
+</html>

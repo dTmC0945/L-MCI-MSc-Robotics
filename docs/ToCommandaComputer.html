@@ -1,0 +1,682 @@
+<!DOCTYPE html> 
+<html lang="en">  
+<head><title>To Command a Computer</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="RoboticsLectureBook.css" /> 
+<meta name="src" content="RoboticsLectureBook.tex" /> 
+ <link rel="stylesheet" type="text/css" href="flatweb.css"> 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+
+<link href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css" rel="stylesheet" type="text/css" /> 
+ <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script> 
+ <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"> </script>  
+<link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"/>  
+<script src="flatjs.js"> </script>  <script src="/Users/danielmcguiness/GitHub/MCI-Source-Files/Configuration/ScriptsHTML/webBook/sidenote.js"> </script>   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/matlab.min.js"> </script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dockerfile.min.js"> </script>
+</p><!--l. 14--><p class="noindent" ><header> </header> 
+</head><body 
+>
+<page> 
+<nav class="wide"><div class="header"> <div class="header-left"><span class="header-lecture">M.Sc Robotics</span> 
+<span class="header-webBook">WebBook</span> </div> <div class="header-right"><span class="header-version">2026.SS</span> 
+<span class="header-chapter">Command Line Fundamentals</span></div></div> <div class="toc"><span class="chapterToc"><span class="number">0</span><span class="title"><a 
+href="index.html#x2-10000">index</a></span></span><span class="chapterToc"><span class="number">1</span><span class="title"><a 
+href="MobileRobotLocalisation.html#x3-20001">Mobile Robot Localisation</a></span></span><span class="sectionToc"><span class="number">1.1</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-30001.1">The Problems of Noise and Aliasing</a></span></span><span class="subsectionToc"><span class="number">1.1.1</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-40001.1.1">Sensor
+Noise</a></span></span><span class="subsectionToc"><span class="number">1.1.2</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-50001.1.2">Sensor Aliasing</a></span></span><span class="subsectionToc"><span class="number">1.1.3</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-60001.1.3">Effector Noise</a></span></span><span class="subsectionToc"><span class="number">1.1.4</span><span class="title"><a 
+href="TheProblemsofNoiseandAliasing.html#x4-70001.1.4">An Error Model for Odometric
+Position Estimation</a></span></span><span class="sectionToc"><span class="number">1.2</span><span class="title"><a 
+href="LocalisationvHardCodedNavigation.html#x5-80001.2">Localisation v. Hard-Coded Navigation</a></span></span><span class="sectionToc"><span class="number">1.3</span><span class="title"><a 
+href="RepresentingBelief.html#x6-90001.3">Representing
+Belief</a></span></span><span class="subsectionToc"><span class="number">1.3.1</span><span class="title"><a 
+href="RepresentingBelief.html#x6-100001.3.1">Single Hypothesis Belief</a></span></span><span class="subsectionToc"><span class="number">1.3.2</span><span class="title"><a 
+href="RepresentingBelief.html#x6-110001.3.2">Multiple Hypothesis Belief</a></span></span><span class="sectionToc"><span class="number">1.4</span><span class="title"><a 
+href="RepresentingMaps.html#x7-120001.4">Representing
+Maps</a></span></span><span class="subsectionToc"><span class="number">1.4.1</span><span class="title"><a 
+href="RepresentingMaps.html#x7-130001.4.1">Continuous Representation</a></span></span><span class="subsectionToc"><span class="number">1.4.2</span><span class="title"><a 
+href="RepresentingMaps.html#x7-140001.4.2">Decomposition Methods</a></span></span><span class="subsectionToc"><span class="number">1.4.3</span><span class="title"><a 
+href="RepresentingMaps.html#x7-150001.4.3">Current
+Challenges</a></span></span><span class="sectionToc"><span class="number">1.5</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-160001.5">Probabilistic Map-Based Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.1</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-170001.5.1">Markov Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.2</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-210001.5.2">Kalman
+Filter Localisation</a></span></span><span class="subsectionToc"><span class="number">1.5.3</span><span class="title"><a 
+href="ProbabilisticMapBasedLocalisation.html#x8-220001.5.3">An Implementation of Kalman Filter</a></span></span><span class="sectionToc"><span class="number">1.6</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-270001.6">Other Examples
+of Localisation Methods</a></span></span><span class="subsectionToc"><span class="number">1.6.1</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-280001.6.1">Landmark-based Navigation</a></span></span><span class="subsectionToc"><span class="number">1.6.2</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-290001.6.2">Globally Unique
+Localisation</a></span></span><span class="subsectionToc"><span class="number">1.6.3</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-300001.6.3">Positioning Beacon systems</a></span></span><span class="subsectionToc"><span class="number">1.6.4</span><span class="title"><a 
+href="OtherExamplesofLocalisationMethods.html#x9-310001.6.4">Route-Based Localisation</a></span></span><span class="sectionToc"><span class="number">1.7</span><span class="title"><a 
+href="BuildingMaps.html#x10-320001.7">Building
+Maps</a></span></span><span class="subsectionToc"><span class="number">1.7.1</span><span class="title"><a 
+href="BuildingMaps.html#x10-330001.7.1">Stochastic Map Technique</a></span></span><span class="subsectionToc"><span class="number">1.7.2</span><span class="title"><a 
+href="BuildingMaps.html#x10-340001.7.2">Other Mapping Techniques</a></span></span><span class="chapterToc"><span class="number">2</span><span class="title"><a 
+href="WelcometoLinux.html#x11-370002">Welcome to
+Linux</a></span></span><span class="sectionToc"><span class="number">2.1</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-380002.1">Learning the Linux Command Line</a></span></span><span class="subsectionToc"><span class="number">2.1.1</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-390002.1.1">A History of UNIX/Linux</a></span></span><span class="subsectionToc"><span class="number">2.1.2</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-410002.1.2">A
+Short History on Computer Interfaces</a></span></span><span class="subsectionToc"><span class="number">2.1.3</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-430002.1.3">Linux is a Nutshell</a></span></span><span class="subsectionToc"><span class="number">2.1.4</span><span class="title"><a 
+href="LearningtheLinuxCommandLine.html#x12-460002.1.4">Linux
+Distributions</a></span></span><span class="sectionToc"><span class="number">2.2</span><span class="title"><a 
+href="Installation.html#x13-470002.2">Installation</a></span></span><span class="sectionToc"><span class="number">2.3</span><span class="title"><a 
+href="Docker.html#x14-480002.3">Docker</a></span></span><span class="subsectionToc"><span class="number">2.3.1</span><span class="title"><a 
+href="Docker.html#x14-490002.3.1">Dockerfile</a></span></span><span class="subsectionToc"><span class="number">2.3.2</span><span class="title"><a 
+href="Docker.html#x14-500002.3.2">Running the Container</a></span></span><span class="chapterToc"><span class="number">3</span><span class="title"><a 
+href="CommandLineFundamentals.html#x15-510003">Command
+Line Fundamentals</a></span></span><span class="sectionToc"><span class="number">3.1</span><span class="title"><a 
+href="#x16-520003.1">To Command a Computer</a></span></span><span class="subsectionToc"><span class="number">3.1.1</span><span class="title"><a 
+href="#x16-530003.1.1">The Command Line Interface</a></span></span><span class="subsectionToc"><span class="number">3.1.2</span><span class="title"><a 
+href="#x16-540003.1.2">The
+Structure of Commands</a></span></span><span class="subsectionToc"><span class="number">3.1.3</span><span class="title"><a 
+href="#x16-550003.1.3">Some Rules Regarding the Syntax</a></span></span><span class="sectionToc"><span class="number">3.2</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-560003.2">When We Need Help
+with Commands</a></span></span><span class="subsectionToc"><span class="number">3.2.1</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-570003.2.1">Use Tab completion on the Shell</a></span></span><span class="subsectionToc"><span class="number">3.2.2</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-580003.2.2">The info command</a></span></span><span class="subsectionToc"><span class="number">3.2.3</span><span class="title"><a 
+href="WhenWeNeedHelpwithCommands.html#x17-590003.2.3">The
+whatis command</a></span></span><span class="chapterToc"><span class="number">4</span><span class="title"><a 
+href="WorkingwithFilesandFolders.html#x18-610004">Working with Files and Folders</a></span></span><span class="sectionToc"><span class="number">4.1</span><span class="title"><a 
+href="FilesandFolders.html#x19-620004.1">Files and Folders</a></span></span><span class="subsectionToc"><span class="number">4.1.1</span><span class="title"><a 
+href="FilesandFolders.html#x19-630004.1.1">A Detailed Look
+in ls Command</a></span></span><span class="subsectionToc"><span class="number">4.1.2</span><span class="title"><a 
+href="FilesandFolders.html#x19-640004.1.2">Creating and Removing Folders</a></span></span><span class="subsectionToc"><span class="number">4.1.3</span><span class="title"><a 
+href="FilesandFolders.html#x19-650004.1.3">Move, Copy and Delete Files and
+Folders</a></span></span><span class="sectionToc"><span class="number">4.2</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-720004.2">Permissions and Links</a></span></span><span class="subsectionToc"><span class="number">4.2.1</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-730004.2.1">Role to Users and sudo</a></span></span><span class="subsectionToc"><span class="number">4.2.2</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-740004.2.2">File Permissions</a></span></span><span class="subsectionToc"><span class="number">4.2.3</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-770004.2.3">Hard
+and Symbolic Links</a></span></span><span class="subsectionToc"><span class="number">4.2.4</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-780004.2.4">Soft (Symbolic) Links</a></span></span><span class="subsectionToc"><span class="number">4.2.5</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-800004.2.5">The Linux File System</a></span></span><span class="subsectionToc"><span class="number">4.2.6</span><span class="title"><a 
+href="PermissionsandLinks.html#x20-810004.2.6">The
+UNIX Philosophy</a></span></span><span class="sectionToc"><span class="number">4.3</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-820004.3">Common Command-Line Tools and Tasks</a></span></span><span class="subsectionToc"><span class="number">4.3.1</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-830004.3.1">Connecting
+Commands with Pipes</a></span></span><span class="subsectionToc"><span class="number">4.3.2</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-840004.3.2">Viewing Text Files with cat, head, tail, and less</a></span></span><span class="subsectionToc"><span class="number">4.3.3</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-850004.3.3">Finding
+                                                                                
+                                                                                
+Linux Distribution and Kernel Information</a></span></span><span class="subsectionToc"><span class="number">4.3.4</span><span class="title"><a 
+href="CommonCommandLineToolsandTasks.html#x21-870004.3.4">Find System Hardware and Disk
+Information</a></span></span><span class="chapterToc"><span class="number">5</span><span class="title"><a 
+href="ROSConcepts.html#x22-890005">ROS Concepts</a></span></span><span class="sectionToc"><span class="number">5.1</span><span class="title"><a 
+href="PublisherandSubscriberArchitecture.html#x23-900005.1">Publisher and Subscriber Architecture</a></span></span><span class="subsectionToc"><span class="number">5.1.1</span><span class="title"><a 
+href="PublisherandSubscriberArchitecture.html#x23-910005.1.1">ROS 2
+Architecture</a></span></span><span class="sectionToc"><span class="number">5.2</span><span class="title"><a 
+href="BuildingBlocks.html#x24-930005.2">Building Blocks</a></span></span><span class="subsectionToc"><span class="number">5.2.1</span><span class="title"><a 
+href="BuildingBlocks.html#x24-940005.2.1">Nodes</a></span></span><span class="subsectionToc"><span class="number">5.2.2</span><span class="title"><a 
+href="BuildingBlocks.html#x24-950005.2.2">The Discovery Process</a></span></span><span class="subsectionToc"><span class="number">5.2.3</span><span class="title"><a 
+href="BuildingBlocks.html#x24-960005.2.3">Communication
+Interface</a></span></span><span class="subsectionToc"><span class="number">5.2.4</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1050005.2.4">Topics</a></span></span><span class="subsectionToc"><span class="number">5.2.5</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1090005.2.5">Services</a></span></span><span class="subsectionToc"><span class="number">5.2.6</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1120005.2.6">Actions</a></span></span><span class="subsectionToc"><span class="number">5.2.7</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1150005.2.7">Parameters</a></span></span><span class="subsectionToc"><span class="number">5.2.8</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1240005.2.8">Working with
+Command Line</a></span></span><span class="subsectionToc"><span class="number">5.2.9</span><span class="title"><a 
+href="BuildingBlocks.html#x24-1260005.2.9">Launch Files</a></span></span><span class="sectionToc"><span class="number">5.3</span><span class="title"><a 
+href="AdvancedConcepts.html#x25-1270005.3">Advanced Concepts</a></span></span><span class="subsectionToc"><span class="number">5.3.1</span><span class="title"><a 
+href="AdvancedConcepts.html#x25-1280005.3.1">ROS DOMAIN
+ID</a></span></span><span class="chapterToc"><span class="number">6</span><span class="title"><a 
+href="CommandLineTools.html#x26-1300006">Command Line Tools</a></span></span><span class="sectionToc"><span class="number">6.1</span><span class="title"><a 
+href="SettingtheEnvironment.html#x27-1310006.1">Setting the Environment</a></span></span><span class="sectionToc"><span class="number">6.2</span><span class="title"><a 
+href="TurtlesandGraphs.html#x28-1360006.2">Turtles and Graphs</a></span></span><span class="sectionToc"><span class="number">6.3</span><span class="title"><a 
+href="ADeeperLookintoNodes.html#x29-1440006.3">A
+Deeper Look into Nodes</a></span></span><span class="sectionToc"><span class="number">6.4</span><span class="title"><a 
+href="WorkingwithTopics.html#x30-1490006.4">Working with Topics</a></span></span><span class="sectionToc"><span class="number">6.5</span><span class="title"><a 
+href="WorkingwithServices.html#x31-1550006.5">Working with Services</a></span></span><span class="sectionToc"><span class="number">6.6</span><span class="title"><a 
+href="WorkingwithParameters.html#x32-1620006.6">Working
+with Parameters</a></span></span><span class="sectionToc"><span class="number">6.7</span><span class="title"><a 
+href="APracticalLookintoActions.html#x33-1690006.7">A Practical Look into Actions</a></span></span><span class="sectionToc"><span class="number">6.8</span><span class="title"><a 
+href="LaunchingNodes.html#x34-1760006.8">Launching Nodes</a></span></span><span class="chapterToc"><span class="number">7</span><span class="title"><a 
+href="ClientLibraries.html#x35-1780007">Client
+Libraries</a></span></span><span class="sectionToc"><span class="number">7.1</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1790007.1">Getting Started with Colcon</a></span></span><span class="subsectionToc"><span class="number">7.1.1</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1800007.1.1">The Structure of a Package</a></span></span><span class="subsectionToc"><span class="number">7.1.2</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1810007.1.2">Sourcing
+an Underlay</a></span></span><span class="subsectionToc"><span class="number">7.1.3</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1820007.1.3">Building the Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.4</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1830007.1.4">Sourcing the New Package</a></span></span><span class="subsectionToc"><span class="number">7.1.5</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1840007.1.5">Creating a
+Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.6</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1850007.1.6">Sourcing the Environment</a></span></span><span class="subsectionToc"><span class="number">7.1.7</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1860007.1.7">Creating a New Directory</a></span></span><span class="subsectionToc"><span class="number">7.1.8</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1870007.1.8">Cloning a
+Sample Repo</a></span></span><span class="subsectionToc"><span class="number">7.1.9</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1880007.1.9">Resolving Dependencies</a></span></span><span class="subsectionToc"><span class="number">7.1.10</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1890007.1.10">Building the Workspace</a></span></span><span class="subsectionToc"><span class="number">7.1.11</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1900007.1.11">Sourcing our
+Overlay</a></span></span><span class="subsectionToc"><span class="number">7.1.12</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1910007.1.12">Modifying the Overlay</a></span></span><span class="subsectionToc"><span class="number">7.1.13</span><span class="title"><a 
+href="GettingStartedwithColcon.html#x36-1920007.1.13">Creating a Package</a></span></span><span class="sectionToc"><span class="number">7.2</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-1950007.2">Writing a Simple Publisher
+and Subscriber</a></span></span><span class="subsectionToc"><span class="number">7.2.1</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-1960007.2.1">Creating a ROS Packages</a></span></span><span class="subsectionToc"><span class="number">7.2.2</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-1970007.2.2">Writing the Publisher Node</a></span></span><span class="subsectionToc"><span class="number">7.2.3</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-2020007.2.3">Writing
+the Subscriber Node</a></span></span><span class="subsectionToc"><span class="number">7.2.4</span><span class="title"><a 
+href="WritingaSimplePublisherandSubscriber.html#x37-2050007.2.4">Building and Running</a></span></span><span class="sectionToc"><span class="number">7.3</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2060007.3">Writing a Simple Service and
+Client</a></span></span><span class="subsectionToc"><span class="number">7.3.1</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2070007.3.1">Creating a New Package</a></span></span><span class="subsectionToc"><span class="number">7.3.2</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2100007.3.2">Writing the Service Node</a></span></span><span class="subsectionToc"><span class="number">7.3.3</span><span class="title"><a 
+href="WritingaSimpleServiceandClient.html#x38-2130007.3.3">Writing the Client
+Node</a></span></span><span class="sectionToc"><span class="number">7.4</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2160007.4">Creating Custom msg and srv Files</a></span></span><span class="subsectionToc"><span class="number">7.4.1</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2170007.4.1">Creating a New Package</a></span></span><span class="subsectionToc"><span class="number">7.4.2</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2180007.4.2">Creating
+Custom Definitions</a></span></span><span class="subsectionToc"><span class="number">7.4.3</span><span class="title"><a 
+href="CreatingCustommsgandsrvFiles.html#x39-2250007.4.3">Testing the Newly Built Interfaces</a></span></span><span class="sectionToc"><span class="number">7.5</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2270007.5">Using Parameters in a
+Class</a></span></span><span class="subsectionToc"><span class="number">7.5.1</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2280007.5.1">Creating a Package</a></span></span><span class="subsectionToc"><span class="number">7.5.2</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2300007.5.2">Writing our Python Code</a></span></span><span class="subsectionToc"><span class="number">7.5.3</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2350007.5.3">Changing Output using
+the Console</a></span></span><span class="subsectionToc"><span class="number">7.5.4</span><span class="title"><a 
+href="UsingParametersinaClass.html#x40-2360007.5.4">Changing using the Launch File</a></span></span><span class="sectionToc"><span class="number">7.6</span><span class="title"><a 
+href="ManagingDependencies.html#x41-2370007.6">Managing Dependencies</a></span></span><span class="sectionToc"><span class="number">7.7</span><span class="title"><a 
+href="CreatinganAction.html#x42-2390007.7">Creating
+an Action</a></span></span><span class="sectionToc"><span class="number">7.8</span><span class="title"><a 
+href="WritinganActionServerandClient.html#x43-2420007.8">Writing an Action Server and Client</a></span></span><span class="sectionToc"><span class="number">7.9</span><span class="title"><a 
+href="WritingaLaunchFile.html#x44-2440007.9">Writing a Launch File</a></span></span>
+ 
+
+</div></div></nav> 
+
+<article class="chapter"> 
+<nav class="crosslinks-top"> <a 
+href="WhenWeNeedHelpwithCommands.html" ><span class="nav-next">NEXT</span></a><span class="nav-inactive"><span class="nav-prev">PREV</span></span> <span class="nav-inactive"><span class="nav-prev-tail">PREV-TAIL</span></span> <a 
+href="#tailToCommandaComputer.html"><span class="nav-tail">TAIL</span></a><a 
+href="CommandLineFundamentals.html#ToCommandaComputer.html" ><span class="nav-up">UP</span></a></nav> 
+<div class="section-header"><h3><a class="pdf-icon" href="RoboticsLectureBook.pdf#section.3.1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">3.1</span> <span class="title">  <a 
+ id="x16-520003.1"></a>To Command a Computer</span></h3></div><p>
+<!--l. 16--><p class="noindent" >In this day and age, it takes a certain level of skill to be alien to technology and as everyone has
+computers in their pockets, the interactions with them is almost uncountable. However, these
+interactions are done through what is called a <span class="acronym"><span class="acronym-short"><a 
+href="#glo:gui" class="glossary" >GUI</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:gui" class="glossary" >Graphical User Interface</a></span><span class="acronym-desc"><a 
+href="#glo:gui" class="glossary" >Graphical User Interface</a></span></span></span>.
+Devices running on Windows, MacOS, iOS, and Android all use this interface to interact with the user. <div class="quote">
+i.e., when clicked on an icon, the close, minimize and maximize buttons on the windows etc..  </p></div><p>  It must
+be stressed as these visual components are all for the benefit of the user. While these greatly simplify
+tasks like photo editing or video creation, some applications just completely omit the use of
+<span class="acronym"><span class="acronym-short"><a 
+href="#glo:gui" class="glossary" >GUI</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:gui" class="glossary" >Graphical User Interface</a></span><span class="acronym-desc"><a 
+href="#glo:gui" class="glossary" >Graphical User Interface</a></span></span></span> and instead use a simpler version of it called
+<span class="acronym"><span class="acronym-short"><a 
+href="#glo:cli" class="glossary" >CLI</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:cli" class="glossary" >Command-Line Interface</a></span><span class="acronym-desc"><a 
+href="#glo:cli" class="glossary" >A software mechanism you use to interact with your operating system
+using your keyboard</a></span></span></span>. This is especially true for servers <span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">A server is a software or hardware offering
+a service to a user, usually referred to as <span id="bold" style="font-weight:bold;">client</span>. As an example, a hardware server is a
+shared computer on a network, usually powerful and housed in a data centre.</span></span>, embedded
+applications and in many other areas where either <span class="alert"><alert style="color: #821131;">memory is limited</alert></span> or efficiency of the
+computer <span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">i.e., such as limiting the CPU load etc.</span></span> is highly desired. Server software, utilities,
+and other programs usually only need some text-based information to do what they do.
+Many of these programs run on a server in a data centre somewhere without a monitor
+so the overhead of a <span class="acronym"><span class="acronym-short"><a 
+href="#glo:gui" class="glossary" >GUI</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:gui" class="glossary" >Graphical User Interface</a></span><span class="acronym-desc"><a 
+href="#glo:gui" class="glossary" >Graphical User Interface</a></span></span></span> is completely
+<span class="alert"><alert style="color: #821131;">unnecessary</alert></span>.
+
+                                                                                
+                                                                                
+<!--l. 37--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="RoboticsLectureBook.pdf#subsection.3.1.1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">3.1.1</span> <span class="title">  <a 
+ id="x16-530003.1.1"></a>The Command Line Interface</span></h4></div><p>
+</p><!--l. 39--><p class="noindent" >One way we interact with these programs which don’t have a <span class="acronym"><span class="acronym-short"><a 
+href="#glo:gui" class="glossary" >GUI</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:gui" class="glossary" >Graphical User Interface</a></span><span class="acronym-desc"><a 
+href="#glo:gui" class="glossary" >Graphical
+User Interface</a></span></span></span> is through the <span class="acronym"><span class="acronym-short"><a 
+href="#glo:cli" class="glossary" >CLI</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:cli" class="glossary" >Command-Line Interface</a></span><span class="acronym-desc"><a 
+href="#glo:cli" class="glossary" >A software mechanism you use to interact
+with your operating system using your keyboard</a></span></span></span>. This is a text-based interface where the commands to
+execute are typed and all actions are shown as text on a terminal screen, whether it is updating a
+software or moving files around. The environment we use is called a shell, or command-line interpreter,
+and there are many shells out there.
+A list of Shells that can be encountered in industry and academia can be seen in <span id="bold" style="font-weight:bold;">Tbl.</span> <a 
+href="#x16-53001r1">3.1<!--tex4ht:ref: tbl:shell --></a>.
+                                                                                
+                                                                                
+</p><!--l. 48--><p class="noindent" ></p><figure class="float" 
+>
+                                                                                
+                                                                                
+<a 
+ id="x16-53001r1"></a>
+<figcaption class="caption" ><span class="id"><span 
+class="ec-lmbx-7">Table</span><span 
+class="ec-lmbx-7"> 3.1:</span><span 
+class="ec-lmbx-7"> </span></span><span  
+class="content"><span 
+class="ec-lmr-7">Types of shells used in industry and academia. For reference, the authors computer uses zsh.</span><span 
+class="ec-lmr-7"> </span>
+</span></figcaption><!--tex4ht:label?: x16-53001r1 -->
+<div class="tabular"> <table id="TBL-10" class="tabular" 
+ 
+><colgroup id="TBL-10-1g"><col 
+id="TBL-10-1" /><col 
+id="TBL-10-2" /><col 
+id="TBL-10-3" /><col 
+id="TBL-10-4" /><col 
+id="TBL-10-5" /><col 
+id="TBL-10-6" /><col 
+id="TBL-10-7" /><col 
+id="TBL-10-8" /><col 
+id="TBL-10-9" /><col 
+id="TBL-10-10" /><col 
+id="TBL-10-11" /><col 
+id="TBL-10-12" /><col 
+id="TBL-10-13" /><col 
+id="TBL-10-14" /><col 
+id="TBL-10-15" /><col 
+id="TBL-10-16" /><col 
+id="TBL-10-17" /><col 
+id="TBL-10-18" /><col 
+id="TBL-10-19" /><col 
+id="TBL-10-20" /><col 
+id="TBL-10-21" /><col 
+id="TBL-10-22" /><col 
+id="TBL-10-23" /><col 
+id="TBL-10-24" /><col 
+id="TBL-10-25" /><col 
+id="TBL-10-26" /><col 
+id="TBL-10-27" /><col 
+id="TBL-10-28" /><col 
+id="TBL-10-29" /><col 
+id="TBL-10-30" /><col 
+id="TBL-10-31" /><col 
+id="TBL-10-32" /><col 
+id="TBL-10-33" /><col 
+id="TBL-10-34" /><col 
+id="TBL-10-35" /><col 
+id="TBL-10-36" /><col 
+id="TBL-10-37" /><col 
+id="TBL-10-38" /><col 
+id="TBL-10-39" /><col 
+id="TBL-10-40" /><col 
+id="TBL-10-41" /><col 
+id="TBL-10-42" /><col 
+id="TBL-10-43" /><col 
+id="TBL-10-44" /><col 
+id="TBL-10-45" /><col 
+id="TBL-10-46" /><col 
+id="TBL-10-47" /><col 
+id="TBL-10-48" /><col 
+id="TBL-10-49" /><col 
+id="TBL-10-50" /><col 
+id="TBL-10-51" /><col 
+id="TBL-10-52" /><col 
+id="TBL-10-53" /><col 
+id="TBL-10-54" /><col 
+id="TBL-10-55" /><col 
+id="TBL-10-56" /><col 
+id="TBL-10-57" /><col 
+id="TBL-10-58" /><col 
+id="TBL-10-59" /><col 
+id="TBL-10-60" /><col 
+id="TBL-10-61" /><col 
+id="TBL-10-62" /><col 
+id="TBL-10-63" /><col 
+id="TBL-10-64" /><col 
+id="TBL-10-65" /><col 
+id="TBL-10-66" /><col 
+id="TBL-10-67" /><col 
+id="TBL-10-68" /><col 
+id="TBL-10-69" /><col 
+id="TBL-10-70" /><col 
+id="TBL-10-71" /><col 
+id="TBL-10-72" /><col 
+id="TBL-10-73" /><col 
+id="TBL-10-74" /><col 
+id="TBL-10-75" /><col 
+id="TBL-10-76" /><col 
+id="TBL-10-77" /><col 
+id="TBL-10-78" /><col 
+id="TBL-10-79" /><col 
+id="TBL-10-80" /><col 
+id="TBL-10-81" /><col 
+id="TBL-10-82" /><col 
+id="TBL-10-83" /><col 
+id="TBL-10-84" /><col 
+id="TBL-10-85" /><col 
+id="TBL-10-86" /><col 
+id="TBL-10-87" /><col 
+id="TBL-10-88" /><col 
+id="TBL-10-89" /><col 
+id="TBL-10-90" /><col 
+id="TBL-10-91" /><col 
+id="TBL-10-92" /><col 
+id="TBL-10-93" /><col 
+id="TBL-10-94" /><col 
+id="TBL-10-95" /><col 
+id="TBL-10-96" /><col 
+id="TBL-10-97" /><col 
+id="TBL-10-98" /><col 
+id="TBL-10-99" /><col 
+id="TBL-10-100" /><col 
+id="TBL-10-101" /></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-10-1-"><td  style="text-align:right; white-space:nowrap;" id="TBL-10-1-1"  
+class="td11">                     <span id="bold" style="font-weight:bold;">UNIX</span>  </td>
+                               <td  style="text-align:left; white-space:nowrap;" id="TBL-10-1-2"  
+class="td11"> <span id="bold" style="font-weight:bold;">Windows</span>                                                                                                                                               </td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-2-"><td  style="text-align:right; white-space:nowrap;" id="TBL-10-2-1"  
+class="td
+11">             Bourne shell (<code class="verb">sh</code>)  </td>
+                               <td  style="text-align:left; white-space:nowrap;" id="TBL-10-2-2"  
+class="td11"> COMMAND.COM, default in Windows 9x and provided for DOS compatibility in 32-bit versions of NT-based Windows via NTVDM.  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-3-"><td  style="text-align:right; white-space:nowrap;" id="TBL-10-3-1"  
+class="td11">           Almquist shell (<code class="verb">ash</code>)  </td>
+                               <td  style="text-align:left; white-space:nowrap;" id="TBL-10-3-2"  
+class="td11">                                                                                                                   </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-4-"><td  style="text-align:right; white-space:nowrap;" id="TBL-10-4-1"  
+class="td11">   Debian Almquist shell (<code class="verb">dash</code>)  </td>
+                               <td  style="text-align:left; white-space:nowrap;" id="TBL-10-4-2"  
+class="td11">                                                                                                                   </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-5-"><td  style="text-align:right; white-space:nowrap;" id="TBL-10-5-1"  
+class="td11">       Bash (Unix shell) (<code class="verb">bash</code>)  </td>
+                               <td  style="text-align:left; white-space:nowrap;" id="TBL-10-5-2"  
+class="td11">                                                                                                                   </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-6-"><td  style="text-align:right; white-space:nowrap;" id="TBL-10-6-1"  
+class="td11">              Korn shell (<code class="verb">ksh</code>)  </td>
+                               <td  style="text-align:left; white-space:nowrap;" id="TBL-10-6-2"  
+class="td11"> <code class="verb">cmd.exe</code>, the default command-line interpreter of the Windows NT-family                                                                                 </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-7-"><td  style="text-align:right; white-space:nowrap;" id="TBL-10-7-1"  
+class="td11">                 Z Shell (<code class="verb">zsh</code>)  </td>
+                               <td  style="text-align:left; white-space:nowrap;" id="TBL-10-7-2"  
+class="td11">                                                                                                                   </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-8-"><td  style="text-align:right; white-space:nowrap;" id="TBL-10-8-1"  
+class="td11">                 C shell (<code class="verb">csh</code>)  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-10-8-2"  
+class="td11"> Recovery Console                                                                                                                                                            </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-9-"><td  style="text-align:right; white-space:nowrap;" id="TBL-10-9-1"  
+class="td11">         TENEX C shell (<code class="verb">tcsh</code>)  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-10-9-2"  
+class="td11"> Windows PowerShell, based on .NET Framework                                                                                                                  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-10-"><td  style="text-align:right; white-space:nowrap;" id="TBL-10-10-1"  
+class="td11">                 Ch shell (<code class="verb">ch</code>)  </td>
+<td  style="text-align:left; white-space:nowrap;" id="TBL-10-10-2"  
+class="td11"> PowerShell, based on .NET Core                                                                                                                                        </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-11-"><td  style="text-align:right; white-space:nowrap;" id="TBL-10-11-1"  
+class="td11">          Emacs shell (<code class="verb">eshell</code>)  </td>
+<td  style="text-align:left; white-space:nowrap;" id="TBL-10-11-2"  
+class="td11"> Hamilton C shell, a clone of the Unix C shell                                                                                                                        </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-12-"><td  style="text-align:right; white-space:nowrap;" id="TBL-10-12-1"  
+class="td11"> Friendly interactive shell (<code class="verb">fish</code>)  </td>
+<td  style="text-align:left; white-space:nowrap;" id="TBL-10-12-2"  
+class="td11">                                                                                                                   </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-13-"><td  style="text-align:right; white-space:nowrap;" id="TBL-10-13-1"  
+class="td11">             Powershell (<code class="verb">pwsh</code>)  </td>
+<td  style="text-align:left; white-space:nowrap;" id="TBL-10-13-2"  
+class="td11"> 4NT, a clone of CMD.EXE.                                                                                                                                              </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-14-"><td  style="text-align:right; white-space:nowrap;" id="TBL-10-14-1"  
+class="td11">                  rc shell (<code class="verb">rc</code>)  </td>
+<td  style="text-align:left; white-space:nowrap;" id="TBL-10-14-2"  
+class="td11"> Take Command, a newer incarnation of 4NT                                                                                                                        </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-15-"><td  style="text-align:right; white-space:nowrap;" id="TBL-10-15-1"  
+class="td11">        Stand-alone shell (<code class="verb">sash</code>)  </td>
+<td  style="text-align:left; white-space:nowrap;" id="TBL-10-15-2"  
+class="td11">                                                                                                                   </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-16-"><td  style="text-align:right; white-space:nowrap;" id="TBL-10-16-1"  
+class="td11">           Scheme Shell (<code class="verb">scsh</code>)  </td>
+<td  style="text-align:left; white-space:nowrap;" id="TBL-10-16-2"  
+class="td11">                                                                                                                   </td></tr></table></div>
+<p>
+                                                                                
+                                                                                
+</figure>
+<!--l. 73--><p class="noindent" >The command-line interpreter was one of the earliest ways of interacting with the general-purpose
+computer, starting in 1971 with the Thompson shell for UNIX <span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">A family of multitasking, multi-user
+computer operating systems that derive from the original AT&#x0026;T Unix, whose development started in
+1969. It is considered one of the most groundbreaking software ever designed.</span></span>. As UNIX evolved and
+came to be replaced in many capacities by Linux, the shell environments evolved and improved as
+well.
+</p><!--l. 80--><p class="noindent" >Bash, or the Bourne-again shell is one of the most widely-used shells and odds are, it’s the one to
+be encountered in industry or in academic work. Bash is the shell that comes enabled by
+default with most of the popular Linux distributions. It’s also available on macOS <span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">newer
+versions have <code class="verb">zsh</code> shell instead but they are designed to be compatible. The author of this
+work also uses <code class="verb">zsh</code> as his main driver.</span></span> and in Windows with the Windows subsystem for
+Linux.
+</p>
+<div class="knowledge">
+<!--l. 90--><p class="noindent" >In this document, Bash will be used. However, the reader is encouraged to explore some of the other
+shells out there once a working foundation in Bash is achieved.
+</p>
+</div><p class="noindent">
+
+<!--l. 92--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="RoboticsLectureBook.pdf#subsection.3.1.2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">3.1.2</span> <span class="title">  <a 
+ id="x16-540003.1.2"></a>The Structure of Commands</span></h4></div><p>
+</p>
+<div class="figure" 
+>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+<a 
+ id="x16-54001r1"></a>
+<figcaption class="caption" ><span class="id"><span 
+class="ec-lmbx-7">Figure</span><span 
+class="ec-lmbx-7"> 3.1:</span><span 
+class="ec-lmbx-7"> </span>
+         </span><span  
+class="content"><span 
+class="ec-lmr-7">A graphical interface</span> <code class="verb">twm</code><span 
+class="ec-lmr-7">, which features a TUI window for a man page, a shaped window (oclock) as well</span>
+         <span 
+class="ec-lmr-7">as several iconified windows. On the lower hand of the image a website is shown inside a web browser.</span><span 
+class="ec-lmr-7"> </span> </span></figcaption><!--tex4ht:label?: x16-54001r1 -->
+<img 
+ 
+src="figures/Command-Line-Fundamentals/raster/x11.png" alt="PIC"  
+style="" />
+                                                                                
+                                                                                
+</div>
+<!--l. 102--><p class="noindent" >There are a few concepts and principles which needs to be understood to be a productive member of
+the <span class="acronym"><span class="acronym-short"><a 
+href="#glo:cli" class="glossary" >CLI</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:cli" class="glossary" >Command-Line Interface</a></span><span class="acronym-desc"><a 
+href="#glo:cli" class="glossary" >A software mechanism you use to interact with your operating system
+using your keyboard</a></span></span></span> family. Before jumping into using commands though, let’s have a look at how
+command line statements are structured with the following:
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb18"><a 
+ id="x16-54003r17"></a><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">command</span></span> <span 
+class="ec-lmtt-10">[</span><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">flag(s)] [</span><span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">option(s) [value]] [argument(s)]</span></pre>
+</div><p>
+<!--l. 108--><p class="noindent" >This is the general form. The pattern is <code class="verb">command</code>, <code class="verb">options</code>, and then <code class="verb">arguments</code>. Here’s
+a couple of common commands we’ll see with options and arguments that are used with
+them.
+</p>
+<div class="code">
+<pre class="fancyvrb" id="fancyvrb19"><a 
+ id="x16-54005r22"></a><span 
+class="ec-lmtt-10">ls</span> <span 
+class="ec-lmtt-10">-</span><span 
+class="ec-lmtt-10">l /tmp</span> 
+<a 
+ id="x16-54007r23"></a><span style="color:#B03B03;"><span 
+class="ec-lmtt-10">cd</span></span> <span 
+class="ec-lmtt-10">/usr/local</span> 
+<a 
+ id="x16-54009r24"></a><span 
+class="ec-lmtt-10">cat /etc/passwd</span></pre>
+</div><p>
+<!--l. 114--><p class="noindent" >The details of what the aforementioned commands do will be the focus in the future. The point here is
+to see the structure of what we’ll be working with before we get into what these actually do. Depending
+on the current action, we might just have a command, or a command and one or more options or just a
+command with one or more arguments.
+</p>
+<div class="warning">
+<!--l. 121--><p class="noindent" >Whatever is done in <span class="acronym"><span class="acronym-short"><a 
+href="#glo:cli" class="glossary" >CLI</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:cli" class="glossary" >Command-Line Interface</a></span><span class="acronym-desc"><a 
+href="#glo:cli" class="glossary" >A software mechanism you use to interact with your
+operating system using your keyboard</a></span></span></span>, <span class="alert"><alert style="color: #821131;">there will always be a command</alert></span>.
+</p>
+</div>
+<!--l. 123--><p class="noindent" >Command is the <span class="alert"><alert style="color: #821131;">minimum</alert></span> thing which can be done with a <span class="acronym"><span class="acronym-short"><a 
+href="#glo:cli" class="glossary" >CLI</a></span><span class="acronym-detail"><span class="acronym-long"><a 
+href="#glo:cli" class="glossary" >Command-Line Interface</a></span><span class="acronym-desc"><a 
+href="#glo:cli" class="glossary" >A software
+mechanism you use to interact with your operating system using your keyboard</a></span></span></span>. <span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">Think of it as the
+atom of any action we can take.</span></span> The command is the program we’re running or the action we’re
+taking.
+</p><!--l. 127--><p class="noindent" >To give command to a UNIX system, <span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">or a UNIX-like system.</span></span> type the name of the command, along
+with any associated information, such as a filename, and press <kbd>Return</kbd>.
+</p><!--l. 130--><p class="noindent" >The typed line is called the <span class="alert"><alert style="color: #821131;">command line</alert></span> and UNIX uses a special program, called the
+<span id="bold" style="font-weight:bold;">shell</span> or the command line interpreter, mentioned previously, to interpret what we’ve have
+typed.
+To reiterate, the components of the command line are:
+</p>     
+<dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+i. 
+</dt><dd 
+class="enumerate-enumitem">the command,                                                                               (i.e., <code class="verb">grep</code>, <code class="verb">sed</code>,
+<code class="verb">awk</code>
+)
+</dd>     
+<dt class="enumerate-enumitem">
+ii. 
+</dt><dd 
+class="enumerate-enumitem">options required by the command,                                (i.e., <code class="verb">-i -e</code>, <code class="verb">s/hello/world/g</code>,
+<code class="verb">&#x0027;{print $1}&#x0027;</code>
+)
+                                                                                
+                                                                                
+     
+</dd>
+<dt class="enumerate-enumitem">  
+iii. 
+</dt><dd 
+class="enumerate-enumitem">the command’s arguments. <span class="margin-comment"><span class="ellipsis">(...)</span> 
+<span class="sidenote">This is optional as some commands just don’t have any options.</span></span>
+(i.e., <code class="verb">filename.tex</code>, <code class="verb">file.f90</code>,
+<code class="verb">grades.csv</code>
+)</dd></dl>
+
+<!--l. 143--><p class="noindent" ><div class="subsection-header"><h4><a class="pdf-icon" href="RoboticsLectureBook.pdf#subsection.3.1.3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"></path><path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"></path></svg></a><span class="number">3.1.3</span> <span class="title">  <a 
+ id="x16-550003.1.3"></a>Some Rules Regarding the Syntax</span></h4></div><p>
+</p><!--l. 145--><p class="noindent" >Since the introduction of UNIX System V, Release 3 <span class="margin"><span>(released 1983),</span><span class="sidenote"><img 
+ 
+src="figures/Command-Line-Fundamentals/raster/systemV.jpg" alt="PIC"  
+style="" />HP
+9000 workstation booting HP-UX, Hewlett-Packard’s System V.
+UNIX System V is one of the first commercial versions of the Unix operating system. It was originally
+developed by AT&#x0026;T and first released in 1983. System V Release 4 (SVR4) was commercially the most
+successful version, being the result of an effort, marketed as <italic>Unix System Unification</italic>, which solicited the
+collaboration of the major Unix vendors. It was the source of several common commercial Unix features.
+System V is sometimes abbreviated to SysV.</span></span> any new commands must obey a particular syntax
+governed by the following rules:  </p>
+<ul class="itemize1">     
+<li class="itemize">
+<!--l. 158--><p class="noindent" >Command names must be between 2 and 9 characters in length,
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 159--><p class="noindent" >Command names must be comprised of lowercase characters and digits,
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 160--><p class="noindent" >Option names must be one character in length (i.e., <code class="verb">-e</code>, <code class="verb">-i</code>),
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 161--><p class="noindent" >All options are preceded by a hyphen,
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 162--><p class="noindent" >Options without arguments may be grouped after the hyphen (i.e., <code class="verb">-ie</code>),
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 163--><p class="noindent" >The first option argument, following an option, must be preceded by white space. For
+example, <code class="verb">-o sfile</code> is valid but <code class="verb">-osfile</code> is not.
+                                                                                
+                                                                                
+     
+</p>
+</li>     
+<li class="itemize">
+<!--l. 165--><p class="noindent" >Option arguments are <span id="bold" style="font-weight:bold;">not optional</span>, whereby if an option takes more than one argument,
+they must be separated by commas with no spaces, or if spaces are used the string must
+be included in double quotes. For example, both are acceptable: <code class="verb">-f past,now,next</code> and
+<code class="verb">-f &#x0022;past now next&#x0022;</code>
+.
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 168--><p class="noindent" >All options must precede other arguments on the command line,
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 169--><p class="noindent" >A double hyphen may be used to indicate the end of the option list,
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 170--><p class="noindent" >The order of the options are order independent,
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 171--><p class="noindent" >The order of arguments may be important,
+</p>     
+</li>
+<li class="itemize">     
+<!--l. 172--><p class="noindent" >A single hyphen means standard input.</p></li></ul>
+<!--l. 176--><p class="noindent" ><div class="info-block"> <span class="info-upper"> <span class="info-header"><span id="bold" style="font-weight:bold;">Information: </span></span><span class="info-title">Additional Points on Command Specifications</span> </span> <div class="body"><p>
+</p><!--l. 178--><p class="noindent" >Options <span class="alert"><alert style="color: #821131;">must</alert></span> come after the command and before arguments. Options <span class="alert"><alert style="color: #821131;">should not</alert></span> appear after the
+main argument(s). However, some options can have their own arguments. Historically, UNIX commands
+have been fairly standard in the way that they use options but there are variations.  Bear in mindthat commands established before System V, Release 3, do not conform to all of the above
+rules.
+</p></div></div><p class="noindent">
+                                                                                
+                                                                                
+</p>
+<div class="crosslinks-bottom"><a 
+href="WhenWeNeedHelpwithCommands.html" ><span class="nav-next">NEXT</span></a><span class="nav-inactive"><span class="nav-prev">PREV</span></span> <span class="nav-inactive"><span class="nav-prev-tail">PREV-TAIL</span></span> <a 
+href="ToCommandaComputer.html" ><span class="nav-front">FRONT</span></a><a 
+href="CommandLineFundamentals.html#ToCommandaComputer.html" ><span class="nav-up">UP</span></a></nav><a 
+ id="tailToCommandaComputer.html"></a>  </div> <div class="footer"> <div class="footer-left"><span class="footer-lecture">D. T. McGuiness, PhD</span> 
+<span class="footer-webBook"><span id="bold" style="font-weight:bold;">Last Updated:</span> 18.5.2026, at 11:25.</span> </div> </div> </div> <div class="author-notes"><span class="note">Authors Note </span><span class="text">The website you are
+viewing is auto-generated using ParSnip and therefore subject to slight errors in typography and
+formatting. When in doubt, please consult the LectureBook. </span></div>  
+</body> 
+</html>
