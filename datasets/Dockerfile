@@ -159,7 +159,7 @@ RUN apt-get update -q && \
     python3-argcomplete \
     python3-colcon-common-extensions \
     python3-rosdep python3-vcstool && \
-    rosdep init &&
+    rosdep init && \
     ros-humble-turtlesim  &&  \
     rm -rf /var/lib/apt/lists/*
 
