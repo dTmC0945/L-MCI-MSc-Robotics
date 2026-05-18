@@ -177,7 +177,7 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
 
 # [[file:../../Welcome-to-Linux.corg::DOCKERFILE-FOR-LINUX-L][DOCKERFILE-FOR-LINUX-L]]
 # Download the Linux Tutorial file from repo
-ARG ZIPFILE="https://github.com/dTmC0945/L-MSc-Robotics/raw/refs/heads/main/datasets/linux-tutorials.zip"
+ARG ZIPFILE="https://github.com/dTmC0945/L-MCI-MSc-Robotics/raw/refs/heads/main/datasets/linux-tutorials.zip"
 
 # Create some user directories to simulate a desktop environment
 RUN mkdir -p \
